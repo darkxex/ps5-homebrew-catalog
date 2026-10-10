@@ -261,10 +261,10 @@ goes stale. For each app:
 
 The pull request shows each app's old and new values side by side, and the
 normal submission check verifies every record in it. Merge it to publish the
-updates. If you close it without merging, none of the versions in it is
-proposed again; each app comes back with its next release. To publish some
-updates and skip others, revert the unwanted record on the branch before
-merging; that app is proposed again on the next run. Run
+updates. Closing it without merging rejects nothing: every run looks at every
+listed app and proposes all pending updates again. To publish some updates and
+skip others, revert the unwanted record on the branch before merging; that app
+is proposed again on the next run. Run
 `python3 -m catalog updates` locally to see what would be proposed.
 
 ### Setting up the GitHub App (once)

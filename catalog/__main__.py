@@ -388,7 +388,7 @@ def cmd_pr(args) -> int:
 
 
 UPDATE_BRANCH = "catalog-update/all"
-# The pull request body records which release it proposes for each app, so a later run can tell what was rejected.
+# The pull request body records which release it proposes for each app.
 UPDATE_STATE = re.compile(r"<!-- catalog-updates: (\{.*?\}) -->")
 
 
@@ -432,43 +432,24 @@ def updates_pr_text(updates: list) -> tuple[str, str]:
         "",
         *[update_section(u) + "\n" for u in updates],
         "The submission check verifies every record in this pull request. Merge it to publish the updates. "
-        "Closing it without merging skips these versions: none of them is proposed again, and each app "
-        "comes back with its next release.",
+        "Closing it without merging rejects nothing: the next run proposes every pending update again.",
         "",
         f"<!-- catalog-updates: {state} -->",
     ])
     return title, body
 
 
-def rejected_updates(repository: str, github: GitHub) -> set[tuple[str, str]]:
-    """(title ID, tag) pairs of update pull requests that were closed without merging."""
-    rejected = set()
-    for body in github.closed_pull_bodies(repository, UPDATE_BRANCH):
-        match = UPDATE_STATE.search(body)
-        if not match:
-            continue
-        try:
-            rejected.update(json.loads(match.group(1)).items())
-        except ValueError:
-            continue
-    return rejected
-
-
 def open_updates_pr(updates: list, repository: str, github: GitHub, report: Report) -> None:
-    """Keep one pull request, on one branch, with every pending update; rebuild it when the set changes."""
+    """Keep one pull request, on one branch, with every pending update; rebuild it when the set changes.
+
+    Every run proposes all pending updates, also those of a pull request that was closed without merging.
+    """
     from .updates import render
-    rejected = rejected_updates(repository, github)
-    kept = []
-    for update in updates:
-        if (update.record.titleid, update.tag) in rejected:
-            report.notice(f"apps/{update.record.path.name}",
-                          f"skipped: an update to {update.tag} was closed without merging")
-        else:
-            kept.append(update)
+    kept = updates
     existing = github.open_pull(repository, UPDATE_BRANCH)
     if not kept:
         if existing:
-            # Its updates reached main some other way. The marker is dropped so closing it rejects nothing.
+            # Its updates reached main some other way.
             github.update_pull(repository, existing["number"], existing.get("title", "Update apps"),
                                "Closed by the release check: there is nothing left to update.")
             github.close_pull(repository, existing["number"])

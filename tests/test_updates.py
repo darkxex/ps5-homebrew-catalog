@@ -176,10 +176,9 @@ class OpenPullRequestTests(unittest.TestCase):
                                 FakeGitHub([release("2.0", [asset("other-PPSA04321.zip", "sha256:" + "d" * 64)])]),
                                 icon_exists=lambda url: True)
         self.updates = [first, second]
-        self.created, self.updated, self.closed, self.open_pr, self.rejected_bodies = [], [], [], {}, []
+        self.created, self.updated, self.closed, self.open_pr = [], [], [], {}
         self.github = mock.Mock(
             open_pull=lambda repo, branch: self.open_pr.get(branch),
-            closed_pull_bodies=lambda repo, branch: self.rejected_bodies,
             create_pull=lambda repo, head, base, title, body: self.created.append((head, title, body)) or {"number": 7},
             update_pull=lambda repo, number, title, body: self.updated.append((number, title, body)),
             close_pull=lambda repo, number: self.closed.append(number),
@@ -214,15 +213,7 @@ class OpenPullRequestTests(unittest.TestCase):
         self.assertEqual([(n, t) for n, t, _ in self.updated], [(7, "Update 2 apps: Example App to 0.6.0, Other App to 2.0")])
         self.assertEqual(self.pushed("PPSA04321")["version"], "2.0")
 
-    def test_versions_closed_without_merging_are_not_proposed_again(self):
-        self.rejected_bodies = ['x <!-- catalog-updates: {"PPSA01234": "v0.6.0"} --> y', "no marker"]
-        notes = self.open(self.updates)
-        self.assertIn("skipped: an update to v0.6.0 was closed without merging", notes)
-        self.assertEqual(self.created[0][1], "Update Other App to 2.0")
-        self.assertEqual(self.run_git(self.clone, "diff", "--name-only", "origin/main", "origin/catalog-update/all").split(),
-                         ["apps/PPSA04321.json"])
-
-    def test_stale_pull_request_is_closed_without_rejecting_anything(self):
+    def test_stale_pull_request_is_closed(self):
         self.open_pr["catalog-update/all"] = {"number": 7, "title": "Update Example App to 0.6.0"}
         self.open([])
         self.assertEqual(self.closed, [7])
