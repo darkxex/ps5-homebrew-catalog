@@ -7,8 +7,8 @@
   "license": "GPL-3.0",
   "author": "Desstann",
   "version": "01.000.006",
-  "source_repo": "https://github.com/desstannoz/pscord",
-  "artifact_url": "https://github.com/desstannoz/pscord/releases/download/v01.000.006/PSCord-01.000.006.zip",
+  "source_repo": "https://github.com/desstannsoft/pscord",
+  "artifact_url": "https://github.com/desstannsoft/pscord/releases/download/v01.000.006/PSCord-01.000.006.zip",
   "sha256": "f90f4d0a3c58b119988536749fbea7065fd99c6c08eff01fbfc2d3d3aed6a5b4",
   "icon_url": null,
   "icon_member": "PPSA99190/sce_sys/icon0.png"
