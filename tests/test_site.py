@@ -525,7 +525,7 @@ class TranslationTests(unittest.TestCase):
 
     def test_every_language_has_the_same_words(self):
         found = self.words()
-        self.assertEqual(sorted(found), ["de", "en", "es", "fr", "ja", "nl", "pt", "tr"])
+        self.assertEqual(sorted(found), ["de", "en", "es", "fr", "ja", "nl", "pt", "tr", "zh"])
         for code, keys in found.items():
             self.assertEqual(sorted(found["en"] - keys), [], f"{code} lacks words")
             self.assertEqual(sorted(keys - found["en"]), [], f"{code} has words English does not")

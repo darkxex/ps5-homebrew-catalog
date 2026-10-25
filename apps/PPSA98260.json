@@ -6,9 +6,9 @@
   "description": "YouTube client in the style of SmartTube, built on ytps5, with SponsorBlock, channel pages, multiple accounts, shuffle and casting from the YouTube phone app.",
   "license": "GPL-3.0",
   "author": "animatian112",
-  "version": "01.000.177",
+  "version": "01.000.179",
   "source_repo": "https://github.com/animatian112/ytps5-sponsorblock",
-  "artifact_url": "https://github.com/animatian112/ytps5-sponsorblock/releases/download/01.000.177/SmartTube-PPSA98260.zip",
-  "sha256": "fdc046e0c6c9c9a864b74e0de6b11963794da7cf21c0c085e884fefbde8a46eb",
-  "icon_url": "https://raw.githubusercontent.com/animatian112/ytps5-sponsorblock/01.000.177/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/animatian112/ytps5-sponsorblock/releases/download/01.000.179/SmartTube-PPSA98260.zip",
+  "sha256": "36a617dacc3623271b6956beb10a1038740fc822ddbd6555502bd8a6a0aee640",
+  "icon_url": "https://raw.githubusercontent.com/animatian112/ytps5-sponsorblock/01.000.179/sce_sys/icon0.png"
 }

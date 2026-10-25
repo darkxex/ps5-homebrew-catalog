@@ -43,7 +43,8 @@ dist/
   makes on the console, by the same rules. A grey icon gets the theme's violet.
   It needs Pillow; without it every app gets the theme's own picture.
 - **Languages.** A flag at the top right (a button in TV mode's rail) changes the
-  page between English, Spanish, French, Portuguese, Japanese, German, Dutch and Turkish. Only the
+  page between English, Spanish, French, Portuguese, Japanese, German, Dutch, Turkish and
+  Simplified Chinese. Only the
   interface changes: its words, the names of the categories and kinds, dates and
   plurals. The records in `apps/` are never translated, so `category` stays
   `emulators` in the JSON and the page shows "Emuladores", "Émulateurs" and so on
