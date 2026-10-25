@@ -1,9 +1,9 @@
 {
   "titleid": "PPSA99874",
-  "name": "PS5 Minecraft Java",
+  "name": "ProsperoCraft",
   "kind": "game",
   "category": "pc-ports",
-  "description": "Experimental Minecraft Java Edition server on a native PS5 OpenJDK 25 port; under development, with world startup still being validated.",
+  "description": "Minecraft Java Edition client and server on PS5, powered by native OpenJDK 25; vanilla, Fabric and Paper server playtests, with client startup under development.",
   "license": null,
   "author": "mateo-cogeanu",
   "version": null,
