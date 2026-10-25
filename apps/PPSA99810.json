@@ -6,9 +6,9 @@
   "description": "Unofficial Xbox Cloud Gaming client: stream the cloud catalog, your own games and your own Xbox (Remote Play) at 1080p60 with sound, using the DualSense as an Xbox controller.",
   "license": "GPL-3.0",
   "author": "RafaelNGP",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "source_repo": "https://github.com/RafaelNGP/xbox-cloud-gaming-ps5",
-  "artifact_url": "https://github.com/RafaelNGP/xbox-cloud-gaming-ps5/releases/download/v1.5.3/PPSA99810.zip",
-  "sha256": "546bacd1850f321d437f770d6aa59effd8e6b8d9115cf470d591447d4cca4292",
-  "icon_url": "https://raw.githubusercontent.com/RafaelNGP/xbox-cloud-gaming-ps5/v1.5.3/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/RafaelNGP/xbox-cloud-gaming-ps5/releases/download/v1.5.4/PPSA99810.zip",
+  "sha256": "377f83e50b980addb9f4c10fed7b462ff40b90a7724b870ca5fb00685ef9a6dc",
+  "icon_url": "https://raw.githubusercontent.com/RafaelNGP/xbox-cloud-gaming-ps5/v1.5.4/ps5/sce_sys/icon0.png"
 }
