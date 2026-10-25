@@ -3,7 +3,7 @@
   "name": "TokenStation5",
   "kind": "app",
   "category": "ai",
-  "description": "Turn your PS5 into a private AI server: run Qwen, Llama and more on its GPU, talk to it with the controller's mic, hear replies on the TV or controller speaker, and plug in any OpenAI-compatible app.",
+  "description": "Local AI endpoint for PS5: runs LLMs on the console GPU behind an OpenAI-compatible API, with API keys, Hugging Face model downloads, chat history and search, voice, and web search.",
   "license": "Unlicensed",
   "author": "ThatRetiredDude",
   "version": "01.002.000",

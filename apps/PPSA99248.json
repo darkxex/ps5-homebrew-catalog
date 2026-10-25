@@ -6,9 +6,9 @@
   "description": "A PlayStation (PS1) emulator built on SwanStation, with a controller-first library, ES-DE themes and game videos, network shares, USB disc drives, CRT shaders and RetroAchievements.",
   "license": "GPL-3.0-or-later",
   "author": "Press5elect",
-  "version": "build24",
+  "version": "build25",
   "source_repo": "https://github.com/Press5elect/PSSwanStation",
-  "artifact_url": "https://github.com/Press5elect/PSSwanStation/releases/download/build24/PSSwanStation-PS5-PPSA99248-build24.zip",
-  "sha256": "7366078ce4f8c31fb6137ab9059c2886902315d432ee56662ed6ba246b32a53f",
-  "icon_url": "https://raw.githubusercontent.com/Press5elect/PSSwanStation/build24/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Press5elect/PSSwanStation/releases/download/build25/PSSwanStation-PS5-PPSA99248-build25.zip",
+  "sha256": "9d48802af24b29b956f919ebc2e9b684e2f1890ded11aa6ed32926442a59a99d",
+  "icon_url": "https://raw.githubusercontent.com/Press5elect/PSSwanStation/build25/ps5/sce_sys/icon0.png"
 }
