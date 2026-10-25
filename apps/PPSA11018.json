@@ -2,13 +2,13 @@
   "titleid": "PPSA11018",
   "name": "PC5",
   "kind": "app",
-  "category": "pc-ports",
-  "description": "Runs PC games via Wine, DXVK and VKD3D-Proton: USB installs, auto covers, home screen tiles, video playback, 30 to 60 fps frame generation, DualSense features. Store launchers unsupported.",
+  "category": "utilities",
+  "description": "Launcher for your own PC games via Wine, DXVK and VKD3D-Proton: USB installs, covers, DualSense support and easy crash reports.",
   "license": "LGPL-2.1",
   "author": "bornaradusin",
-  "version": "v1.6.0",
+  "version": "1.6.1",
   "source_repo": "https://github.com/bornaradusin/PC5",
-  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v1.6.0/PPSA11018.zip",
-  "sha256": "b2aaab0579939a6837dde568fcad4007f16589c4ae639e515e827d3c4a676d67",
-  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v1.6.0/art/icon0.png"
+  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v1.6.1/PPSA11018.zip",
+  "sha256": "76bf664444b19ed63f39ac8435313195c0fe68daed569bd8d46540d644cffe5e",
+  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v1.6.1/art/icon0.png"
 }
