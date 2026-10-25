@@ -6,9 +6,9 @@
   "description": "Vector Asteroids with online high scores, co-op rooms, a shared MMO world with browser players, a public ship hangar and a controller ship editor.",
   "license": "GPL-3.0-or-later",
   "author": "futurepr0n",
-  "version": "01.002.000",
+  "version": "01.002.001",
   "source_repo": "https://github.com/futurepr0n/PSteroid5",
-  "artifact_url": "https://github.com/futurepr0n/PSteroid5/releases/download/01.002.000/PPSA77305.zip",
-  "sha256": "44bc067f258edf497f8b6a92862ea2a1952fe8b08ababa27739847d73cd33b55",
-  "icon_url": "https://raw.githubusercontent.com/futurepr0n/PSteroid5/01.002.000/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/futurepr0n/PSteroid5/releases/download/01.002.001/PPSA77305.zip",
+  "sha256": "7111d4a23d541862ab1b87a20598443492f301ece6d123a99667e85b2ee3983b",
+  "icon_url": "https://raw.githubusercontent.com/futurepr0n/PSteroid5/01.002.001/ps5/sce_sys/icon0.png"
 }
