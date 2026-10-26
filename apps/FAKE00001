@@ -1,0 +1,14 @@
+{
+  "titleid": "FAKE00001",
+  "name": "Fake App Test",
+  "kind": "app",
+  "category": "ai",
+  "description": "Fake App with Fake ID, not download.",
+  "license": "Unlicensed",
+  "author": "AngelXex",
+  "version": "ps5-v1.0.0",
+  "source_repo": "https://github.com/darkxex/DevilutionXPS5",
+  "artifact_url": "https://github.com/darkxex/DevilutionXPS5/releases/download/ps5-v1.0.0/FAKE00001.zip",
+  "sha256": "7c6e3581f130ba2bb918fc51eaba825decf2adc357e547ed94787a128cecc15a",
+  "icon_url": "https://raw.githubusercontent.com/darkxex/DevilutionXPS5/master/ps5port/sce_sys/icon0.png"
+}
