@@ -1,0 +1,15 @@
+{
+  "titleid": "PPSA99323",
+  "name": "James Pond 2: Codename RoboCod",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "James Pond 2: Codename RoboCod (Amiga) for PlayStation 5: a static recompilation to C++ with SDL3, in widescreen with smooth motion and Amiga 500 sound. Bring your own disk image.",
+  "license": "GPL-3.0",
+  "author": "Gary Riches",
+  "version": "1.0.2",
+  "source_repo": "https://github.com/griches/JamesPond2RobocodRecomp",
+  "artifact_url": "https://github.com/griches/JamesPond2RobocodRecomp/releases/download/v1.0.2/JamesPond2-PS5-1.0.2.zip",
+  "sha256": "261c1bba95c87d07f9aec187af4e676cbb9db5774676d7f9b9ee62f33bb0608a",
+  "icon_url": null,
+  "icon_member": "PPSA99323/sce_sys/icon0.png"
+}
