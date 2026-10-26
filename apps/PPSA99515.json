@@ -6,9 +6,9 @@
   "description": "A native Emby/Jellyfin client for PlayStation 5 with media playback, optional Seerr requests, IPTV and VOD",
   "license": "GPL-3.0",
   "author": "bornaradusin",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "source_repo": "https://github.com/bornaradusin/Emby5",
-  "artifact_url": "https://github.com/bornaradusin/Emby5/releases/download/1.2.6/Emby5-1.2.6.zip",
-  "sha256": "eb820c6b315b5d1c90d3b75cba0c85a350c2fd46a3455c27180fa1cfe8c201b9",
-  "icon_url": "https://raw.githubusercontent.com/bornaradusin/Emby5/1.2.6/app/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/bornaradusin/Emby5/releases/download/1.2.8/Emby5-1.2.8.zip",
+  "sha256": "a9b0d73a9757f90d1aadf9792572ab3b1c672aa179cf3a6de4f0854a10565293",
+  "icon_url": "https://raw.githubusercontent.com/bornaradusin/Emby5/1.2.8/app/sce_sys/icon0.png"
 }
