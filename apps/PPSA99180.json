@@ -1,14 +1,14 @@
 {
-  "titleid": "PPSA99180",
-  "name": "PKG Folderizer",
-  "kind": "app",
-  "category": "utilities",
-  "description": "Converts PS5 and PS4 debug .pkg files on the console into ShadowMount folders or .ffpkg / .ffpfs / .ffpfsc / .exfat images.",
-  "license": "GPL-3.0-or-later",
-  "author": "desstannsoft",
-  "version": "01.043.000",
-  "source_repo": "https://github.com/desstannsoftware/ps5-pkg-folderizer",
-  "artifact_url": "https://github.com/desstannsoftware/ps5-pkg-folderizer/releases/download/01.043.000/PPSA99180.zip",
-  "sha256": "4e3d0c74393fb668e7f4bd674d83acdb1a699b0edb411ef9f535167be1f445df",
-  "icon_url": "https://raw.githubusercontent.com/desstannsoftware/ps5-pkg-folderizer/01.043.000/sce_sys/icon0.png"
+    "titleid": "PPSA99180",
+    "name": "PKG Folderizer",
+    "kind": "app",
+    "category": "utilities",
+    "description": "Converts PS5 and PS4 debug .pkg files on the console into ShadowMount folders or .ffpkg / .ffpfs / .ffpfsc / .exfat images.",
+    "license": "GPL-3.0-or-later",
+    "author": "desstannsoft",
+    "version": "01.044.000",
+    "source_repo": "https://github.com/desstannsoftware/ps5-pkg-folderizer",
+    "artifact_url": "https://github.com/desstannsoftware/ps5-pkg-folderizer/releases/download/01.044.000/PPSA99180.zip",
+    "sha256": "d42336355d33dba08e2205a16dcb0b7e5f7b2fa19e2258832e83a0e03cc9e493",
+    "icon_url": "https://raw.githubusercontent.com/desstannsoftware/ps5-pkg-folderizer/01.044.000/sce_sys/icon0.png"
 }
