@@ -24,7 +24,7 @@ UPDATE_BOT = "ps5-catalog-bot[bot]"
 UPDATE_BRANCH = "catalog-update/all"
 
 # Fields a developer who owns the repository may also change in a release bump.
-OWNER_FIELDS = ("description", "license")
+OWNER_FIELDS = ("description", "license", "internalOnly")
 
 
 def owns(author: str, record: Record, github: GitHub) -> bool:
@@ -176,9 +176,9 @@ def release_bump_reasons(old: Record, new: Record, github: GitHub, author: str |
     With an author, it must also be the app's developer; the bot's pull request passes none."""
     reasons = []
     try:
-        # The description and the license may change only with an author, who must also own the repository.
+        # The description, the license and internalOnly may change only with an author, who must also own the repository.
         if not is_release_bump(old, new, github, OWNER_FIELDS if author is not None else ()):
-            reasons.append("it changes more than the release (version, file, sha256, icon, description, license), "
+            reasons.append("it changes more than the release (version, file, sha256, icon, description, license, internalOnly), "
                            f"or the release is not the newest of {new.owner}/{new.repo}")
         if author is not None and not owns(author, new, github):
             reasons.append(f"@{author} does not own {new.owner}/{new.repo}")
@@ -186,8 +186,9 @@ def release_bump_reasons(old: Record, new: Record, github: GitHub, author: str |
         return [f"GitHub could not be asked: {error}"]
     same_file = old.data["sha256"] == new.data["sha256"] or old.data["artifact_url"] == new.data["artifact_url"]
     # An owner may correct the description or license of the release already listed.
-    corrects_text = author is not None and any(old.data[f] != new.data[f] for f in OWNER_FIELDS)
-    if same_file and not (corrects_text and old.data == {**new.data, **{f: old.data[f] for f in OWNER_FIELDS}}):
+    corrects_text = author is not None and any(old.data.get(f) != new.data.get(f) for f in OWNER_FIELDS)
+    without_text = lambda data: {k: v for k, v in data.items() if k not in OWNER_FIELDS}
+    if same_file and not (corrects_text and without_text(old.data) == without_text(new.data)):
         reasons.append("it does not point at a new file")
     if not new.data["artifact_url"].startswith(new.data["source_repo"].rstrip("/") + "/releases/download/"):
         reasons.append("the file is not a release file of the app's repository")

@@ -176,7 +176,8 @@ def is_release_bump(old: Record, new: Record, github: GitHub, extra_fields: tupl
     """
     if old.reserved or new.reserved or old.data["source_repo"] != new.data["source_repo"]:
         return False
-    if any(old.data[f] != new.data[f] for f in old.data if f not in BUMP_FIELDS + extra_fields):
+    if any(old.data.get(f) != new.data.get(f) for f in old.data.keys() | new.data.keys()
+           if f not in BUMP_FIELDS + extra_fields):
         return False
     release = newest_release(github, new.owner, new.repo)
     return bool(release) and release.get("tag_name") == new.tag
