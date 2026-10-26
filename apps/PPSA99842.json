@@ -3,12 +3,12 @@
   "name": "Trophy Manager",
   "kind": "app",
   "category": "utilities",
-  "description": "Native PS5 trophy manager: see, unlock, lock and back up the trophies of your games, from the console with the controller. EN/PT/ES.",
+  "description": "Needs Elf Arsenal running. Native PS5 trophy manager: see, unlock, lock and back up your trophies from the console, with the controller. EN/PT/ES.",
   "license": "GPL-3.0",
   "author": "kauansilvalopes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "source_repo": "https://github.com/kauansilvalopes/trophy",
-  "artifact_url": "https://github.com/kauansilvalopes/trophy/releases/download/v0.1.0/Trophy-Manager-v0.1.0-PPSA99842.zip",
-  "sha256": "a7c405da208bdf3572eb55b2ca0c51fca2b7dcb99a57e5f6d16be7e9361d53b1",
-  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/trophy/v0.1.0/trophy-sce/icon0.png"
+  "artifact_url": "https://github.com/kauansilvalopes/trophy/releases/download/v0.1.1/Trophy-Manager-v0.1.1-PPSA99842.zip",
+  "sha256": "efab591241e986df3e7d0221cc8036c888b1fbfe8dbc9780bd60b9667d45aaa3",
+  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/trophy/v0.1.1/trophy-sce/icon0.png"
 }
