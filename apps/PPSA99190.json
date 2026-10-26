@@ -7,8 +7,8 @@
   "license": "GPL-3.0",
   "author": "desstannsoft",
   "version": "01.000.007",
-  "source_repo": "https://github.com/omerbicer/pscord",
-  "artifact_url": "https://github.com/omerbicer/pscord/releases/download/v01.000.007/PPSA99190.zip",
+  "source_repo": "https://github.com/desstannsoftware/pscord",
+  "artifact_url": "https://github.com/desstannsoftware/pscord/releases/download/v01.000.007/PPSA99190.zip",
   "sha256": "cb434222ec843eaaa9d20857b4eae578e79d7936aabc7c6aea74733074d2cae4",
   "icon_url": null,
   "icon_member": "PPSA99190/sce_sys/icon0.png"
