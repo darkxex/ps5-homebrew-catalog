@@ -6,9 +6,9 @@
   "description": "Media Player Classic Home Cinema's window and controls as a native PS5 app, playing local, USB, SMB and network media with FFmpeg.",
   "license": "GPL-3.0",
   "author": "MisterTemaki",
-  "version": "1.3.1",
+  "version": "1.4",
   "source_repo": "https://github.com/MisterTemaki/MediaPlayerClassicPS5",
-  "artifact_url": "https://github.com/MisterTemaki/MediaPlayerClassicPS5/releases/download/v1.3.1/MediaPlayerClassicPS5-v1.3.1-PPSA99015.zip",
-  "sha256": "945d67c561324209f868fc623b2f9d2b97fb2dd94412d7cb39d37dc1c0fd90f9",
-  "icon_url": "https://raw.githubusercontent.com/MisterTemaki/MediaPlayerClassicPS5/v1.3.1/ps5/app/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/MisterTemaki/MediaPlayerClassicPS5/releases/download/v1.4/MediaPlayerClassicPS5-v1.4-PPSA99015.zip",
+  "sha256": "34a73bfcadc8c0b99a6b2224128c16a95b17a93d4e825152b49f70a7becd6170",
+  "icon_url": "https://raw.githubusercontent.com/MisterTemaki/MediaPlayerClassicPS5/v1.4/ps5/app/sce_sys/icon0.png"
 }
