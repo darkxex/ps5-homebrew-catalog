@@ -6,9 +6,9 @@
   "description": "PS5/PS4 save manager in active development. PS5 root keys unreleased; cross-console saves use local dummy injection. Compatibility varies; share logs and feedback to help improve and fix titles.",
   "license": "GPL-3.0",
   "author": "VenezuelanBiggie24",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "source_repo": "https://github.com/VenezuelanBiggie24/MacheteSVG-PS5-Save-Manager",
-  "artifact_url": "https://github.com/VenezuelanBiggie24/MacheteSVG-PS5-Save-Manager/releases/download/v1.3.7/PPSA99700.zip",
-  "sha256": "aeff187dd0fb6c48c22ae861d768b2a2059f8507d6d9908ec660ae0a0ed134a4",
+  "artifact_url": "https://github.com/VenezuelanBiggie24/MacheteSVG-PS5-Save-Manager/releases/download/v1.3.8/PPSA99700.zip",
+  "sha256": "b1c8baac87a446ba61a9e56aba656f1a66dbfd517b8faf8355aa45246beb9a03",
   "icon_url": "https://raw.githubusercontent.com/VenezuelanBiggie24/MacheteSVG-PS5-Save-Manager/main/sce_sys/icon0.png"
 }
