@@ -2,13 +2,13 @@
   "titleid": "PPSA11018",
   "name": "PC5",
   "kind": "app",
-  "category": "utilities",
+  "category": "emulators",
   "description": "Launcher for your own PC games via Wine, DXVK and VKD3D-Proton: USB installs, covers, DualSense support, up to four players and easy crash reports.",
   "license": "LGPL-2.1",
   "author": "bornaradusin",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "source_repo": "https://github.com/bornaradusin/PC5",
-  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v1.6.5/PPSA11018.zip",
-  "sha256": "d8cb97b960fa8446381ddbae91c3c6a2e3a03b4a8c95ae439ea247620ef07b5a",
-  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v1.6.5/art/icon0.png"
+  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v1.6.6/PPSA11018.zip",
+  "sha256": "43731afef5f9eabc5c83ca9664600e8f40e6991a5930b01a3996b473a63f5d92",
+  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v1.6.6/art/icon0.png"
 }
