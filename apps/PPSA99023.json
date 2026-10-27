@@ -6,9 +6,9 @@
   "description": "Prince of Persia: The Sands of Time, built from the reSOT recompilation of the Xbox game. Needs your own Xbox retail disc files.",
   "license": "MIT AND GPL-3.0-or-later AND LGPL-2.1-or-later",
   "author": "bystritskiy",
-  "version": "01.003.004",
+  "version": "01.003.005",
   "source_repo": "https://github.com/bystritskiy/rePOP-ps5",
-  "artifact_url": "https://github.com/bystritskiy/rePOP-ps5/releases/download/01.003.004/PPSA99023-01.003.004.zip",
-  "sha256": "f30529a1fe69c1d52e536dda76e62a94d65588a9e859650b987c30bd2078eb4f",
-  "icon_url": "https://raw.githubusercontent.com/bystritskiy/rePOP-ps5/01.003.004/port/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/bystritskiy/rePOP-ps5/releases/download/01.003.005/PPSA99023-01.003.005.zip",
+  "sha256": "9b2106142e571a4d22b7be7893eb05dd7eb2e032a2d6f34a96a5a7fe41277409",
+  "icon_url": "https://raw.githubusercontent.com/bystritskiy/rePOP-ps5/01.003.005/port/ps5/sce_sys/icon0.png"
 }
