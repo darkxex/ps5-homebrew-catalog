@@ -4,11 +4,11 @@
   "kind": "app",
   "category": "emulators",
   "description": "FinalBurn Neo (arcade) as a native PS5 app.",
-  "license": null,
+  "license": "MIT",
   "author": "MisterTemaki",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "v2.1",
+  "source_repo": "https://github.com/MisterTemaki/fbneo-ps",
+  "artifact_url": "https://github.com/MisterTemaki/fbneo-ps5/releases/download/v2.1/FBNeoPS5-v2.1-PPSA99924.zip",
+  "sha256": "b56ca7ca56d942f3e1855cfd9ed3f9112a0758f8b9313882824d1d817dd48622",
+  "icon_url": "https://raw.githubusercontent.com/MisterTemaki/fbneo-ps5/main/ps5/app/sce_sys/icon0.png"
 }
