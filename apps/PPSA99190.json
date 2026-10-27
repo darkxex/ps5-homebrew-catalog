@@ -6,10 +6,10 @@
   "description": "A native Discord client for jailbroken PS5: servers, direct messages, voice chat and a built-in unblock.",
   "license": "GPL-3.0",
   "author": "desstannsoft",
-  "version": "01.000.007",
+  "version": "01.000.008",
   "source_repo": "https://github.com/desstannsoftware/pscord",
-  "artifact_url": "https://github.com/desstannsoftware/pscord/releases/download/v01.000.007/PPSA99190.zip",
-  "sha256": "cb434222ec843eaaa9d20857b4eae578e79d7936aabc7c6aea74733074d2cae4",
+  "artifact_url": "https://github.com/desstannsoftware/pscord/releases/download/v01.000.008/PPSA99190.zip",
+  "sha256": "960c02bb6bdc4d1f145434639db4df5a8e3d941f6a4da1477cf41359d2cf4151",
   "icon_url": null,
   "icon_member": "PPSA99190/sce_sys/icon0.png"
 }
