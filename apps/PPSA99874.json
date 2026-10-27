@@ -3,12 +3,12 @@
   "name": "ProsperoCraft",
   "kind": "game",
   "category": "pc-ports",
-  "description": "Minecraft Java 26.3 on PS5 with smoother 120 Hz play, login and instances. Java ownership required. GUI: mihawk-99/PS5_VKHomebrewUI; icons: MultiMC/Prism.",
+  "description": "Minecraft Java 26.3 on PS5: login, instances, custom skins and up to 120 Hz play. Java ownership required. GUI: mihawk-99/PS5_VKHomebrewUI; icons: MultiMC/Prism.",
   "license": "GPL-3.0-or-later",
   "author": "mateo-cogeanu",
-  "version": "01.000.100",
+  "version": "01.000.101",
   "source_repo": "https://github.com/mateo-cogeanu/ProsperoCraft",
-  "artifact_url": "https://github.com/mateo-cogeanu/ProsperoCraft/releases/download/01.000.100/PPSA99874.zip",
-  "sha256": "b905d80a3b21502c2c1c9672db7833cd38f3582c35835e13c087667a0a0e7f65",
-  "icon_url": "https://raw.githubusercontent.com/mateo-cogeanu/ProsperoCraft/01.000.100/assets/branding/icon0.png"
+  "artifact_url": "https://github.com/mateo-cogeanu/ProsperoCraft/releases/download/01.000.101/PPSA99874.zip",
+  "sha256": "c784e08043314b02ff49cc9bb2a7c1643f558b35b1cee23ba278091a5d05e131",
+  "icon_url": "https://raw.githubusercontent.com/mateo-cogeanu/ProsperoCraft/01.000.101/assets/branding/icon0.png"
 }
