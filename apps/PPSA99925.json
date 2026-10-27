@@ -4,11 +4,11 @@
   "kind": "app",
   "category": "emulators",
   "description": "Beetle PCE (PC Engine, TurboGrafx-16, SuperGrafx, PC Engine CD) as a native PS5 app.",
-  "license": null,
+  "license": "MIT",
   "author": "MisterTemaki",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "v1.1.1",
+  "source_repo": "https://github.com/MisterTemaki/beetlepcePS5",
+  "artifact_url": "https://github.com/MisterTemaki/beetlepcePS5/releases/download/v1.1.1/BeetlePCEPS5-v1.1.1-PPSA99925.zip",
+  "sha256": "ce29038a8f1e43a063cd1c0bb1881df9d73a7611c97abeff0bd7928882d7874c",
+  "icon_url": "https://raw.githubusercontent.com/MisterTemaki/beetlepcePS5/main/ps5/app/sce_sys/icon0.png"
 }
