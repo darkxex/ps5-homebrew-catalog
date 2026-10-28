@@ -6,9 +6,9 @@
   "description": "Converts PS5 and PS4 debug .pkg files on the console into ShadowMount folders or .ffpkg / .ffpfs / .ffpfsc / .exfat images.",
   "license": "GPL-3.0-or-later",
   "author": "desstannsoft",
-  "version": "01.054.000",
+  "version": "01.056.000",
   "source_repo": "https://github.com/desstannsoftware/ps5-pkg-folderizer",
-  "artifact_url": "https://github.com/desstannsoftware/ps5-pkg-folderizer/releases/download/01.054.000/PPSA99180.zip",
-  "sha256": "78d9ca0645a32a308613931e7c62795b4d2c256bc09216a449d42c2478984895",
-  "icon_url": "https://raw.githubusercontent.com/desstannsoftware/ps5-pkg-folderizer/01.054.000/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/desstannsoftware/ps5-pkg-folderizer/releases/download/01.056.000/PPSA99180.zip",
+  "sha256": "f7f47a56b4d3e3230372075fd4f1c8ec4d5c265f2a1e45209b876eeccb7355f7",
+  "icon_url": "https://raw.githubusercontent.com/desstannsoftware/ps5-pkg-folderizer/01.056.000/sce_sys/icon0.png"
 }
