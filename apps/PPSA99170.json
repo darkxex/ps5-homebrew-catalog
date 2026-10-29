@@ -1,1 +1,14 @@
-{"titleid":"PPSA99170","name":"MihawkOS","kind":"app","category":"emulators","description":"A Windows-inspired PS5 homebrew OS bringing 32-bit and 64-bit Windows gaming to console hardware through a custom Wine/Proton compatibility stack and native Vulkan graphics.","license":"GPL-3.0","author":"Mihawk","version":"4.0.0-alpha-4","source_repo":"https://github.com/mihawk-99/PS5_MihawkOS","artifact_url":"https://github.com/mihawk-99/PS5_MihawkOS/releases/download/v4.0.0-alpha-4/PS5_MihawkOS-v4.0.0-alpha-4-PPSA99170.zip","sha256":"a384be5e3e901a1f81379b9ef0959eda4c2884f4c82eb2ad6cac7735ca9c0ecd","icon_url":"https://raw.githubusercontent.com/mihawk-99/PS5_MihawkOS/v4.0.0-alpha-4/ps5/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA99170",
+  "name": "MihawkOS",
+  "kind": "app",
+  "category": "emulators",
+  "description": "A Windows-inspired PS5 homebrew OS bringing 32-bit and 64-bit Windows gaming to console hardware through a custom Wine/Proton compatibility stack and native Vulkan graphics.",
+  "license": "GPL-3.0",
+  "author": "Mihawk",
+  "version": "5.0.0-alpha-5",
+  "source_repo": "https://github.com/mihawk-99/PS5_MihawkOS",
+  "artifact_url": "https://github.com/mihawk-99/PS5_MihawkOS/releases/download/v5.0.0-alpha-5/PS5_MihawkOS-v5.0.0-alpha-5-PPSA99170.zip",
+  "sha256": "2f8d6ec7a37267b266d7d67f5deebc90b443db74a0d0a05d21935d0e635b4f93",
+  "icon_url": "https://raw.githubusercontent.com/mihawk-99/PS5_MihawkOS/v5.0.0-alpha-5/ps5/sce_sys/icon0.png"
+}
