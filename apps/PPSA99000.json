@@ -5,7 +5,7 @@
   "category": "utilities",
   "description": "Native app store for PS5 homebrew: browse this catalog, install apps and keep them up to date.",
   "license": "GPL-3.0",
-  "author": "BlackBearReloaded",
+  "author": "AngelXex",
   "version": "1.000.116",
   "source_repo": "https://github.com/darkxex/ProsperoStore",
   "artifact_url": "https://github.com/darkxex/ProsperoStore/releases/download/v1.000.116/PPSA99000.zip",
