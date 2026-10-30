@@ -6,9 +6,9 @@
   "description": "A Windows-inspired PS5 homebrew OS bringing 32-bit and 64-bit Windows gaming to console hardware through a custom Wine/Proton compatibility stack and native Vulkan graphics.",
   "license": "GPL-3.0",
   "author": "Mihawk",
-  "version": "5.0.1-alpha-5",
+  "version": "6.0.0-alpha-6",
   "source_repo": "https://github.com/mihawk-99/PS5_MihawkOS",
-  "artifact_url": "https://github.com/mihawk-99/PS5_MihawkOS/releases/download/v5.0.1-alpha-5/PS5_MihawkOS-v5.0.1-alpha-5-PPSA99170.zip",
-  "sha256": "ff4c2c3dc20a3fd0896f437a138b2a38533ef50b4a295419de9f65489b33cba3",
-  "icon_url": "https://raw.githubusercontent.com/mihawk-99/PS5_MihawkOS/v5.0.1-alpha-5/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/mihawk-99/PS5_MihawkOS/releases/download/v6.0.0-alpha-6/PS5_MihawkOS-v6.0.0-alpha-6-PPSA99170.zip",
+  "sha256": "a7921fe7bf42d2ae49f1ee055b67074f9c5e8c7d455662eafbc1a479145db427",
+  "icon_url": "https://raw.githubusercontent.com/mihawk-99/PS5_MihawkOS/v6.0.0-alpha-6/ps5/sce_sys/icon0.png"
 }
