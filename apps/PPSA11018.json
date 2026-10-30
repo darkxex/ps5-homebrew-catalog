@@ -6,9 +6,9 @@
   "description": "Launcher for your own PC games via Wine, DXVK and VKD3D-Proton: USB installs, covers, DualSense support, up to four players, easy crash reports and built-in updates.",
   "license": "LGPL-2.1",
   "author": "bornaradusin",
-  "version": "1.9.8",
+  "version": "2.0.1",
   "source_repo": "https://github.com/bornaradusin/PC5",
-  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v1.9.8/PPSA11018.zip",
-  "sha256": "fb219db2a4fef7b0a5e422485ab84c6d138a63d177b8acfa825085b5c64d5f76",
-  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v1.9.8/art/icon0.png"
+  "artifact_url": "https://github.com/bornaradusin/PC5/releases/download/v2.0.1/PPSA11018.zip",
+  "sha256": "b883b0cebda5e8f35eacfd05bc6605ab95cf624a5843ab12053140093c66618e",
+  "icon_url": "https://raw.githubusercontent.com/bornaradusin/PC5/v2.0.1/art/icon0.png"
 }
