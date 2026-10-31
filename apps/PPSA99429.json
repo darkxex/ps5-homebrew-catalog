@@ -6,9 +6,9 @@
   "description": "Play supported German HeartGold and SoulSilver dumps on PS5. Add your own .nds file; the app prepares it locally and keeps separate saves. No game data included.",
   "license": "GPL-3.0+ AND LGPL-2.1+ AND MIT AND CC-BY-4.0 AND OFL-1.1",
   "author": "BaZZtian",
-  "version": "00.030.005",
+  "version": "00.040.005",
   "source_repo": "https://github.com/BaZZtian/PS5-ApricotGS",
-  "artifact_url": "https://github.com/BaZZtian/PS5-ApricotGS/releases/download/v00.030.005/ApricotGS-v00.030.005-PS5.zip",
-  "sha256": "af68328ccacc76d2d351685e4f5b17e0ab8855f22d01a1b0c156c77fa7ab2f3d",
-  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PS5-ApricotGS/07a50069906a8c4c6c9b217e4a9222573337c085/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/BaZZtian/PS5-ApricotGS/releases/download/v00.040.005/ApricotGS-v00.040.005-PS5.zip",
+  "sha256": "4149b6a58ffc5948edf59918f05219a55c0deb33a25b52c92674490e07c83113",
+  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PS5-ApricotGS/33eee4f082c7b25d66f45fd54c4aad0d1a5f0ec1/sce_sys/icon0.png"
 }

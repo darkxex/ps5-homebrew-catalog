@@ -6,9 +6,9 @@
   "description": "Native PS5 port of JuMatt's JSRF Unleashed, Jet Set Radio Future recompiled, with a Vulkan renderer at up to 4K; needs your own Jet Set Radio Future (USA) disc image.",
   "license": "MIT",
   "author": "Marice",
-  "version": "00.001.000",
+  "version": "00.002.000",
   "source_repo": "https://github.com/Marice/jsrf-ps5",
-  "artifact_url": "https://github.com/Marice/jsrf-ps5/releases/download/v00.001.000/JSRFUnleashed-PS5-00.001.000.zip",
-  "sha256": "7497b7313f8adf9d13204fc3a4ae626abf922efb45cda9d7a9887e52bfe22995",
-  "icon_url": "https://raw.githubusercontent.com/Marice/jsrf-ps5/v00.001.000/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Marice/jsrf-ps5/releases/download/v00.002.000/JSRFUnleashed-PS5-00.002.000.zip",
+  "sha256": "3ef79d0ce566ef57e0f127311ae9929764c540360eecc9314bcb2099969a8e3f",
+  "icon_url": "https://raw.githubusercontent.com/Marice/jsrf-ps5/v00.002.000/sce_sys/icon0.png"
 }

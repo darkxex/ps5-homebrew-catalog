@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99016",
+  "name": "ProsperoEden (Mirror)",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Unofficial Eden emulator port for PS5.",
+  "license": "GPL-3.0",
+  "author": "BlackBearReloaded",
+  "version": "1.000.111",
+  "source_repo": "https://github.com/heydemoura/ProsperoEden",
+  "artifact_url": "https://github.com/heydemoura/ProsperoEden/releases/download/v1.000.111/ProsperoEden-v1.000.111.zip",
+  "sha256": "5177d7cfa47be6b207e28b1b68c94c7ef6b475168ebc8d23942da135eda8ebf2",
+  "icon_url": "https://raw.githubusercontent.com/heydemoura/ProsperoEden/v1.000.111/sce_sys/icon0.png"
+}

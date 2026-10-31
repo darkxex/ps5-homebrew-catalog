@@ -6,9 +6,9 @@
   "description": "Wii U, 3DS, DS and Switch emulation for jailbroken PS5, built on Cemu, Azahar, melonDS and Eden, with one launcher for all four.",
   "license": "GPL-3.0",
   "author": "premohq",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "source_repo": "https://github.com/premohq/PS5-ECAM",
-  "artifact_url": "https://github.com/premohq/PS5-ECAM/releases/download/v5.0.1/PS5-ECAM-v5.0.1.zip",
-  "sha256": "733f4d9408a0f6354e6a491614b5fb15bd893780a7191db8bf3d71a82ba4dfdb",
-  "icon_url": "https://raw.githubusercontent.com/premohq/PS5-ECAM/v5.0.1/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/premohq/PS5-ECAM/releases/download/v5.1.0/PS5-ECAM-v5.1.0.zip",
+  "sha256": "c6a0c0b50617d923a5e7a5cb37d799c746118342cd850d5bca634c3670a6562f",
+  "icon_url": "https://raw.githubusercontent.com/premohq/PS5-ECAM/v5.1.0/sce_sys/icon0.png"
 }
