@@ -3,7 +3,7 @@
   "name": "Mediathek",
   "kind": "app",
   "category": "video",
-  "description": "A Netflix-style movie library for (jailbroken) PS5 consoles.",
+  "description": "A Netflix-style movie library for your PS5",
   "license": "GPL-3.0",
   "author": "m0",
   "version": "01.000.061",
