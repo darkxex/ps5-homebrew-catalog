@@ -3,12 +3,12 @@
   "name": "FoxHollow",
   "kind": "game",
   "category": "console-ports",
-  "description": "Native PS5 port of Star Fox Adventures based on Foxhollow, requiring your own GameCube disc image; early development, no playable PS5 release or download, and no original game data distributed.",
-  "license": null,
+  "description": "Native PS5 port of Star Fox Adventures; PAL release for firmware 12.40 with save/load and in-menu language selection. Requires your own disc image; no game data included.",
+  "license": "MIT AND GPL-3.0-or-later",
   "author": "BaZZtian",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "0.1.4",
+  "source_repo": "https://github.com/BaZZtian/PS5-FoxHollow",
+  "artifact_url": "https://github.com/BaZZtian/PS5-FoxHollow/releases/download/v0.1.4/FoxHollow-0.1.4-PPSA99573.zip",
+  "sha256": "3b4af2f5d24e8069558e9a3b4f7b47f10002b23965f5a3fdfa09dafed2fafba8",
+  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PS5-FoxHollow/v0.1.4/assets/branding/foxhollow-icon-v2.png"
 }

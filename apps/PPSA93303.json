@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA93303",
+  "name": "Shining Force III",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Shining Force III PS5 port (sfiii-native recompilation) on Vulkan, with an on-console patcher for your own game data; no game data included.",
+  "license": "MIT",
+  "author": "damiantw",
+  "version": null,
+  "source_repo": null,
+  "artifact_url": null,
+  "sha256": null,
+  "icon_url": null
+}

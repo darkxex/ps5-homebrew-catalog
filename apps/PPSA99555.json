@@ -3,12 +3,12 @@
   "name": "TokenStation5",
   "kind": "app",
   "category": "ai",
-  "description": "Private AI server on your PS5: Qwen and Llama on its GPU behind an OpenAI-compatible API, with API keys, Tailscale for away from home, voice in and out, chat on the TV and Hugging Face downloads.",
+  "description": "Private AI server on your PS5: Qwen, Llama, Mistral and Gemma on its GPU behind an OpenAI-compatible API, with API keys, Tailscale, voice in and out, chat on the TV and Hugging Face downloads.",
   "license": "Unlicensed",
   "author": "ThatRetiredDude",
-  "version": "01.003.000",
+  "version": "01.004.001",
   "source_repo": "https://github.com/ThatRetiredDude/TokenStation5",
-  "artifact_url": "https://github.com/ThatRetiredDude/TokenStation5/releases/download/01.003.000/PPSA99555.zip",
-  "sha256": "0144e1d7511d27e4c727f5f12c79049bb1ed1c98817b19004049be1e4031747e",
-  "icon_url": "https://github.com/ThatRetiredDude/TokenStation5/raw/01.003.000/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/ThatRetiredDude/TokenStation5/releases/download/01.004.001/PPSA99555.zip",
+  "sha256": "07071e4ea9b799f9909cc4e2df31e7d53391b2025ef4f3d5b18604383a10daf5",
+  "icon_url": "https://github.com/ThatRetiredDude/TokenStation5/raw/01.004.001/ps5/sce_sys/icon0.png"
 }

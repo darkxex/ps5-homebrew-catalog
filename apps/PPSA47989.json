@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA47989",
+  "name": "ProsperoSunshine",
+  "kind": "app",
+  "category": "streaming",
+  "description": "Sunshine-compatible game-stream host: play your PS5 on any Moonlight client in your LAN, with picture, game audio and controller input. Tested on firmware 13.00; other versions untested.",
+  "license": "GPL-3.0",
+  "author": "Darkatek7",
+  "version": "0.1.0",
+  "source_repo": "https://github.com/Darkatek7/ProsperoSunshine",
+  "artifact_url": "https://github.com/Darkatek7/ProsperoSunshine/releases/download/v0.1.0/PPSA47989.zip",
+  "sha256": "b30b258d709998cd89761123979422326aea01fb2350e7ab73db9f8a786ad221",
+  "icon_url": "https://raw.githubusercontent.com/Darkatek7/ProsperoSunshine/v0.1.0/app/sce_sys/icon0.png"
+}

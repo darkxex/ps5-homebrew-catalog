@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99287",
+  "name": "Prospero Hi-Fi",
+  "kind": "app",
+  "category": "music",
+  "description": "A Music Player for hombrew enabled PS5 with lossless audio as the main focus. It's heavily based on my MiSTer Hi-FI project.",
+  "license": "GPL-3.0",
+  "author": "Anime0t4ku",
+  "version": "1.2.0",
+  "source_repo": "https://github.com/Anime0t4ku/Prospero-Hi-Fi",
+  "artifact_url": "https://github.com/Anime0t4ku/Prospero-Hi-Fi/releases/download/v1.2.0/prospero-hifi.zip",
+  "sha256": "71d2d6b9ed7c83feee67ce85532e3e43cd6585723e6efc86b7588fab527adc70",
+  "icon_url": "https://raw.githubusercontent.com/Anime0t4ku/Prospero-Hi-Fi/v1.2.0/assets/icon0.png"
+}

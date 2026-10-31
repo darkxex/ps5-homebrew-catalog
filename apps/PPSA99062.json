@@ -6,9 +6,9 @@
   "description": "A launcher that shows your PS5 and PS4 games, homebrew, media apps and emulated games in one library, with box art, tabs, themes and autoboot.",
   "license": "GPL-3.0",
   "author": "XeN-Made",
-  "version": "01.105.000",
+  "version": "01.106.000",
   "source_repo": "https://github.com/XeN-Made/Orion-Media-Center",
-  "artifact_url": "https://github.com/XeN-Made/Orion-Media-Center/releases/download/01.105.000/PPSA99062.zip",
-  "sha256": "e77ce7c8c055175f3adfed0cc749c07916ab355fe803428565629531a88111b3",
-  "icon_url": "https://raw.githubusercontent.com/XeN-Made/Orion-Media-Center/01.105.000/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/XeN-Made/Orion-Media-Center/releases/download/01.106.000/PPSA99062.zip",
+  "sha256": "ec866caafcbc266e8eff2ab2f3d3d0adb41b74e4989c7c796438f53d90b0ab45",
+  "icon_url": "https://raw.githubusercontent.com/XeN-Made/Orion-Media-Center/01.106.000/sce_sys/icon0.png"
 }
