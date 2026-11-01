@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA66120",
+  "name": "Mediathek",
+  "kind": "app",
+  "category": "video",
+  "description": "A Netflix-style movie library for your PS5",
+  "license": "GPL-3.0",
+  "author": "m0",
+  "version": "01.000.064",
+  "source_repo": "https://github.com/M0S4YSH3LL0/mediathek-ps5",
+  "artifact_url": "https://github.com/M0S4YSH3LL0/mediathek-ps5/releases/download/01.000.064/Mediathek-PPSA66120-01.000.064.zip",
+  "sha256": "175b4807acecee6f9113f6c0261ed39495f060a19693ba49342d17c29ce05770",
+  "icon_url": "https://raw.githubusercontent.com/M0S4YSH3LL0/mediathek-ps5/01.000.064/sce_sys/icon0.png"
+}

@@ -3,12 +3,12 @@
   "name": "Nuvio Max'd",
   "kind": "app",
   "category": "video",
-  "description": "A native Nuvio client for PS5 with profiles, synced watch progress, addons, Live TV, an IPTV VOD library, trailers, anime skipping and optional playback engines.",
+  "description": "A native Nuvio client for PS5 with profiles, synced watch progress, addons, Live TV, searchable IPTV VOD catalogs, chapters, trailers, anime skipping and optional playback engines.",
   "license": "GPL-3.0",
   "author": "HandshakeHackin",
-  "version": "1.0.0.2-native-experimental",
+  "version": "1.0.0.3-native-experimental",
   "source_repo": "https://github.com/HandshakeHackin/Nuvio-maxd-releases",
-  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.2-native-experimental/PPSA99288.zip",
-  "sha256": "ceed5b8ba24309782da184e91dd660b6dda781eaeacf25fa12e26f2f23cad0a6",
-  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.2-native-experimental/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.3-native-experimental/PPSA99288.zip",
+  "sha256": "03618aed0b53c48695db23ffeff1dea5ee99f8c8c215f1c9265ef887a83700b2",
+  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.3-native-experimental/sce_sys/icon0.png"
 }

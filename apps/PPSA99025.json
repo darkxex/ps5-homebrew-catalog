@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99025",
+  "name": "reUndr",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Need for Speed: Underground, the Xbox version recompiled to run natively on PS5, in 4K at up to 60 fps (bring your own USA disc).",
+  "license": "MIT AND GPL-3.0-or-later AND LGPL-2.1-or-later",
+  "author": "bystritskiy",
+  "version": "01.000.000",
+  "source_repo": "https://github.com/bystritskiy/reUndr-ps5",
+  "artifact_url": "https://github.com/bystritskiy/reUndr-ps5/releases/download/01.000.000/PPSA99025-01.000.000.zip",
+  "sha256": "7050c94265d7df704aa29639d727d1a5f666d4dc8c0cccf6726237702d88f0e2",
+  "icon_url": "https://raw.githubusercontent.com/bystritskiy/reUndr-ps5/01.000.000/ps5/sce_sys/icon0.png"
+}

@@ -26,7 +26,7 @@ dist/
   tile under the pointer) over shelves: New in the catalog (apps listed in the
   last thirty days), Recently updated (apps with a release published after
   they were listed, by the release's date), Most liked, one shelf per
-  category, Coming soon. Editing a listing, such as a new category or a
+  category (the apps listed last first), Coming soon. Editing a listing, such as a new category or a
   corrected description, doesn't make an app "updated". The tabs in the top bar switch to a section, which is a grid of
   the same tiles. The section, the search and the order live in the URL
   (`?section=games&q=…&sort=updated`), so any view can be linked. The old

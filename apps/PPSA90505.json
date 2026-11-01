@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA90505",
+  "name": "SpeedBreaker",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Need for Speed: Most Wanted (2005), the Xbox 360 version statically recompiled to run natively on PS5, in 4K at up to 60 fps (bring your own USA disc).",
+  "license": "GPL-3.0",
+  "author": "bystritskiy",
+  "version": "01.000.001",
+  "source_repo": "https://github.com/bystritskiy/speedbreaker-ps5",
+  "artifact_url": "https://github.com/bystritskiy/speedbreaker-ps5/releases/download/01.000.001/PPSA90505.zip",
+  "sha256": "4e27383705063e42d4fcc68ccd82659350d47e909b64cf0720de4b6d3f74d3c4",
+  "icon_url": "https://raw.githubusercontent.com/bystritskiy/speedbreaker-ps5/01.000.001/port/ps5/sce_sys/icon0.png"
+}

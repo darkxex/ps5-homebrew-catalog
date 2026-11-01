@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA90212",
+  "name": "Breath of the Wild",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PS5 port of the Savage Wind recompilation with frame generation, FSR 3.1 and HDR. Requires your own game files and keys.",
+  "license": "GPL-3.0",
+  "author": "bizkut",
+  "version": "ps5-v0.1.0",
+  "source_repo": "https://github.com/bizkut/SavageWindRecomp",
+  "artifact_url": "https://github.com/bizkut/SavageWindRecomp/releases/download/ps5-v0.1.0/SavageWind-PS5-ps5-v0.1.0.zip",
+  "sha256": "445d09ec6467acd75d97236362012b488cac0a8891af4bfc718ce28867a0b3ba",
+  "icon_url": "https://raw.githubusercontent.com/bizkut/SavageWindRecomp/ps5-v0.1.0/ps5/sce_sys/icon0.png"
+}

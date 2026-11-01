@@ -56,6 +56,14 @@ class PickAssetTests(unittest.TestCase):
         self.assertIsNone(pick_asset([asset("a.zip"), asset("b.zip")], "old.zip", "1", "1", "2")[0])
         self.assertIsNone(pick_asset([asset("a.ffpkg")], "old.zip", "1", "1", "2")[0])
 
+    def test_desktop_builds_are_never_the_successor(self):
+        chosen, how = pick_asset([asset("Game-Windows-1.0.4.zip")], "Game-PS5-1.0.2.zip", "v1.0.2", "1.0.2", "v1.0.4")
+        self.assertIsNone(chosen)
+        self.assertIn("desktop", how)
+        chosen, how = pick_asset([asset("Game-Windows-1.0.4.zip"), asset("Game-PS5-1.0.4.zip")],
+                                 "Game-PS5-1.0.2.zip", "v1.0.2", "1.0.2", "v1.0.4")
+        self.assertEqual(chosen["name"], "Game-PS5-1.0.4.zip")
+
 
 class VersionTests(unittest.TestCase):
     def test_follows_the_tag_in_the_record_style(self):
