@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA97531",
+  "name": "MKWII Retro Rewind Patcher",
+  "kind": "app",
+  "category": "utilities",
+  "description": "Installs and updates Retro Rewind and patches your own Mario Kart Wii image directly on the console, with a controller.",
+  "license": "GPL-3.0",
+  "author": "Melvin de Vries",
+  "version": "01.000.001",
+  "source_repo": "https://github.com/melvindevries/Retro-Rewind-PS5-Patcher",
+  "artifact_url": "https://github.com/melvindevries/Retro-Rewind-PS5-Patcher/releases/download/01.000.001/PPSA97531.zip",
+  "sha256": "63c73dd390d7edff882c4702d95212545c3e7d258423fc5db8b22173f5442570",
+  "icon_url": "https://raw.githubusercontent.com/melvindevries/Retro-Rewind-PS5-Patcher/01.000.001/app/sce_sys/icon0.png"
+}
