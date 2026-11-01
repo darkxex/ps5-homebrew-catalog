@@ -1,0 +1,14 @@
+{
+  "titleid": "PRWB00001",
+  "name": "ProsperoWeb",
+  "kind": "app",
+  "category": "utilities",
+  "description": "A WebKit web browser for the PS5, driven by the controller, with tabs, bookmarks and video playback.",
+  "license": "GPL-3.0-or-later",
+  "author": "kvaps",
+  "version": "0.1.0",
+  "source_repo": "https://github.com/kvaps/ProsperoWeb",
+  "artifact_url": "https://github.com/kvaps/ProsperoWeb/releases/download/v0.1.0/PRWB00001.zip",
+  "sha256": "c3dba73fa7421ab385cf32c673705655d37b6c4aef34e2dd5ee0503ac8117cc4",
+  "icon_url": "https://raw.githubusercontent.com/kvaps/ProsperoWeb/v0.1.0/assets/sce_sys/icon0.png"
+}
