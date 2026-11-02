@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA26370",
+  "name": "Subway Surfers",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Subway Surfers for PS5 with its own controller support. Needs your own APK (3.70.3).",
+  "license": "GPL-3.0",
+  "author": "AZiZ",
+  "version": "1.0.0",
+  "source_repo": "https://github.com/ZiZc3/Hydroid",
+  "artifact_url": "https://github.com/ZiZc3/Hydroid/releases/download/1.0.0/PPSA26370.-.Subway.Surfers.v2.zip",
+  "sha256": "9ebec59650e915a98a0ce83ee5466edce29dd805a8700c176ca44020ed7955d8",
+  "icon_url": "https://raw.githubusercontent.com/ZiZc3/Hydroid/d8371afd75e3da6ab888d467d1e6bb00c32d2beb/games/subway-surfers/icon0.png"
+}
