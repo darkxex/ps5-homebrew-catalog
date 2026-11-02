@@ -6,9 +6,9 @@
   "description": "Burnout Revenge (Xbox 360), recompiled to run natively on PS5. Needs the files of your own USA disc.",
   "license": "GPL-3.0",
   "author": "bystritskiy",
-  "version": "01.000.000",
+  "version": "01.001.000",
   "source_repo": "https://github.com/bystritskiy/xerenge-ps5",
-  "artifact_url": "https://github.com/bystritskiy/xerenge-ps5/releases/download/01.000.000/Xerenge-PS5-01.000.000.zip",
-  "sha256": "a0cb95875eddfc3cf4090a5558035db707b9ee75a88d2707c0480ca2b632e08f",
-  "icon_url": "https://raw.githubusercontent.com/bystritskiy/xerenge-ps5/01.000.000/port/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/bystritskiy/xerenge-ps5/releases/download/01.001.000/Xerenge-PS5-01.001.000.zip",
+  "sha256": "2f63e29b657f262fea5f40d183fca7749961142c3ea82d1758016c023456e475",
+  "icon_url": "https://raw.githubusercontent.com/bystritskiy/xerenge-ps5/01.001.000/port/ps5/sce_sys/icon0.png"
 }
