@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99731",
+  "name": "PhazonPrime",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PS5 Metaforce-classic port. Requires your own supported PAL GameCube ISO. Map geometry and door visuals have known issues.",
+  "license": "GPL-3.0-only AND OFL-1.1 AND CC-BY-4.0 AND CC-BY-ND-4.0",
+  "author": "BaZZtian",
+  "version": "00.001.036",
+  "source_repo": "https://github.com/BaZZtian/PhazonPrime-PS5",
+  "artifact_url": "https://github.com/BaZZtian/PhazonPrime-PS5/releases/download/v00.001.036/PhazonPrime-v00.001.036-PS5.zip",
+  "sha256": "a984613243e52bb6440b12c90f808c5ddace319d6d1dbb288793e76eeb26325d",
+  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PhazonPrime-PS5/892235a3994dfbca4b147b5f302289cb62a5d4b3/sce_sys/icon0.png"
+}

@@ -1,0 +1,14 @@
+{
+  "titleid": "CWEN00001",
+  "name": "Cyberworld Endless",
+  "kind": "game",
+  "category": "homebrew-games",
+  "description": "A roguelike built on the real Mega Man Battle Network 6, from your own ROM: every run jacks MegaMan into a newly generated net of battles, loot and guardian Navis.",
+  "license": "MIT",
+  "author": "Saschb2b",
+  "version": "0.18.1",
+  "source_repo": "https://github.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless",
+  "artifact_url": "https://github.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/releases/download/v0.18.1/cyberworld-endless-ps5.zip",
+  "sha256": "fd3fbd616a31cf7d31928eb00ef0bb91a6df589d8dbb560ec99a778f42204c9d",
+  "icon_url": "https://raw.githubusercontent.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/v0.18.1/ps5/icon0.png"
+}

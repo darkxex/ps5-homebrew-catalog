@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99606",
+  "name": "GETSU RAIDER",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "Shadow of the Tomb Raider for PS5 with a bundled Prospero Win runtime; supply your own GOG copy of the game; tested at 2560x1440, ultra settings, smooth 60 fps.",
+  "license": "GPL-3.0",
+  "author": "CHI-GETSU",
+  "version": "v0.1.0-beta",
+  "source_repo": "https://github.com/CHI-GETSU/GETSU-RAIDER-PS5-Homebrew",
+  "artifact_url": "https://github.com/CHI-GETSU/GETSU-RAIDER-PS5-Homebrew/releases/download/v0.1.0-beta/GETSU-RAIDER-PPSA99606.zip",
+  "sha256": "1ef12e113eb2bd1b913c2395f25a318fa2f7bce01b7c95c30ef6b6abc8c00110",
+  "icon_url": "https://raw.githubusercontent.com/CHI-GETSU/GETSU-RAIDER-PS5-Homebrew/master/assets/icon0.png"
+}

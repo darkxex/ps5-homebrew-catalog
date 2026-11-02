@@ -5,7 +5,8 @@ For a listed release, the newest published release of its repository
 
 - it has an asset with the same file type that is unambiguously the successor
   of the listed one (same name, or the same name with the version changed, or
-  the only asset of that type);
+  the only asset of that type); a file built for a desktop OS or CPU is never
+  chosen for a listed file that is not one;
 - GitHub reports a SHA-256 digest for that asset (nothing is downloaded).
 
 The version follows the tag in the record's existing style, and a tag-pinned
@@ -64,8 +65,15 @@ def _version_tokens(tag: str, version: str | None) -> list[str]:
 def pick_asset(assets: list[dict], old_name: str, old_tag: str, old_version: str | None,
                new_tag: str) -> tuple[dict | None, str]:
     """Choose the successor of old_name among a release's assets; return (asset, how) or (None, why)."""
+    from .discover import DESKTOP_BUILD   # discover imports draft, which imports this module
+
     ext = _extension(old_name)
     candidates = [a for a in assets if _extension(a.get("name", "")) == ext]
+    if not DESKTOP_BUILD.search(old_name):
+        desktop = [a for a in candidates if DESKTOP_BUILD.search(a["name"])]
+        candidates = [a for a in candidates if a not in desktop]
+        if desktop and not candidates:
+            return None, f"the release has only desktop builds (.{ext}): {desktop[0]['name']}"
     by_name = {a["name"]: a for a in candidates}
     if old_name in by_name:
         return by_name[old_name], "same file name"

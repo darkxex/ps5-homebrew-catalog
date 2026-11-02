@@ -6,9 +6,9 @@
   "description": "Windows compatibility runtime for native PlayStation 5 homebrew.",
   "license": "LGPL-2.1",
   "author": "mpereiraesaa",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "source_repo": "https://github.com/mpereiraesaa/prospero-win",
-  "artifact_url": "https://github.com/mpereiraesaa/prospero-win/releases/download/v0.2.0/prospero-win-v0.2.0.zip",
-  "sha256": "7585efc624c2f8077c0d579a045ef808129a7b0bc525a9dd9c5c6db0c51626ca",
-  "icon_url": "https://raw.githubusercontent.com/mpereiraesaa/prospero-win/v0.2.0/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/mpereiraesaa/prospero-win/releases/download/v0.3.0/prospero-win-v0.3.0.zip",
+  "sha256": "b17c5daf19e5053edfbc1ce2588db403ae553592cced39ca92a337bfe1f8eb41",
+  "icon_url": "https://raw.githubusercontent.com/mpereiraesaa/prospero-win/v0.3.0/sce_sys/icon0.png"
 }

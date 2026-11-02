@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99984",
+  "name": "Arcade Gallery",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Native PS5 arcade emulator with per-game save states, controller navigation, detailed game information, and automatic screen orientation. No games or BIOS files are included.",
+  "license": "GPL-3.0",
+  "author": "zomavich",
+  "version": "0.2.1",
+  "source_repo": "https://github.com/zomavich-netizen/Arcade-PS5",
+  "artifact_url": "https://github.com/zomavich-netizen/Arcade-PS5/releases/download/v0.2.1/Arcade-v0.2.1-PS5.zip",
+  "sha256": "81cf6cd98d294806822bb9aa4a69aa6a15929c023b322504e03fb7233db951e2",
+  "icon_url": "https://raw.githubusercontent.com/zomavich-netizen/Arcade-PS5/v0.2.1/ps5/sce_sys/icon0.png"
+}

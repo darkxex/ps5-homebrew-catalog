@@ -319,10 +319,11 @@
         line.appendChild(count);
       } });
       topShelves = shelvesBox.children.length;      // "Most liked" goes after these, below "Most downloaded"
+      // A category has no order of its own, so its shelf shows the apps the catalog listed last first.
       categories.forEach(function (one) {
-        addShelf({ title: one.label, category: one.key, apps: available.filter(function (app) { return app.category === one.key; }).sort(byName) });
+        addShelf({ title: one.label, category: one.key, apps: available.filter(function (app) { return app.category === one.key; }).sort(byAdded) });
       });
-      addShelf({ title: I18N.t("tab.soon"), apps: apps.filter(function (app) { return app.soon; }).sort(byName) });
+      addShelf({ title: I18N.t("tab.soon"), apps: apps.filter(function (app) { return app.soon; }).sort(byAdded) });
       paintStats();
       addLikedShelf();
     }

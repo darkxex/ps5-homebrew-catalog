@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA98515",
+  "name": "EglantinePS5",
+  "kind": "app",
+  "category": "emulators",
+  "description": "VERY experimental Nintendo Switch 2 emulator port for PS5.",
+  "license": "GPL-3.0-or-later",
+  "author": "heydemoura",
+  "version": null,
+  "source_repo": null,
+  "artifact_url": null,
+  "sha256": null,
+  "icon_url": null
+}
