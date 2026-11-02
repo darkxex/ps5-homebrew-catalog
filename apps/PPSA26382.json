@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA26382",
+  "name": "Infinity Blade II",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Infinity Blade II for PS5 at 60 fps with controller support. Needs your own .ipa (1.3.5).",
+  "license": "GPL-3.0",
+  "author": "AZiZ",
+  "version": "1.0.0",
+  "source_repo": "https://github.com/ZiZc3/Infinity-Blade-PS5",
+  "artifact_url": "https://github.com/ZiZc3/Infinity-Blade-PS5/releases/download/1.0.0/PPSA26382.-.Infinity.Blade.II.zip",
+  "sha256": "9f29d9bcc159b8000866278f2baa9ebe4e39c344d9ace4ab0e582785d9617531",
+  "icon_url": "https://raw.githubusercontent.com/ZiZc3/Infinity-Blade-PS5/dba6ea10785bd13dad0cbc8f5eeab396bce8e1b7/icons/PPSA26382.png"
+}
