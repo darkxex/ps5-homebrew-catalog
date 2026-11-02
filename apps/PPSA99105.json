@@ -6,9 +6,9 @@
   "description": "Native PS5 assistant with controller input, local voice transcription and console tools; requires a separate service payload.",
   "license": "GPL-3.0",
   "author": "Portablelle",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "source_repo": "https://github.com/Portablelle/Codex-PS5",
-  "artifact_url": "https://github.com/Portablelle/Codex-PS5/releases/download/v0.0.4/codex-ps5-0.0.4-Folder.zip",
-  "sha256": "b6f8952b72eaa4806baab21634aae950f69a365bee4215a373d750e8f652364b",
-  "icon_url": "https://raw.githubusercontent.com/Portablelle/Codex-PS5/v0.0.4/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Portablelle/Codex-PS5/releases/download/v0.0.5/codex-ps5-0.0.5-Folder.zip",
+  "sha256": "b753329c05f89d1ae295981ce9d8d3aa4e90badf5253e2ecd3b31e76563ae5c2",
+  "icon_url": "https://raw.githubusercontent.com/Portablelle/Codex-PS5/v0.0.5/sce_sys/icon0.png"
 }
