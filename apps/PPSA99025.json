@@ -1,9 +1,9 @@
 {
   "titleid": "PPSA99025",
-  "name": "reUndr",
+  "name": "reUndr (NFS: Underground)",
   "kind": "game",
   "category": "console-ports",
-  "description": "Need for Speed: Underground, the Xbox version recompiled to run natively on PS5, in 4K at up to 60 fps (bring your own USA disc).",
+  "description": "Need for Speed: Underground, the Xbox version recompiled to run natively on PS5, in 4K at up to 60 fps. Bring your own disc.",
   "license": "MIT AND GPL-3.0-or-later AND LGPL-2.1-or-later",
   "author": "bystritskiy",
   "version": "01.001.000",
