@@ -1,9 +1,9 @@
 {
   "titleid": "PPSA90505",
-  "name": "SpeedBreaker",
+  "name": "SpeedBreaker (NFS: Most Wanted)",
   "kind": "game",
   "category": "console-ports",
-  "description": "Need for Speed: Most Wanted (2005), the Xbox 360 version statically recompiled to run natively on PS5, in 4K at up to 60 fps (bring your own USA disc).",
+  "description": "Need for Speed: Most Wanted (2005), the Xbox 360 version statically recompiled to run natively on PS5. Bring your own disc.",
   "license": "GPL-3.0",
   "author": "bystritskiy",
   "version": "01.000.001",
