@@ -3,7 +3,7 @@
   "name": "Parasite Eve",
   "kind": "game",
   "category": "console-ports",
-  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK — Native PS5 beta 0.2.0 (Build 12). User-supplied game data required; no discs or texture packs included. Save states disabled; normal memory-card saves supported.",
+  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK. PS5 Beta 0.2.0 (Build 12); own game data required. No discs/textures. Save states off; normal memory cards supported.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
   "version": "0.2.0-beta",
