@@ -3,12 +3,12 @@
   "name": "Parasite Eve",
   "kind": "game",
   "category": "console-ports",
-  "description": "Native PS5 beta port of Parasite Eve requiring user-supplied game data. Save states coming soon; normal memory-card saves supported.",
+  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK. PS5 Beta 0.2.0 (Build 12); own game data required. No discs/textures. Save states off; normal memory cards supported.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
-  "version": "0.1.1",
+  "version": "0.2.0-beta",
   "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ps5",
-  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v0.1.1/Parasite-Eve-PS5-v0.1.1-8310-asset-free.zip",
-  "sha256": "c65aad9810c6b0b83e4a2fdb4ad34de3ebb637d9ed4a61067e8e1bdba89b4cfa",
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v0.2.0-beta/Parasite-Eve-Beta-0.2.0-Build-12-asset-free.zip",
+  "sha256": "e1b7cdb078c15710b63dd3bdd6aeb96010f2aea5a8095295bfa6d601ca775b7e",
   "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/parasite-eve-ps5/1405c55d7d26c70bdff604f5fdbfef3dd36bc7b3/docs/images/parasite-eve-store-icon.png"
 }
