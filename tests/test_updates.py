@@ -121,14 +121,42 @@ class FindUpdateTests(unittest.TestCase):
         self.assertIsNone(update)
         self.assertIn("older than the listed", reason)
 
-    def test_other_platform_releases_are_skipped_in_a_ps5_line(self):
+    def test_a_newer_data_release_does_not_hide_the_apps_release(self):
+        update, reason = self.find([
+            release("database-2026.11.03-r5", [asset("database.json")]),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)]),
+        ])
+        self.assertEqual(reason, "")
+        self.assertEqual(update.tag, "v0.6.0")
+
+    def test_a_desktop_only_release_falls_back_to_the_previous_one(self):
+        update, reason = self.find([
+            release("v0.7.0", [asset("example-Windows-0.7.0.zip")]),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")]),
+        ])
+        self.assertEqual(update.tag, "v0.6.0")
+
+    def test_no_usable_release_keeps_the_newest_ones_reason(self):
+        update, reason = self.find([
+            release("v0.7.0", [asset("example-Windows-0.7.0.zip")]),
+            release("v0.6.0", [asset("notes.txt")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)]),
+        ])
+        self.assertIsNone(update)
+        self.assertIn("v0.7.0", reason)
+        self.assertIn("desktop", reason)
+
+    def test_unprefixed_tags_after_a_ps5_prefix_are_still_followed(self):
         ps5 = dict(OLD, version="1.0.0", artifact_url=OLD["artifact_url"].replace(
             "v0.5.0/example-0.5.0-PPSA01234.zip", "ps5-v1.0.0/PPSA01234.zip"),
             icon_url=OLD["icon_url"].replace("v0.5.0", "ps5-v1.0.0"))
-        update, reason = self.find([release("v2.0.0", [asset("desktop-only.zip")]),
-                                    release("ps5-v1.1.0", [asset("PPSA01234.zip")])], data=ps5)
+        update, reason = self.find([release("1.5.5", [asset("PPSA01234.zip")]),
+                                    release("ps5-v1.0.0", [asset("PPSA01234.zip", digest="sha256:" + "a" * 64)])],
+                                   data=ps5)
         self.assertEqual(reason, "")
-        self.assertEqual(update.tag, "ps5-v1.1.0")
+        self.assertEqual(update.tag, "1.5.5")
 
     def test_skips_releases_that_are_not_versions(self):
         update, reason = self.find([release("build-cache", [asset("ccache-clang18.tar")], prerelease=True),
@@ -181,6 +209,14 @@ class BumpPolicyTests(unittest.TestCase):
 
     def test_newest_release_bump_is_recognised(self):
         self.assertTrue(is_release_bump(self.old, self.new, self.github))
+
+    def test_a_newer_data_release_does_not_stop_a_bump(self):
+        github = FakeGitHub([release("database-2026.11.03-r5", [asset("database.json")]),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
+        self.assertTrue(is_release_bump(self.old, self.new, github))
+        github = FakeGitHub([release("v0.7.0", [asset("example-0.7.0-PPSA01234.zip")]),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
+        self.assertFalse(is_release_bump(self.old, self.new, github))
 
     def test_other_changes_are_not_a_bump(self):
         renamed = Record(self.new.path, dict(self.new.data, name="Other Name"))

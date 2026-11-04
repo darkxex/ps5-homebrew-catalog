@@ -23,7 +23,7 @@ MODIFIED = [Change("M", "apps/PPSA01234.json", "100644")]
 
 
 def github(newest="01.000.010", owner_type="User", member=False):
-    return mock.Mock(releases=lambda owner, repo: [{"tag_name": newest, "draft": False}],
+    return mock.Mock(releases=lambda owner, repo: [{"tag_name": newest, "draft": False, "assets": [{"name": "PPSA01234.zip"}]}],
                      account_type=lambda login: owner_type, is_public_member=lambda org, user: member)
 
 

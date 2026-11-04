@@ -1,7 +1,9 @@
 """Find newer upstream releases and turn them into updated records.
 
 For a listed release, the newest published release of its repository
-(pre-releases included) becomes the proposed update when:
+(pre-releases included) that has a successor file becomes the proposed update; releases
+without one (data releases, desktop-only builds) are passed over for the previous release.
+A release becomes the proposed update when:
 
 - it has an asset with the same file type that is unambiguously the successor
   of the listed one (same name, or the same name with the version changed, or
@@ -40,22 +42,41 @@ class Update:
     notes: list[str] = field(default_factory=list)
 
 
-def newest_release(github: GitHub, owner: str, repo: str, like: str | None = None) -> dict | None:
+def newest_release(github: GitHub, owner: str, repo: str, extension: str | None = None) -> dict | None:
     """The newest published release (drafts skipped; pre-releases count).
 
     A release whose tag has no digit (build-cache, build-inputs, nightly) holds build files, not
-    a version of the app, and is skipped as well. When `like` (the listed tag) marks a PS5 line of
-    releases ("ps5-v1.0.0"), releases of other platforms in the same repository are skipped too.
+    a version of the app, and is skipped as well. With `extension`, so are releases that carry no
+    file of that type (a repository that also publishes "database-2026.11.03" data releases).
     """
-    ps5_line = bool(like) and "ps5" in like.lower()
     for release in github.releases(owner, repo):
-        tag = release.get("tag_name", "")
-        if release.get("draft") or not any(c.isdigit() for c in tag):
-            continue
-        if ps5_line and "ps5" not in tag.lower():
-            continue
-        return release
+        if not release.get("draft") and any(c.isdigit() for c in release.get("tag_name", "")):
+            if extension is None or any(_extension(a.get("name", "")) == extension
+                                        for a in release.get("assets", [])):
+                return release
     return None
+
+
+def candidate_releases(github: GitHub, owner: str, repo: str, listed_tag: str) -> list[dict]:
+    """Published releases that look like versions, newest first, down to and including the listed one.
+
+    The newest release is not always the app's: a repository may publish data or desktop-only
+    releases in between, so the caller walks the list until one of them can be the successor.
+    When the first page of releases does not reach the listed tag, more pages are read.
+    """
+    def usable(releases):
+        return [r for r in releases if not r.get("draft") and any(c.isdigit() for c in r.get("tag_name", ""))]
+
+    releases = github.releases(owner, repo)
+    if len(releases) >= 20 and not any(r.get("tag_name") == listed_tag for r in releases) \
+            and hasattr(github, "all_releases"):
+        releases = github.all_releases(owner, repo, max_pages=3)
+    found = []
+    for release in usable(releases):
+        found.append(release)
+        if release.get("tag_name") == listed_tag:
+            break
+    return found
 
 
 def tag_number(tag: str) -> tuple[int, ...] | None:
@@ -122,25 +143,43 @@ def new_version(old_version: str, old_tag: str, new_tag: str) -> str:
 
 
 def find_update(record: Record, github: GitHub, icon_exists=None) -> tuple[Update | None, str]:
-    """Return (update, "") or (None, reason there is nothing to propose)."""
+    """Return (update, "") or (None, reason there is nothing to propose).
+
+    The releases newer than the listed one are tried newest first; the first that has a successor
+    file with a digest is proposed. When none has, the reason is the newest release's.
+    """
     if record.reserved:
         return None, "reservation"
-    release = newest_release(github, record.owner, record.repo, like=record.tag)
-    if release is None:
+    releases = candidate_releases(github, record.owner, record.repo, record.tag)
+    if not releases:
         return None, "no published releases"
-    tag = release.get("tag_name", "")
-    if tag == record.tag:
-        # Same tag, but the author may have uploaded the file again: GitHub's digest then no longer
-        # matches the listing, which the submission check would reject.
-        current = next((a for a in release.get("assets", [])
-                        if a.get("name") in (record.asset_name, unquote(record.asset_name))), None)
-        digest = (current or {}).get("digest") or ""
-        if digest.startswith("sha256:") and digest.removeprefix("sha256:") != record.data["sha256"]:
-            return None, (f"release {tag} still lists {current['name']}, but its file was replaced "
-                          f"(GitHub's digest differs from the listed sha256)")
-        return None, "up to date"
-    if is_older(tag, record.tag):
-        return None, f"newest release {tag} is older than the listed {record.tag}; not proposed"
+    first_reason = ""
+    for release in releases:
+        tag = release.get("tag_name", "")
+        if tag == record.tag:
+            return (None, first_reason) if first_reason else (None, _same_tag(record, release))
+        if is_older(tag, record.tag):
+            first_reason = first_reason or f"newest release {tag} is older than the listed {record.tag}; not proposed"
+            continue
+        update, reason = _propose(record, release, tag, icon_exists)
+        if update:
+            return update, ""
+        first_reason = first_reason or reason
+    return None, first_reason
+
+
+def _same_tag(record: Record, release: dict) -> str:
+    """"up to date", or a warning when the author uploaded the listed file again under the same tag."""
+    current = next((a for a in release.get("assets", [])
+                    if a.get("name") in (record.asset_name, unquote(record.asset_name))), None)
+    digest = (current or {}).get("digest") or ""
+    if digest.startswith("sha256:") and digest.removeprefix("sha256:") != record.data["sha256"]:
+        return (f"release {release.get('tag_name')} still lists {current['name']}, but its file was replaced "
+                f"(GitHub's digest differs from the listed sha256)")
+    return "up to date"
+
+
+def _propose(record: Record, release: dict, tag: str, icon_exists) -> tuple[Update | None, str]:
     asset, how = pick_asset(release.get("assets", []), record.asset_name, record.tag,
                             record.data["version"], tag)
     if asset is None:
@@ -222,5 +261,5 @@ def is_release_bump(old: Record, new: Record, github: GitHub, extra_fields: tupl
     if any(old.data.get(f) != new.data.get(f) for f in old.data.keys() | new.data.keys()
            if f not in BUMP_FIELDS + extra_fields):
         return False
-    release = newest_release(github, new.owner, new.repo, like=old.tag)
+    release = newest_release(github, new.owner, new.repo, extension=_extension(new.asset_name))
     return bool(release) and release.get("tag_name") == new.tag
