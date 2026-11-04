@@ -1,14 +1,14 @@
 {
   "titleid": "PEVG00022",
-  "name": "Parasite Eve - Game Test",
+  "name": "Parasite Eve",
   "kind": "game",
   "category": "console-ports",
-  "description": "Native PS5 beta port of Parasite Eve requiring user-supplied game data; experimental checkpoints.",
+  "description": "Native PS5 beta port of Parasite Eve requiring user-supplied game data. Save states coming soon; normal memory-card saves supported.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.1",
   "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ps5",
-  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v0.1.0-beta.1/Parasite-Eve-PS5-v0.1.0-beta.1-93EA-asset-free.zip",
-  "sha256": "9340b47c0c64b25e2c1acf7ad77cc24f8fe5553e0c764081f888748e66e2850b",
-  "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/parasite-eve-ps5/02c14bffe2bf5b3f67a26eab01942c5d874c8e05/docs/images/parasite-eve-store-icon.png"
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v0.1.1/Parasite-Eve-PS5-v0.1.1-8310-asset-free.zip",
+  "sha256": "c65aad9810c6b0b83e4a2fdb4ad34de3ebb637d9ed4a61067e8e1bdba89b4cfa",
+  "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/parasite-eve-ps5/1405c55d7d26c70bdff604f5fdbfef3dd36bc7b3/docs/images/parasite-eve-store-icon.png"
 }
