@@ -10,7 +10,7 @@ library and run by four workflows.
 | [Comments](../.github/workflows/comments.yml) | Every hour, on every discussion comment, and on every push to `main` that changes `apps/` | `python3 -m catalog comments --sync`: one discussion per listed app, likes and comments written to the `comments-data` branch; see [Comments and likes](#comments-and-likes) |
 | [Scan the catalog](../.github/workflows/scan-catalog.yml) | Manual only | `catalog scan`: one report on every listed app, or on the title IDs given; see [Release scan](#release-scan) |
 | [Catalog health](../.github/workflows/health.yml) | Daily 06:17 UTC and manual | `catalog health --slice today` |
-| [Release updates](../.github/workflows/updates.yml) | Three times a day, 07:37, 15:37 and 23:37 UTC, and manual | `catalog updates --open-prs` |
+| [Release updates](../.github/workflows/updates.yml) | Every four hours (03:37, 07:37, 11:37, 15:37, 19:37 and 23:37 UTC; GitHub often delays or skips scheduled runs), and manual | `catalog updates --open-prs` |
 | [Discovery](../.github/workflows/discovery.yml) | Three times a day, 06:53, 14:53 and 22:53 UTC, and manual | `catalog discover --open-prs --issue`; without `--open-prs` while the repository variable `DISCOVERY_OPEN_PRS` is `false` |
 
 Results appear as annotations and in each run's job summary.

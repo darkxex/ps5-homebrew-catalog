@@ -17,6 +17,7 @@ the record stays unchanged.
 from __future__ import annotations
 
 import json
+import re
 import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -39,16 +40,40 @@ class Update:
     notes: list[str] = field(default_factory=list)
 
 
-def newest_release(github: GitHub, owner: str, repo: str) -> dict | None:
+def newest_release(github: GitHub, owner: str, repo: str, like: str | None = None) -> dict | None:
     """The newest published release (drafts skipped; pre-releases count).
 
     A release whose tag has no digit (build-cache, build-inputs, nightly) holds build files, not
-    a version of the app, and is skipped as well.
+    a version of the app, and is skipped as well. When `like` (the listed tag) marks a PS5 line of
+    releases ("ps5-v1.0.0"), releases of other platforms in the same repository are skipped too.
     """
+    ps5_line = bool(like) and "ps5" in like.lower()
     for release in github.releases(owner, repo):
-        if not release.get("draft") and any(c.isdigit() for c in release.get("tag_name", "")):
-            return release
+        tag = release.get("tag_name", "")
+        if release.get("draft") or not any(c.isdigit() for c in tag):
+            continue
+        if ps5_line and "ps5" not in tag.lower():
+            continue
+        return release
     return None
+
+
+def tag_number(tag: str) -> tuple[int, ...] | None:
+    """The number a release tag counts by: its first dotted version (v1.2.3, ps5-v1.0), else its last run of digits."""
+    dotted = re.search(r"\d+(?:\.\d+)+", tag)
+    if dotted:
+        return tuple(int(part) for part in dotted.group().split("."))
+    runs = re.findall(r"\d+", tag)
+    return (int(runs[-1]),) if runs else None
+
+
+def is_older(new_tag: str, old_tag: str) -> bool:
+    """True when new_tag is clearly an earlier version than old_tag (same kind of number, strictly lower)."""
+    new, old = tag_number(new_tag), tag_number(old_tag)
+    if new is None or old is None or (len(new) == 1) != (len(old) == 1):
+        return False
+    width = max(len(new), len(old))
+    return new + (0,) * (width - len(new)) < old + (0,) * (width - len(old))
 
 
 def _extension(name: str) -> str:
@@ -100,12 +125,22 @@ def find_update(record: Record, github: GitHub, icon_exists=None) -> tuple[Updat
     """Return (update, "") or (None, reason there is nothing to propose)."""
     if record.reserved:
         return None, "reservation"
-    release = newest_release(github, record.owner, record.repo)
+    release = newest_release(github, record.owner, record.repo, like=record.tag)
     if release is None:
         return None, "no published releases"
     tag = release.get("tag_name", "")
     if tag == record.tag:
+        # Same tag, but the author may have uploaded the file again: GitHub's digest then no longer
+        # matches the listing, which the submission check would reject.
+        current = next((a for a in release.get("assets", [])
+                        if a.get("name") in (record.asset_name, unquote(record.asset_name))), None)
+        digest = (current or {}).get("digest") or ""
+        if digest.startswith("sha256:") and digest.removeprefix("sha256:") != record.data["sha256"]:
+            return None, (f"release {tag} still lists {current['name']}, but its file was replaced "
+                          f"(GitHub's digest differs from the listed sha256)")
         return None, "up to date"
+    if is_older(tag, record.tag):
+        return None, f"newest release {tag} is older than the listed {record.tag}; not proposed"
     asset, how = pick_asset(release.get("assets", []), record.asset_name, record.tag,
                             record.data["version"], tag)
     if asset is None:
@@ -187,5 +222,5 @@ def is_release_bump(old: Record, new: Record, github: GitHub, extra_fields: tupl
     if any(old.data.get(f) != new.data.get(f) for f in old.data.keys() | new.data.keys()
            if f not in BUMP_FIELDS + extra_fields):
         return False
-    release = newest_release(github, new.owner, new.repo)
+    release = newest_release(github, new.owner, new.repo, like=old.tag)
     return bool(release) and release.get("tag_name") == new.tag
