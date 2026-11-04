@@ -10,7 +10,7 @@ import catalog.__main__ as cli
 from catalog.policy import check_publisher
 from catalog.records import Record
 from catalog.report import Report
-from catalog.updates import find_gone, find_update, is_release_bump, new_version, pick_asset
+from catalog.updates import find_gone, find_update, is_older, is_release_bump, new_version, pick_asset
 
 from helpers import record, reservation, write_record
 
@@ -73,6 +73,20 @@ class VersionTests(unittest.TestCase):
         self.assertEqual(new_version("vk-285-112", "vk-285-112", "vk-290-001"), "vk-290-001")
 
 
+class IsOlderTests(unittest.TestCase):
+    def test_compares_versions_not_text(self):
+        self.assertTrue(is_older("v1.9.0", "v1.10.0"))
+        self.assertFalse(is_older("v1.10.0", "v1.9.0"))
+        self.assertTrue(is_older("build-76", "build-135"))
+        self.assertTrue(is_older("ps5-v1.0.0", "ps5-v1.0.6"))
+
+    def test_prereleases_and_unlike_tags_are_never_older(self):
+        self.assertFalse(is_older("1.0.0", "1.0.0-beta.5"))
+        self.assertFalse(is_older("v8.1.0-alpha-8", "v8.0.0-alpha-8"))
+        self.assertFalse(is_older("build-5", "v1.0.0"))
+        self.assertFalse(is_older("nightly", "v1.0.0"))
+
+
 class FindUpdateTests(unittest.TestCase):
     def find(self, releases, data=OLD, icon_exists=True):
         return find_update(Record(Path("PPSA01234.json"), data), FakeGitHub(releases),
@@ -94,8 +108,27 @@ class FindUpdateTests(unittest.TestCase):
 
     def test_skips_drafts_and_up_to_date(self):
         update, reason = self.find([release("v0.9.0", [asset("x.zip")], draft=True),
-                                    release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")])])
+                                    release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)])])
         self.assertEqual((update, reason), (None, "up to date"))
+
+    def test_same_tag_with_a_replaced_file_is_reported(self):
+        update, reason = self.find([release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")])])
+        self.assertIsNone(update)
+        self.assertIn("file was replaced", reason)
+
+    def test_an_older_newest_release_is_not_proposed(self):
+        update, reason = self.find([release("v0.4.9", [asset("example-0.4.9-PPSA01234.zip")])])
+        self.assertIsNone(update)
+        self.assertIn("older than the listed", reason)
+
+    def test_other_platform_releases_are_skipped_in_a_ps5_line(self):
+        ps5 = dict(OLD, version="1.0.0", artifact_url=OLD["artifact_url"].replace(
+            "v0.5.0/example-0.5.0-PPSA01234.zip", "ps5-v1.0.0/PPSA01234.zip"),
+            icon_url=OLD["icon_url"].replace("v0.5.0", "ps5-v1.0.0"))
+        update, reason = self.find([release("v2.0.0", [asset("desktop-only.zip")]),
+                                    release("ps5-v1.1.0", [asset("PPSA01234.zip")])], data=ps5)
+        self.assertEqual(reason, "")
+        self.assertEqual(update.tag, "ps5-v1.1.0")
 
     def test_skips_releases_that_are_not_versions(self):
         update, reason = self.find([release("build-cache", [asset("ccache-clang18.tar")], prerelease=True),
