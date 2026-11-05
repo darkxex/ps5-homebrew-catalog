@@ -3,12 +3,12 @@
   "name": "Nuvio Max'd",
   "kind": "app",
   "category": "video",
-  "description": "Native Nuvio for PS5 with profiles, addons, synced progress, Live TV/IPTV, Library search, experimental Plex/Jellyfin/Emby media servers and optional playback engines.",
+  "description": "Native Nuvio for PS5 with profiles, addons, Live TV/IPTV, Plex/Jellyfin/Emby, optional torrents/Web Drop, HDR fallback and experimental app-local remote mapping.",
   "license": "GPL-3.0",
   "author": "HandshakeHackin",
-  "version": "1.0.0.8-native-experimental",
+  "version": "1.0.0.11-native",
   "source_repo": "https://github.com/HandshakeHackin/Nuvio-maxd-releases",
-  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.8-native-experimental/PPSA99288.zip",
-  "sha256": "ca8e22dcde1695b4a5239dc9dacaf1863f3aefee65366818620aa3a6424f156b",
-  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.8-native-experimental/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.11-native/PPSA99288.zip",
+  "sha256": "e08ba610204d3864ab52f3838302c7a2589645a9437f41417fb274269a60be06",
+  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.11-native/sce_sys/icon0.png"
 }
