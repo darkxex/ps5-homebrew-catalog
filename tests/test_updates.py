@@ -26,8 +26,11 @@ def asset(name, digest="sha256:" + "c" * 64):
     return {"name": name, "digest": digest, "size": 1000}
 
 
-def release(tag, assets, prerelease=False, draft=False):
-    return {"tag_name": tag, "assets": assets, "prerelease": prerelease, "draft": draft}
+def release(tag, assets, prerelease=False, draft=False, published=None):
+    made = {"tag_name": tag, "assets": assets, "prerelease": prerelease, "draft": draft}
+    if published:
+        made["published_at"] = published
+    return made
 
 
 class FakeGitHub:
@@ -91,6 +94,18 @@ class FindUpdateTests(unittest.TestCase):
     def find(self, releases, data=OLD, icon_exists=True):
         return find_update(Record(Path("PPSA01234.json"), data), FakeGitHub(releases),
                            icon_exists=lambda url: icon_exists)
+
+    def test_the_newest_release_is_the_one_published_last_not_the_first_GitHub_lists(self):
+        # A repository whose tags were moved can have the listed release first even though a later
+        # one was published after it (Nuvio Max'd: v1.0.0.8 first, v1.0.0.11 second).
+        update, reason = self.find([
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)],
+                    published="2026-11-05T01:20:10Z"),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z"),
+            release("v0.5.5", [asset("example-0.5.5-PPSA01234.zip")], published="2026-11-05T02:46:04Z"),
+        ])
+        self.assertEqual(reason, "")
+        self.assertEqual(update.data["version"], "0.6.0")
 
     def test_proposes_the_newest_release_including_prereleases(self):
         update, reason = self.find([
@@ -216,6 +231,16 @@ class BumpPolicyTests(unittest.TestCase):
         self.assertTrue(is_release_bump(self.old, self.new, github))
         github = FakeGitHub([release("v0.7.0", [asset("example-0.7.0-PPSA01234.zip")]),
                              release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
+        self.assertFalse(is_release_bump(self.old, self.new, github))
+
+    def test_the_newest_release_is_found_by_publication_date_not_by_GitHubs_order(self):
+        # The listed release comes first in GitHub's list, but the bump's release was published later.
+        github = FakeGitHub([release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")], published="2026-11-05T01:20:10Z"),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z")])
+        self.assertTrue(is_release_bump(self.old, self.new, github))
+        # And a release published after the bump's still stops it, wherever GitHub lists it.
+        github = FakeGitHub([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z"),
+                             release("v0.7.0", [asset("example-0.7.0-PPSA01234.zip")], published="2026-11-06T09:00:00Z")])
         self.assertFalse(is_release_bump(self.old, self.new, github))
 
     def test_other_changes_are_not_a_bump(self):

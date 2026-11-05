@@ -42,6 +42,16 @@ class Update:
     notes: list[str] = field(default_factory=list)
 
 
+def by_publication(releases: list[dict]) -> list[dict]:
+    """The releases newest first by the date they were published.
+
+    GitHub's list is not always in that order: a repository whose tags were moved or recreated can
+    have an older release listed first, and "the newest release" is the one published last. A
+    release without a date, or two published at the same time, keep the order GitHub gave them.
+    """
+    return sorted(releases, key=lambda r: r.get("published_at") or "", reverse=True)
+
+
 def newest_release(github: GitHub, owner: str, repo: str, extension: str | None = None) -> dict | None:
     """The newest published release (drafts skipped; pre-releases count).
 
@@ -49,7 +59,7 @@ def newest_release(github: GitHub, owner: str, repo: str, extension: str | None 
     a version of the app, and is skipped as well. With `extension`, so are releases that carry no
     file of that type (a repository that also publishes "database-2026.11.03" data releases).
     """
-    for release in github.releases(owner, repo):
+    for release in by_publication(github.releases(owner, repo)):
         if not release.get("draft") and any(c.isdigit() for c in release.get("tag_name", "")):
             if extension is None or any(_extension(a.get("name", "")) == extension
                                         for a in release.get("assets", [])):
@@ -72,7 +82,7 @@ def candidate_releases(github: GitHub, owner: str, repo: str, listed_tag: str) -
             and hasattr(github, "all_releases"):
         releases = github.all_releases(owner, repo, max_pages=3)
     found = []
-    for release in usable(releases):
+    for release in by_publication(usable(releases)):
         found.append(release)
         if release.get("tag_name") == listed_tag:
             break
