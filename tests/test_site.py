@@ -726,6 +726,7 @@ class BackdropTests(unittest.TestCase):
             self.assertEqual(artifacts.fetch_backdrop(data), b"PIC")
         self.assertEqual(asked, ["PPSA01234/sce_sys/pic0.dds", "PPSA01234/sce_sys/pic1.dds"])
 
+    @unittest.skipUnless(HAVE_PILLOW, "needs Pillow")
     def test_a_dds_becomes_a_webp_no_larger_than_1080p(self):
         from PIL import Image
         from catalog import site
@@ -735,6 +736,7 @@ class BackdropTests(unittest.TestCase):
         self.assertLessEqual(out.size[1], 1080)
         self.assertRaises(ValueError, site.process_backdrop, b"not a picture")
 
+    @unittest.skipUnless(HAVE_PILLOW, "needs Pillow")
     def test_the_stage_gets_the_picture_only_for_the_app_that_has_one(self):
         from catalog import site
         with tempfile.TemporaryDirectory() as tmp:
