@@ -1,3 +1,4 @@
+import io
 import json
 import os
 import tempfile
@@ -325,6 +326,17 @@ class SiteBuildTests(unittest.TestCase):
         self.assertNotIn("PPSA05555", dev)
         self.assertIn('data-i18n="n.downloads" data-v-n="2468">2468 downloads</li>', dev)
         self.assertNotIn("<script>alert", dev)
+        # The badge window: one option per app of the developer, each with the app's absolute page, and the badges
+        # themselves at fixed addresses (developers link to them from their READMEs).
+        for app in ("PPSA01234", "PPSA04321"):
+            self.assertIn(f'data-badge-open="{app}"', dev)       # each app's own Badges button
+            self.assertIn(f'<option value="{app}" data-page="https://catalog.example/app/{app}/">', dev)
+        self.assertNotIn('data-page="https://catalog.example/app/PPSA05555/"', dev)
+        self.assertIn('data-badge-site="https://catalog.example/press/"', dev)
+        for name in ("badge-dark.png", "badge-light.png", "badge-dark-forum.png", "badge-light-forum.png"):
+            self.assertTrue((self.out / "press" / name).is_file(), name)
+        self.assertEqual(sorted(p.suffix for p in (self.out / "press").iterdir()), [".png"] * 4)   # PNG only, no SVG
+        self.assertIn("Cache-Control: public, max-age=86400", (self.out / "_headers").read_text(encoding="utf-8"))
         # The catalog page's tiles carry the count, for the "Most downloaded" shelf and order.
         home = (self.out / "index.html").read_text(encoding="utf-8")
         self.assertEqual(home.count('data-downloads="1234"'), 2)       # the tile of each of the two apps
@@ -549,6 +561,7 @@ class IconCacheTests(unittest.TestCase):
                 return self.PNG
 
             with mock.patch.object(site.artifacts, "fetch_small", fake_fetch), \
+                    mock.patch.object(site.artifacts, "fetch_backdrop", lambda data: None), \
                     mock.patch.object(site, "process_icon", lambda data: (data, "png")):
                 for n in range(2):
                     site.build_site(root / f"out{n}", apps, Report(), icon_cache=cache)
@@ -587,6 +600,7 @@ class IconCacheTests(unittest.TestCase):
                 return member, self.PNG
 
             with mock.patch.object(site.artifacts, "read_zip_member", fake_zip), \
+                    mock.patch.object(site.artifacts, "fetch_backdrop", lambda data: None), \
                     mock.patch.object(site, "png_icons", lambda data: {512: b"large", 256: b"small"}), \
                     mock.patch.object(site, "process_icon", lambda data: (data, "png")):
                 for n in range(2):
@@ -658,3 +672,81 @@ class TranslationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BackdropTests(unittest.TestCase):
+    """An app's pic0.dds (or pic1.dds) becomes the stage's picture; without either nothing changes."""
+
+    @staticmethod
+    def dds() -> bytes:
+        from PIL import Image
+        out = io.BytesIO()
+        Image.new("RGB", (64, 36), (20, 120, 20)).save(out, "DDS")
+        return out.getvalue()
+
+    def test_pic0_is_used_and_pic1_when_there_is_no_pic0(self):
+        from catalog import artifacts
+        asked = []
+
+        def fake(url, limit):
+            asked.append(url.rsplit("/", 1)[1])
+            if url.endswith("pic0.dds"):
+                raise artifacts.DownloadError(f"HTTP 404 from {url}")
+            return b"PIC1"
+
+        with mock.patch.object(artifacts, "fetch_small", fake):
+            self.assertEqual(artifacts.fetch_backdrop({"icon_url": "https://h/o/r/v1/ps5/sce_sys/icon0.png"}), b"PIC1")
+        self.assertEqual(asked, ["pic0.dds", "pic1.dds"])
+
+    def test_neither_picture_is_none_and_other_failures_are_not_hidden(self):
+        from catalog import artifacts
+
+        def missing(url, limit):
+            raise artifacts.DownloadError(f"HTTP 404 from {url}")
+
+        def broken(url, limit):
+            raise artifacts.DownloadError("could not download: timed out")
+
+        data = {"icon_url": "https://h/o/r/v1/ps5/sce_sys/icon0.png"}
+        with mock.patch.object(artifacts, "fetch_small", missing):
+            self.assertIsNone(artifacts.fetch_backdrop(data))
+        with mock.patch.object(artifacts, "fetch_small", broken):
+            self.assertRaises(artifacts.DownloadError, artifacts.fetch_backdrop, data)
+
+    def test_the_picture_is_looked_for_beside_the_icon_inside_the_zip(self):
+        from catalog import artifacts
+        asked = []
+
+        def fake_zip(url, member, limit, budget):
+            asked.append(member)
+            return (member, b"PIC") if member.endswith("pic1.dds") else None
+
+        data = {"icon_url": None, "icon_member": "PPSA01234/sce_sys/icon0.png", "artifact_url": "https://h/a.zip"}
+        with mock.patch.object(artifacts, "read_zip_member", fake_zip):
+            self.assertEqual(artifacts.fetch_backdrop(data), b"PIC")
+        self.assertEqual(asked, ["PPSA01234/sce_sys/pic0.dds", "PPSA01234/sce_sys/pic1.dds"])
+
+    def test_a_dds_becomes_a_webp_no_larger_than_1080p(self):
+        from PIL import Image
+        from catalog import site
+        out = Image.open(io.BytesIO(site.process_backdrop(self.dds())))
+        self.assertEqual(out.format, "WEBP")
+        self.assertLessEqual(out.size[0], 1920)
+        self.assertLessEqual(out.size[1], 1080)
+        self.assertRaises(ValueError, site.process_backdrop, b"not a picture")
+
+    def test_the_stage_gets_the_picture_only_for_the_app_that_has_one(self):
+        from catalog import site
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            apps = root / "apps"
+            write_record(apps, record())
+            png = IconCacheTests.PNG
+            for name, backdrop in (("with", self.dds()), ("without", None)):
+                with mock.patch.object(site.artifacts, "fetch_small", lambda url, limit: png), \
+                        mock.patch.object(site.artifacts, "fetch_backdrop", lambda data, b=backdrop: b), \
+                        mock.patch.object(site, "process_icon", lambda data: (data, "png")):
+                    site.build_site(root / name, apps, Report())
+                page = (root / name / "index.html").read_text(encoding="utf-8")
+                self.assertEqual("/assets/backdrop-" in page, backdrop is not None, name)
+                self.assertIn('data-backdrop=""' if backdrop is None else 'data-backdrop="/assets/backdrop-', page)

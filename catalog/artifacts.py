@@ -12,6 +12,8 @@ from .github import USER_AGENT
 
 MAX_ARTIFACT_BYTES = 2 << 30          # GitHub's per-asset limit
 MAX_ICON_BYTES = 2 << 20
+MAX_BACKDROP_BYTES = 12 << 20         # pic0.dds, a 3840 x 2160 picture, is 8.3 MB
+BACKDROP_NAMES = ("pic0.dds", "pic1.dds")   # the first one the app ships
 TIMEOUT = 60
 MAX_RANGE_BYTES = 8 << 20             # most a ranged read of one archive may fetch in all
 RANGE_CHUNK = 1 << 16
@@ -46,8 +48,8 @@ def fetch_small(url: str, max_bytes: int) -> bytes:
 class _RemoteFile(io.RawIOBase):
     """A read-only, seekable view of a remote file, fetched in ranges as it is read."""
 
-    def __init__(self, url: str):
-        self.url, self.position, self.fetched = url, 0, 0
+    def __init__(self, url: str, budget: int = MAX_RANGE_BYTES):
+        self.url, self.position, self.fetched, self.budget = url, 0, 0, budget
         self.window_start, self.window = 0, b""
         self.size = 0
         self._fetch(0, 0)
@@ -55,8 +57,8 @@ class _RemoteFile(io.RawIOBase):
     def _fetch(self, start: int, end: int) -> bytes:
         """Bytes start..end inclusive; the server must honour the range."""
         self.fetched += end - start + 1
-        if self.fetched > MAX_RANGE_BYTES:
-            raise DownloadError(f"{self.url}: reading it needs more than {MAX_RANGE_BYTES} bytes")
+        if self.fetched > self.budget:
+            raise DownloadError(f"{self.url}: reading it needs more than {self.budget} bytes")
         with _open(self.url, {"Range": f"bytes={start}-{end}"}) as response:
             total = (response.headers.get("Content-Range") or "").rpartition("/")[2]
             if response.status != 206 or not total.isdigit():
@@ -86,12 +88,12 @@ class _RemoteFile(io.RawIOBase):
         return len(data)
 
 
-def read_zip_member(url: str, suffix: str, max_bytes: int) -> tuple[str, bytes] | None:
+def read_zip_member(url: str, suffix: str, max_bytes: int, budget: int = MAX_RANGE_BYTES) -> tuple[str, bytes] | None:
     """(path, content) of the file in a remote ZIP whose path is `suffix` (nearest the top first), or None.
 
     Only the ZIP's directory and that one file are fetched, never the whole archive."""
     try:
-        with zipfile.ZipFile(_RemoteFile(url)) as archive:
+        with zipfile.ZipFile(_RemoteFile(url, budget)) as archive:
             found = sorted((m for m in archive.infolist() if not m.is_dir() and not m.flag_bits & 1
                             and (m.filename == suffix or m.filename.endswith("/" + suffix))),
                            key=lambda m: (m.filename.count("/"), m.filename))
@@ -114,6 +116,30 @@ def fetch_icon(data: dict) -> bytes:
     if found is None:
         raise DownloadError(f"{data['icon_member']} is not in {data['artifact_url']}")
     return found[1]
+
+
+def fetch_backdrop(data: dict) -> bytes | None:
+    """The bytes of the app's pic0.dds, or its pic1.dds when there is no pic0.dds; None when it has neither.
+
+    They are kept beside the icon (the same folder): a record whose icon_url ends in
+    ".../sce_sys/icon0.png" has them at ".../sce_sys/pic0.dds"; one with icon_member has them in the
+    same folder of the release ZIP. Only a missing file counts as "none": any other failure raises
+    DownloadError, so a hiccup is not taken for "no picture".
+    """
+    for name in BACKDROP_NAMES:
+        if data.get("icon_url"):
+            try:
+                return fetch_small(data["icon_url"].rsplit("/", 1)[0] + "/" + name, MAX_BACKDROP_BYTES)
+            except DownloadError as error:
+                if "HTTP 404" not in str(error):
+                    raise
+                continue
+        member = data["icon_member"]
+        found = read_zip_member(data["artifact_url"], member.rpartition("/")[0] + "/" + name if "/" in member else name,
+                                MAX_BACKDROP_BYTES, MAX_BACKDROP_BYTES + MAX_RANGE_BYTES)
+        if found:
+            return found[1]
+    return None
 
 
 def inspect_icon(data: bytes) -> tuple[str | None, list[str]]:

@@ -153,6 +153,7 @@
         url: item.getAttribute("data-url"),
         icon: item.getAttribute("data-icon"),
         ambient: item.getAttribute("data-ambient"),
+        backdrop: item.getAttribute("data-backdrop"),
         accent: item.getAttribute("data-accent"),
         description: item.getAttribute("data-description"),
         version: item.getAttribute("data-version"),
@@ -515,7 +516,8 @@
       if (changed) {
         // The picture: the next field fades in over the last one.
         field = 1 - field;
-        fields[field].src = app.ambient;
+        fields[field].src = app.backdrop || app.ambient;
+        fields[field].classList.toggle("is-picture", !!app.backdrop);
         fields[field].classList.add("is-shown");
         fields[1 - field].classList.remove("is-shown");
       }
@@ -752,8 +754,66 @@
     }
   }
 
+  /* A developer's page: the window that makes the "Get it on ProsperoStore" badge for one of their apps, in the
+     snippets for a README (Markdown), a web page (HTML) and a forum (BBCode). The badges are at fixed addresses. */
+  function badgeWindow() {
+    var opens = $$("[data-badge-open]"), box = $("[data-badge]");
+    if (!opens.length || !box) return;
+    if (!box.showModal) { opens.forEach(function (button) { button.hidden = true; }); return; }
+    var select = $("[data-badge-app]", box), img = $("[data-badge-img]", box), preview = $("[data-badge-preview]", box);
+    var path = box.getAttribute("data-badge-path"), site = box.getAttribute("data-badge-site");
+    var theme = "dark", codes = {};
+    function draw() {
+      var chosen = select.options[select.selectedIndex];
+      var link = chosen ? chosen.getAttribute("data-page") : "";
+      // One PNG for the README and web pages (big, shown at a height of 56 px so it stays sharp on dense screens)
+      // and a smaller one for forums, which show an image at its own size.
+      var big = site + "badge-" + theme + ".png", forum = site + "badge-" + theme + "-forum.png";
+      img.src = path + "badge-" + theme + ".png";
+      preview.classList.toggle("is-light", theme === "light");
+      codes.md = '[<img src="' + big + '" alt="Get it on ProsperoStore" height="56">](' + link + ")";
+      codes.html = '<a href="' + link + '"><img src="' + big + '" alt="Get it on ProsperoStore" height="56"></a>';
+      codes.bb = "[url=" + link + "][img]" + forum + "[/img][/url]";
+      Object.keys(codes).forEach(function (key) { $('[data-badge-code="' + key + '"]', box).textContent = codes[key]; });
+    }
+    // Each app's Badges button opens the window with that app chosen.
+    opens.forEach(function (button) {
+      button.addEventListener("click", function () {
+        select.value = button.getAttribute("data-badge-open");
+        draw();
+        box.showModal();
+      });
+    });
+    $("[data-badge-close]", box).addEventListener("click", function () { box.close(); });
+    box.addEventListener("click", function (event) { if (event.target === box) box.close(); });
+    select.addEventListener("change", draw);
+    $$("[data-badge-theme]", box).forEach(function (button) {
+      button.addEventListener("click", function () {
+        theme = button.getAttribute("data-badge-theme");
+        $$("[data-badge-theme]", box).forEach(function (other) {
+          var on = other === button;
+          other.classList.toggle("is-current", on);
+          other.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        draw();
+      });
+    });
+    $$("[data-badge-copy]", box).forEach(function (button) {
+      button.addEventListener("click", function () {
+        var done = function () {
+          button.textContent = I18N.t("copied");
+          button.classList.add("is-done");
+          setTimeout(function () { button.textContent = I18N.t("copy"); button.classList.remove("is-done"); }, 1600);
+        };
+        var text = codes[button.getAttribute("data-badge-copy")];
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     copyButtons();
+    badgeWindow();
     // "/" goes to the search, as the store's Triangle does.
     document.addEventListener("keydown", function (event) {
       var search = $("[data-search]");
