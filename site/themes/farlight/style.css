@@ -248,6 +248,10 @@ code { font: 0.9em var(--mono); }
 .stage__art { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); bottom: calc(-330 * var(--u)); z-index: -1; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent); mask-image: linear-gradient(180deg, #000 58%, transparent); }
 .stage__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.12); filter: blur(calc(26 * var(--u))); transition: opacity 0.9s ease; animation: breathe 30s ease-in-out infinite alternate; }
 .stage__art img.is-shown { opacity: 1; }
+/* An app's own picture (pic0.dds) is blurred a little, less than the ambient field; the scale hides the soft edges. */
+.stage__art img.is-picture { transform: scale(1.03); filter: blur(calc(5 * var(--u))); animation: none; }
+/* While the stage shows an app's picture, the same long, eased fade into the page. */
+.stage__art:has(img.is-picture.is-shown) { -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 @keyframes breathe { from { transform: scale(1.12) translate3d(-1%, -0.6%, 0); } to { transform: scale(1.19) translate3d(1.2%, 0.8%, 0); } }
 .stage__shade { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); bottom: calc(-330 * var(--u)); z-index: -1; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); background: linear-gradient(90deg, rgba(14, 15, 36, 0.93), rgba(14, 15, 36, 0) 77%), linear-gradient(180deg, rgba(14, 15, 36, 0) 42%, rgba(14, 15, 36, 0.95) 78%); }
 .stage__inner { position: relative; max-width: 1920px; min-height: calc(500 * var(--u)); margin: 0 auto; padding: calc(78 * var(--u)) var(--margin) calc(22 * var(--u)); }
@@ -362,6 +366,12 @@ html:not(.js) .sort { display: none; }
 .page { position: relative; }
 .page__art { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); height: calc(1180 * var(--u)); z-index: -1; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
 .page__art img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); filter: blur(calc(26 * var(--u))); animation: breathe 30s ease-in-out infinite alternate; }
+.page__art.is-picture img { transform: scale(1.03); filter: blur(calc(5 * var(--u))); animation: none; }
+/* A sharp picture needs a longer, eased fade so its lower edge does not show against the page. */
+.page__art.is-picture { -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
+/* The shade fades out with the picture, so the sky behind the page (its blue glow, bottom left) shows through
+   gradually instead of starting where an opaque shade ends. */
+.page__art.is-picture + .page__shade { background: linear-gradient(90deg, rgba(14, 15, 36, 0.95), rgba(14, 15, 36, 0) 76%), linear-gradient(180deg, rgba(14, 15, 36, 0.5), rgba(14, 15, 36, 0) 20%); -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 .page__shade { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); height: calc(1180 * var(--u)); z-index: -1; background: linear-gradient(90deg, rgba(14, 15, 36, 0.95), rgba(14, 15, 36, 0) 76%), linear-gradient(180deg, rgba(14, 15, 36, 0.5), rgba(14, 15, 36, 0) 20%, rgba(14, 15, 36, 0) 48%, rgba(14, 15, 36, 0.9) 92%); }
 .page__inner { display: grid; grid-template-columns: minmax(0, 1fr) calc(488 * var(--u)); gap: calc(120 * var(--u)); align-items: start; max-width: 1920px; margin: 0 auto; padding: calc(40 * var(--u)) var(--margin) calc(110 * var(--u)); }
 .page__main { max-width: calc(980 * var(--u)); animation: slide-in 0.5s var(--ease) both; }
@@ -633,3 +643,23 @@ textarea.portal__input { resize: vertical; min-height: calc(120 * var(--u)); }
 
 /* The site's address as its name: as written, not in capitals, so it reads as an address. */
 .brand__name--address { letter-spacing: 0.01em; text-transform: none; white-space: nowrap; }
+
+/* ---- The badge window on a developer's page ---------------------------------------------- */
+.badge { width: min(calc(1000 * var(--u)), calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0; border: 1px solid rgba(244, 239, 230, 0.16); border-radius: calc(28 * var(--u)); background: #10112b; color: var(--ink); overflow: auto; }
+.badge::backdrop { background: rgba(5, 6, 16, 0.74); }
+.badge__box { position: relative; padding: calc(40 * var(--u)) calc(44 * var(--u)) calc(44 * var(--u)); }
+.badge__close { position: absolute; top: calc(22 * var(--u)); right: calc(22 * var(--u)); display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(244, 239, 230, 0.22); border-radius: 50%; background: none; color: var(--ink); font: 400 24px/1 var(--body); cursor: pointer; }
+.badge__close:hover, .badge__close:focus-visible { background: rgba(244, 239, 230, 0.1); }
+.badge__title { margin: calc(8 * var(--u)) 0 calc(26 * var(--u)); font: 500 calc(44 * var(--u))/1.15 var(--display); }
+.badge__pick { display: flex; flex-wrap: wrap; align-items: flex-end; gap: calc(20 * var(--u)); }
+.badge__field { flex: 1 1 260px; min-width: 0; }
+.badge__themes { display: flex; gap: 8px; }
+.badge__theme { min-height: 46px; padding: 0 22px; border: 1.5px solid rgba(244, 239, 230, 0.26); border-radius: 999px; background: none; color: var(--ink); font: 600 16px/1 var(--body); cursor: pointer; }
+.badge__theme.is-current { border-color: var(--ink); background: var(--ink); color: #14121c; }
+.badge__preview { display: grid; place-items: center; margin: calc(26 * var(--u)) 0; padding: calc(44 * var(--u)) calc(20 * var(--u)); border-radius: calc(22 * var(--u)); background: #fff; }
+.badge__preview.is-light { background: #0e0f24; border: 1px solid rgba(244, 239, 230, 0.14); }
+/* Shown at 1.5x so the words have more pixels to be drawn with; the snippets are for the real 56 px height. */
+.badge__preview img { display: block; max-width: 100%; width: auto; height: 84px; }
+.badge__code { display: flex; align-items: stretch; gap: 12px; margin: 0 0 calc(18 * var(--u)); }
+.badge__code code { flex: 1; min-width: 0; padding: 14px 16px; border: 1px solid rgba(244, 239, 230, 0.14); border-radius: 14px; background: rgba(9, 9, 22, 0.6); font: 400 14px/1.45 var(--mono); white-space: nowrap; overflow-x: auto; }
+.badge__code .button { flex: none; min-width: 96px; padding: 0 22px; }

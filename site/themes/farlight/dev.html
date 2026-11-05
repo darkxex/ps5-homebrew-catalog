@@ -8,6 +8,28 @@
     $downloads_chip
     <li><a href="$owner_url" rel="nofollow" data-i18n="dev.profile">GitHub profile</a></li>
   </ul>
+  <dialog class="badge" data-badge data-badge-path="$badge_path" data-badge-site="$badge_site" aria-labelledby="badge-title">
+    <div class="badge__box">
+      <button type="button" class="badge__close" data-badge-close aria-label="Close" data-i18n-attr="aria-label:badge.close">&times;</button>
+      <p class="kicker" data-i18n="badge.kicker">Badge</p>
+      <h2 class="badge__title" id="badge-title" data-i18n="badge.title">Get it on ProsperoStore</h2>
+      <div class="badge__pick">
+        <label class="badge__field"><span class="portal__label" data-i18n="badge.for">For</span>
+          <select class="portal__input" data-badge-app>$badge_options</select></label>
+        <div class="badge__themes" role="group">
+          <button type="button" class="badge__theme is-current" data-badge-theme="dark" aria-pressed="true" data-i18n="badge.dark">Dark</button>
+          <button type="button" class="badge__theme" data-badge-theme="light" aria-pressed="false" data-i18n="badge.light">Light</button>
+        </div>
+      </div>
+      <div class="badge__preview" data-badge-preview><img data-badge-img src="${badge_path}badge-dark.png" alt="Get it on ProsperoStore" width="229" height="56"></div>
+      <p class="portal__label" data-i18n="badge.md">For your README (Markdown)</p>
+      <div class="badge__code"><code data-badge-code="md" tabindex="0"></code><button type="button" class="button button--line" data-badge-copy="md" data-i18n="copy">Copy</button></div>
+      <p class="portal__label" data-i18n="badge.html">HTML</p>
+      <div class="badge__code"><code data-badge-code="html" tabindex="0"></code><button type="button" class="button button--line" data-badge-copy="html" data-i18n="copy">Copy</button></div>
+      <p class="portal__label" data-i18n="badge.bb">For forums (BBCode)</p>
+      <div class="badge__code"><code data-badge-code="bb" tabindex="0"></code><button type="button" class="button button--line" data-badge-copy="bb" data-i18n="copy">Copy</button></div>
+    </div>
+  </dialog>
   <ul class="dev-apps">
 $apps
   </ul>

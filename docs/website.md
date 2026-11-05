@@ -14,7 +14,8 @@ dist/
 ├── index.html                  the catalog: Discover, and a section each for apps, games, tools and coming soon
 ├── tv/                         TV mode: the catalog as a 10-foot interface
 ├── app/<ID>/                   one page per app (<ID> is the title ID, or <TITLEID>-<owner> when shared): download, install steps, sha256
-├── dev/<owner>/                one page per developer: their apps, downloads, likes, comments and an Edit listing button
+├── dev/<owner>/                one page per developer: their apps, downloads, likes, comments, an Edit listing button and the badge window
+├── press/                      the "Get it on ProsperoStore" badges (PNG, dark and light) at fixed addresses
 ├── submit/                     the submit page: from a GitHub repository to a listing file and a pull request
 ├── api/v1/                     the store API: per-app files, index, versions, PNG icons, signed manifest
 ├── catalog/v1.json             the older single-file feed
@@ -45,6 +46,10 @@ dist/
   hue in the stylesheet as that app's accent. This is the picture ProsperoStore
   makes on the console, by the same rules. A grey icon gets the theme's violet.
   It needs Pillow; without it every app gets the theme's own picture.
+- **An app's own picture on the stage.** When the app ships a `pic0.dds` (or, failing that, a `pic1.dds`)
+  in the same folder as its icon (`.../sce_sys/`, in the repository or in the release ZIP), the build converts
+  it to a WebP (quality 78) of at most 1920 x 1080 and the stage shows it behind the app instead of the soft field made from
+  the icon. It is looked for on every build, so it follows the release the record names. It needs Pillow.
 - **Languages.** A flag at the top right (a button in TV mode's rail) changes the
   page between English, Spanish, French, Portuguese, Japanese, German, Dutch, Turkish and
   Simplified Chinese. Only the
@@ -119,6 +124,15 @@ dist/
   Each lists the owner's apps with version, update date, downloads, likes and comments (the last two read like
   the app page's) and an **Edit listing** button that opens `apps/<ID>.json` in GitHub's editor. An app's
   developer name links to its page. Reservations have no owner, so no page.
+  Each app's **Badges** button opens a window that makes the "Get it on ProsperoStore" badge for that app (its
+  selector can switch to another of the owner's apps): pick a dark or light badge, and copy the snippet for a
+  README (Markdown), a web page (HTML) or a forum (BBCode). Each snippet links to the app's page. The badges are
+  PNG files only: `site/shared/press/badge-{dark,light}.png` (916 x 224, shown at a height of 56 px by the README
+  and HTML snippets, so they stay sharp on dense screens and when enlarged) and `badge-{dark,light}-forum.png`
+  (458 x 112, for BBCode, since a forum shows an image at its own size). They are published unchanged under
+  `/press/`: fixed addresses, because developers paste them into pages the store does not control. The PNGs are
+  renderings of the drawings in `site/shared/press-source/` (not published), whose words are outlines of the
+  theme's faces (Inter for "GET IT ON", Montserrat for the name, both under the SIL Open Font License).
 - **The submit page** (`/submit/`) turns a GitHub repository into a listing file and a pull request, in the
   visitor's browser. It asks GitHub's API for the repository, its recent releases and the files of the release's tag, and
   fetches `sce_sys/param.json` and the icon from raw.githubusercontent.com: the facts `python3 -m catalog draft` finds.
