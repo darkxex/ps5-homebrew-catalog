@@ -329,7 +329,7 @@ class SiteBuildTests(unittest.TestCase):
         # The badge window: one option per app of the developer, each with the app's absolute page, and the badges
         # themselves at fixed addresses (developers link to them from their READMEs).
         for app in ("PPSA01234", "PPSA04321"):
-            self.assertIn(f'data-badge-open="{app}"', dev)       # each app's own Badges button
+            self.assertIn(f'data-badge-open="{app}"', dev)       # each app's own Badge button
             self.assertIn(f'<option value="{app}" data-page="https://catalog.example/app/{app}/">', dev)
         self.assertNotIn('data-page="https://catalog.example/app/PPSA05555/"', dev)
         self.assertIn('data-badge-site="https://catalog.example/press/"', dev)
