@@ -245,6 +245,9 @@ def process_icon(data: bytes) -> tuple[bytes, str]:
 
 BACKDROP_MAX_AGE = 60 * 60 * 24 * 7   # seconds a cached backdrop is used before it is fetched again
 BACKDROP_SIZE = (1920, 1080)      # 1080p at most
+# Part of what the cached backdrop is keyed by: change it with the way the picture is converted, so a
+# cache that holds pictures made the old way is not used (and is pruned).
+BACKDROP_CACHE_KEY = "#backdrop-webp94"
 
 
 def process_backdrop(data: bytes) -> bytes:
@@ -262,7 +265,7 @@ def process_backdrop(data: bytes) -> bytes:
             image = image.convert("RGB")
             image.thumbnail(BACKDROP_SIZE, Image.Resampling.LANCZOS)
             output = io.BytesIO()
-            image.save(output, "WEBP", quality=78, method=6)
+            image.save(output, "WEBP", quality=94, method=6)
     except (OSError, NotImplementedError, Image.DecompressionBombError) as error:
         raise ValueError(f"unreadable pic0.dds: {error}") from error
     return output.getvalue()
@@ -274,7 +277,7 @@ def _backdrop(record: Record, cache: Path | None) -> bytes | None:
     The converted picture is kept in the cache (an empty file means "no picture"), for as long as
     BACKDROP_MAX_AGE, so a build does not fetch an 8 MB original for every app.
     """
-    entry = cache / (hashlib.sha256((record.icon_source + "#pic0").encode()).hexdigest() + ".bg") if cache else None
+    entry = cache / (hashlib.sha256((record.icon_source + BACKDROP_CACHE_KEY).encode()).hexdigest() + ".bg") if cache else None
     if entry and entry.is_file():
         kept = entry.read_bytes()
         # A picture is big, and its URL names a release tag: keep it for a week. A "no picture" is
@@ -741,7 +744,7 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
     if icon_cache and icon_cache.is_dir() and fetch_icons:
         wanted = {hashlib.sha256(r.icon_source.encode()).hexdigest() + ".img"
                   for r in records if r.icon_source}
-        wanted |= {hashlib.sha256((r.icon_source + "#pic0").encode()).hexdigest() + ".bg"
+        wanted |= {hashlib.sha256((r.icon_source + BACKDROP_CACHE_KEY).encode()).hexdigest() + ".bg"
                    for r in records if r.icon_source}
         for entry in (*icon_cache.glob("*.img"), *icon_cache.glob("*.bg")):
             if entry.name not in wanted:

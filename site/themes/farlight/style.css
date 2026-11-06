@@ -248,8 +248,8 @@ code { font: 0.9em var(--mono); }
 .stage__art { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); bottom: calc(-330 * var(--u)); z-index: -1; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 58%, transparent); mask-image: linear-gradient(180deg, #000 58%, transparent); }
 .stage__art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.12); filter: blur(calc(26 * var(--u))); transition: opacity 0.9s ease; animation: breathe 30s ease-in-out infinite alternate; }
 .stage__art img.is-shown { opacity: 1; }
-/* An app's own picture (pic0.dds) is blurred a little, less than the ambient field; the scale hides the soft edges. */
-.stage__art img.is-picture { transform: scale(1.03); filter: blur(calc(5 * var(--u))); animation: none; }
+/* An app's own picture (pic0.dds) is blurred a little, less than the ambient field. */
+.stage__art img.is-picture { transform: none; filter: blur(calc(13 * var(--u))); animation: none; }
 /* While the stage shows an app's picture, the same long, eased fade into the page. */
 .stage__art:has(img.is-picture.is-shown) { -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 @keyframes breathe { from { transform: scale(1.12) translate3d(-1%, -0.6%, 0); } to { transform: scale(1.19) translate3d(1.2%, 0.8%, 0); } }
@@ -366,7 +366,7 @@ html:not(.js) .sort { display: none; }
 .page { position: relative; }
 .page__art { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); height: calc(1180 * var(--u)); z-index: -1; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
 .page__art img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); filter: blur(calc(26 * var(--u))); animation: breathe 30s ease-in-out infinite alternate; }
-.page__art.is-picture img { transform: scale(1.03); filter: blur(calc(5 * var(--u))); animation: none; }
+.page__art.is-picture img { transform: none; filter: blur(calc(13 * var(--u))); animation: none; }
 /* A sharp picture needs a longer, eased fade so its lower edge does not show against the page. */
 .page__art.is-picture { -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 /* The shade fades out with the picture, so the sky behind the page (its blue glow, bottom left) shows through

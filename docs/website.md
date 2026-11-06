@@ -48,8 +48,8 @@ dist/
   It needs Pillow; without it every app gets the theme's own picture.
 - **An app's own picture on the stage.** When the app ships a `pic0.dds` (or, failing that, a `pic1.dds`)
   in the same folder as its icon (`.../sce_sys/`, in the repository or in the release ZIP), the build converts
-  it to a WebP (quality 78) of at most 1920 x 1080 and the stage shows it behind the app instead of the soft field made from
-  the icon. It is looked for on every build, so it follows the release the record names. It needs Pillow.
+  it to a WebP (quality 94) of at most 1920 x 1080 and the stage shows it behind the app instead of the soft
+  field made from the icon. It is looked for on every build, so it follows the release the record names. It needs Pillow.
 - **Languages.** A flag at the top right (a button in TV mode's rail) changes the
   page between English, Spanish, French, Portuguese, Japanese, German, Dutch, Turkish and
   Simplified Chinese. Only the
