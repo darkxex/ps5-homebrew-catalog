@@ -29,7 +29,7 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--deep); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: rgba(244, 239, 230, 0.25) transparent; }
+html { overflow-x: clip; background: var(--deep); scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scrollbar-color: rgba(244, 239, 230, 0.25) transparent; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -587,7 +587,9 @@ textarea.portal__input { resize: vertical; min-height: calc(120 * var(--u)); }
   .dev-app { grid-template-columns: 56px minmax(0, 1fr); }
   .dev-app__stats, .dev-app__actions { grid-column: 1 / -1; }
   .dev-app__stats div { text-align: left; }
-  .dev-app__actions { grid-auto-flow: column; justify-content: start; }
+  .dev-app__stats, .dev-app__actions { min-width: 0; }
+  .dev-app__stats { flex-wrap: wrap; }
+  .dev-app__actions { display: flex; flex-wrap: wrap; justify-content: flex-start; }
   .find { width: 170px; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
   .stage__inner { min-height: 0; padding-top: 30px; }
