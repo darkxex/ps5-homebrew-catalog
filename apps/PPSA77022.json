@@ -1,9 +1,9 @@
 {
   "titleid": "PPSA77022",
-  "name": "Parasite Eve",
+  "name": "Parasitic Event Revisited",
   "kind": "game",
   "category": "console-ports",
-  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK. Native PS5 v1.1.5 Build15; own discs required. Plex UI, directional lighting, normal cards; no Save States or disc installer.",
+  "description": "SETUP: Own discs in app/parasite-eve-data/discs/disc1.bin + disc2.bin; read readme.txt. Back up app/user. https://discord.gg/Yg88tHYXK. Based on khasinski/parasite-eve-pc; thanks contributors.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
   "version": "1.1.6",
