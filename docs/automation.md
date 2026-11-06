@@ -100,7 +100,8 @@ squash-merged by the catalog's GitHub App when **all** of this holds:
 - **a release bump** (the file exists): only `version`, `artifact_url`, `sha256`, `icon_url`,
   `description`, `license` and `internalOnly` (added or removed) differ from the listed record, the file is a new one, it is a release file of the same
   `source_repo`, a changed icon stays in that repository, and the release is the **newest** one
-  of that repository;
+  of that repository (the one published last, by its publication date: GitHub's own list is not always in
+  that order, for instance when a developer moved or recreated tags);
 - **a reservation released** (the file exists and was a reservation): the author is the account
   whose commit added the reservation, owns the new `source_repo` (or is a public member of its
   organization), the release is the **newest** of that repository, the file is a release file of
