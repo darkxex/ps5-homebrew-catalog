@@ -1,14 +1,14 @@
 {
   "titleid": "PPSA77022",
-  "name": "Parasite Eve",
+  "name": "Parasitic Event Revisited",
   "kind": "game",
   "category": "console-ports",
-  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK. Native PS5 v1.1.5 Build15; own discs required. Plex UI, directional lighting, normal cards; no Save States or disc installer.",
+  "description": "SETUP: Put owned North American discs together inside PPSA77022/parasite-eve-data/discs/disc1.bin and disc2.bin. Read root readme.txt; templates are empty. Back up app/user cards/settings before updates; older PS5GameTest/PEVG cards need manual migration, USB/saves is staging only. v1.1.6 Build20 adds app-data priority/setup guide, CRT/scanlines, atlas optimization and font-spacing updates. No discs/private HD pack; firmware10.60 startup report unresolved. Community: https://discord.gg/Yg88tHYXK. Based heavily on khasinski/parasite-eve-pc; thanks to original developers, PsyZ and contributors.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ps5",
-  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v1.1.5/Parasite-Eve-v1.1.5-Build15.zip",
-  "sha256": "5a45cc21982b9056c35a9c806a71f2189641c0352179afc582495e7d0b52c61d",
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v1.1.6/Parasitic-Event-Revisited-v1.1.6-Build20.zip",
+  "sha256": "e4ebb3c9e4e6844d1598f0b4a14792b63821232218e0c46394039f4c0e878375",
   "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/parasite-eve-ps5/1405c55d7d26c70bdff604f5fdbfef3dd36bc7b3/docs/images/parasite-eve-store-icon.png"
 }
