@@ -124,7 +124,7 @@ dist/
   Each lists the owner's apps with version, update date, downloads, likes and comments (the last two read like
   the app page's) and an **Edit listing** button that opens `apps/<ID>.json` in GitHub's editor. An app's
   developer name links to its page. Reservations have no owner, so no page.
-  Each app's **Badges** button opens a window that makes the "Get it on ProsperoStore" badge for that app (its
+  Each app's **Badge** button opens a window that makes the "Get it on ProsperoStore" badge for that app (its
   selector can switch to another of the owner's apps): pick a dark or light badge, and copy the snippet for a
   README (Markdown), a web page (HTML) or a forum (BBCode). Each snippet links to the app's page. The badges are
   PNG files only: `site/shared/press/badge-{dark,light}.png` (916 x 224, shown at a height of 56 px by the README

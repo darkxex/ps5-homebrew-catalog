@@ -776,7 +776,7 @@
       codes.bb = "[url=" + link + "][img]" + forum + "[/img][/url]";
       Object.keys(codes).forEach(function (key) { $('[data-badge-code="' + key + '"]', box).textContent = codes[key]; });
     }
-    // Each app's Badges button opens the window with that app chosen.
+    // Each app's Badge button opens the window with that app chosen.
     opens.forEach(function (button) {
       button.addEventListener("click", function () {
         select.value = button.getAttribute("data-badge-open");
