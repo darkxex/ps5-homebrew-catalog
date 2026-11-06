@@ -6,9 +6,9 @@
   "description": "Converts PS5 and PS4 packages and game dumps between FPKG, exFAT, FFPKG, FFPFS and FFPFSC images, on the console or with a PC, also on SMB, NFS, WebDAV and FTP servers.",
   "license": "GPL-3.0",
   "author": "Fatih Doğan",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "source_repo": "https://github.com/fthdgn-gh/Alembic",
-  "artifact_url": "https://github.com/fthdgn-gh/Alembic/releases/download/v0.5.1/alembic-app-v0.5.1.zip",
-  "sha256": "b408bf8083e80b87f76180a87de0b6785fc97f003afac607cf7dcda726e11c25",
-  "icon_url": "https://raw.githubusercontent.com/fthdgn-gh/Alembic/v0.5.1/app/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/fthdgn-gh/Alembic/releases/download/v0.5.2/alembic-app-v0.5.2.zip",
+  "sha256": "43d6a35d55f7274c1983c304258ee70720b92c3c1fd12d2785c8ccfc378c2d71",
+  "icon_url": "https://raw.githubusercontent.com/fthdgn-gh/Alembic/v0.5.2/app/sce_sys/icon0.png"
 }
