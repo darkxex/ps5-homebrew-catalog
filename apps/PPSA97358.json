@@ -4,7 +4,7 @@
   "kind": "app",
   "category": "emulators",
   "description": "Original Xbox emulator for PS5, based on xemu.",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0",
   "author": "AZiZ",
   "version": "Alpha-3",
   "source_repo": "https://github.com/ZiZc3/XPSemu",
