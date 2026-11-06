@@ -3,7 +3,7 @@
   "name": "Parasitic Event Revisited",
   "kind": "game",
   "category": "console-ports",
-  "description": "SETUP: Put owned North American discs together inside PPSA77022/parasite-eve-data/discs/disc1.bin and disc2.bin. Read root readme.txt; templates are empty. Back up app/user cards/settings before updates; older PS5GameTest/PEVG cards need manual migration, USB/saves is staging only. v1.1.6 Build20 adds app-data priority/setup guide, CRT/scanlines, atlas optimization and font-spacing updates. No discs/private HD pack; firmware10.60 startup report unresolved. Community: https://discord.gg/Yg88tHYXK. Based heavily on khasinski/parasite-eve-pc; thanks to original developers, PsyZ and contributors.",
+  "description": "SETUP: Own discs in app/parasite-eve-data/discs/disc1.bin + disc2.bin; read readme.txt. Back up app/user. https://discord.gg/Yg88tHYXK. Based on khasinski/parasite-eve-pc; thanks contributors.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
   "version": "1.1.6",
