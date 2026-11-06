@@ -6,9 +6,9 @@
   "description": "Sunshine-compatible game-stream host: play your PS5 on any Moonlight client in your LAN, with picture, game audio, controller, keyboard and mouse input, and a friend can join as a second player.",
   "license": "GPL-3.0",
   "author": "Darkatek7",
-  "version": "0.3.2",
+  "version": "0.3.2-webui-3",
   "source_repo": "https://github.com/Darkatek7/ProsperoSunshine",
-  "artifact_url": "https://github.com/Darkatek7/ProsperoSunshine/releases/download/v0.3.2/PPSA47989.zip",
-  "sha256": "a694ee8589da66c70fed94326223b7b901906abb4586f394238ca2e0f8681da2",
-  "icon_url": "https://raw.githubusercontent.com/Darkatek7/ProsperoSunshine/v0.3.2/app/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Darkatek7/ProsperoSunshine/releases/download/v0.3.2-webui-3/PPSA47989.zip",
+  "sha256": "a1d4053b09824bb8a716e49d4e957ef466cfafd24778e02d706acfff8540309a",
+  "icon_url": "https://raw.githubusercontent.com/Darkatek7/ProsperoSunshine/v0.3.2-webui-3/app/sce_sys/icon0.png"
 }
