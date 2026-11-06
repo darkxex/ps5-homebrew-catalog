@@ -366,7 +366,10 @@ html:not(.js) .sort { display: none; }
 .page { position: relative; }
 .page__art { position: absolute; left: 0; right: 0; top: calc(-260 * var(--u)); height: calc(1180 * var(--u)); z-index: -1; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent); mask-image: linear-gradient(180deg, #000 55%, transparent); }
 .page__art img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.14); filter: blur(calc(26 * var(--u))); animation: breathe 30s ease-in-out infinite alternate; }
-.page__art.is-picture img { transform: none; filter: blur(calc(13 * var(--u))); animation: none; }
+.page__art.is-picture img { transform: none; filter: blur(0.68vw); animation: none; } /* scales with the picture, so it blurs the same share of it at any width */
+/* The app's own picture keeps its 16:9 shape and is always shown whole, centred on the icon (the layer starts 260 units above the page; the icon's middle is 180 units below its top). The fade is on the picture itself, at both its edges. */
+.page__art.is-picture { -webkit-mask-image: none; mask-image: none; }
+.page__art.is-picture img { position: absolute; left: 0; top: calc(440 * var(--u)); transform: translateY(-50%); height: auto; aspect-ratio: 16 / 9; -webkit-mask-image: linear-gradient(180deg, transparent, #000 12%, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, transparent, #000 12%, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 /* A sharp picture needs a longer, eased fade so its lower edge does not show against the page. */
 .page__art.is-picture { -webkit-mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); mask-image: linear-gradient(180deg, #000 28%, rgba(0, 0, 0, 0.78) 44%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.25) 75%, rgba(0, 0, 0, 0.08) 89%, transparent); }
 /* The shade fades out with the picture, so the sky behind the page (its blue glow, bottom left) shows through

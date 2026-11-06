@@ -686,9 +686,26 @@
 
   /* ---- An app's page ---- */
 
+  // The app's own picture is centred on the icon: the icon's height is not fixed (the "All apps" link, the notice
+  // above and the title can wrap), so its middle is measured and the picture placed there.
+  function centrePicture() {
+    var art = $(".page__art.is-picture"), cover = $(".page__cover");
+    var picture = art && $("img", art);
+    if (!picture || !cover) return;
+    var place = function () {
+      var middle = cover.getBoundingClientRect().top + cover.offsetHeight / 2 - art.getBoundingClientRect().top;
+      picture.style.top = Math.round(middle) + "px";
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("load", place);
+    if (window.ResizeObserver) new ResizeObserver(place).observe(document.body);
+  }
+
   function page() {
     var article = $("[data-accent]");
     if (article) setTint(article.getAttribute("data-accent"));
+    centrePicture();
     var search = $("[data-search]");
     var base = document.body.getAttribute("data-base") || "/";
     if (search) search.addEventListener("keydown", function (event) {
