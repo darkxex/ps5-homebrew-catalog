@@ -7,8 +7,8 @@
   "license": "AGPL-3.0",
   "author": "thelinkin3000",
   "version": "build-135",
-  "source_repo": "https://github.com/thelinkin3000/halo-ce-universal",
-  "artifact_url": "https://github.com/thelinkin3000/halo-ce-universal/releases/download/build-135/halo-ps5-release.zip",
+  "source_repo": "https://github.com/thelinkin3000/SlipstreamCE",
+  "artifact_url": "https://github.com/thelinkin3000/SlipstreamCE/releases/download/build-135/halo-ps5-release.zip",
   "sha256": "4890a9ddeabcc82b30b35f638d5f3dded18fb137356feced5e50aa7feca8b6bb",
-  "icon_url": "https://raw.githubusercontent.com/thelinkin3000/halo-ce-universal/build-135/port/ps5/sce_sys/icon0.png"
+  "icon_url": "https://raw.githubusercontent.com/thelinkin3000/SlipstreamCE/build-135/port/ps5/sce_sys/icon0.png"
 }
