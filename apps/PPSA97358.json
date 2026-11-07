@@ -6,9 +6,9 @@
   "description": "Original Xbox emulator for PS5, based on xemu.",
   "license": "GPL-3.0",
   "author": "AZiZ",
-  "version": "Alpha-3",
+  "version": "v3.1",
   "source_repo": "https://github.com/ZiZc3/XPSemu",
-  "artifact_url": "https://github.com/ZiZc3/XPSemu/releases/download/Alpha-3/PPSA97358.zip",
-  "sha256": "e6f676fb2b2cd0ec1d2fa1abcedb8f42e65e1e662d99fd385565b8410631c4ac",
-  "icon_url": "https://raw.githubusercontent.com/ZiZc3/XPSemu/Alpha-3/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/ZiZc3/XPSemu/releases/download/v3.1/PPSA97358.zip",
+  "sha256": "0fa4f1556b257317d5b38a8f5b9803b58e05b5ba0e63fb26492f7bea369bf558",
+  "icon_url": "https://raw.githubusercontent.com/ZiZc3/XPSemu/v3.1/ps5/sce_sys/icon0.png"
 }
