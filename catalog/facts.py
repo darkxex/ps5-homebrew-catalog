@@ -90,8 +90,9 @@ def find_content_version(record: Record, github: GitHub, fetch=None) -> tuple[st
             found = None
         if found:
             return found, url.removeprefix(raw).split("/", 1)[-1]
-    paths = sorted((p for p in github.tree(record.owner, record.repo, record.tag) if p.endswith("sce_sys/param.json")),
-                   key=lambda p: (p.count("/"), p))
+    tree = github.tree(record.owner, record.repo, record.tag)
+    paths = sorted((p for p in tree if p.endswith("sce_sys/param.json")),
+                   key=lambda p: (p.removesuffix("param.json") + "icon0.png" not in set(tree), p.count("/"), p))
     for path in paths[:MAX_PARAM_FILES]:
         found = _content_version(github.file_text(record.owner, record.repo, path, record.tag) or "", data["titleid"])
         if found:

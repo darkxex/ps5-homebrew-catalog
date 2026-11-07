@@ -49,9 +49,10 @@ def parse_repo(value: str) -> tuple[str, str]:
 
 
 def find_param_json(paths: list[str]) -> list[str]:
-    """param.json files of native titles, shortest path (repository root) first."""
+    """param.json files of native titles: those with an icon0.png beside them first, then nearest the root."""
+    present = set(paths)
     found = [p for p in paths if p.endswith("sce_sys/param.json")]
-    return sorted(found, key=lambda p: (p.count("/"), p))
+    return sorted(found, key=lambda p: (p.removesuffix("param.json") + "icon0.png" not in present, p.count("/"), p))
 
 
 def draft_record(repo_value: str, github: GitHub, apps_dir: Path, tag: str | None = None,

@@ -171,12 +171,15 @@
     });
   }
 
-  /* param.json files of native titles, the repository root's first. */
+  /* param.json files of native titles: those with an icon0.png beside them first (the app's own sce_sys, not a
+     sample's or a stale copy), then the nearest the repository root. */
   function paramFiles(tree) {
-    return (tree.tree || []).filter(function (item) {
-      return item.type === "blob" && /(^|\/)sce_sys\/param\.json$/.test(item.path);
-    }).map(function (item) { return item.path; }).sort(function (a, b) {
-      return (a.split("/").length - b.split("/").length) || (a < b ? -1 : a > b ? 1 : 0);
+    var blobs = (tree.tree || []).filter(function (item) { return item.type === "blob"; }).map(function (item) { return item.path; });
+    var icons = {};
+    blobs.forEach(function (path) { icons[path] = true; });
+    return blobs.filter(function (path) { return /(^|\/)sce_sys\/param\.json$/.test(path); }).sort(function (a, b) {
+      var withIcon = function (path) { return icons[path.replace(/param\.json$/, "icon0.png")] ? 0 : 1; };
+      return (withIcon(a) - withIcon(b)) || (a.split("/").length - b.split("/").length) || (a < b ? -1 : a > b ? 1 : 0);
     });
   }
 
@@ -284,16 +287,13 @@
     state.assets = (release.assets || []).filter(function (a) { return ARTIFACTS.test(a.name); });
     state.zipAsset = null;
     var at = RAW + "/" + state.fullName + "/" + encodeURIComponent(state.tag) + "/";
-    // The usual place first (no API request); the repository's tree only when it isn't there.
-    return raw(at + "sce_sys/param.json").then(function (text) {
-      if (text) { state.paramPath = "sce_sys/param.json"; return text; }
-      return get("/repos/" + state.fullName + "/git/trees/" + encodeURIComponent(state.tag) + "?recursive=1").then(function (tree) {
-        var params = paramFiles(tree || {});
-        if (!params.length) throw new NeedZip();
-        if (params.length > 1) state.warnings.push(problem("submit.warn.params", { path: params[0] }));
-        state.paramPath = params[0];
-        return raw(at + segments(params[0]));
-      });
+    // The tree is always read: the root's sce_sys/ may be a stale copy while the app's own (with its icon) sits in a folder such as kit/.
+    return get("/repos/" + state.fullName + "/git/trees/" + encodeURIComponent(state.tag) + "?recursive=1").then(function (tree) {
+      var params = paramFiles(tree || {});
+      if (!params.length) throw new NeedZip();
+      if (params.length > 1) state.warnings.push(problem("submit.warn.params", { path: params[0] }));
+      state.paramPath = params[0];
+      return raw(at + segments(params[0]));
     }).then(function (text) {
       return completeRelease(state, text, null);
     });
