@@ -10,7 +10,7 @@ import catalog.__main__ as cli
 from catalog.policy import check_publisher
 from catalog.records import Record
 from catalog.report import Report
-from catalog.updates import find_gone, find_update, is_release_bump, new_version, pick_asset
+from catalog.updates import find_gone, find_update, is_older, is_release_bump, new_version, pick_asset
 
 from helpers import record, reservation, write_record
 
@@ -26,8 +26,11 @@ def asset(name, digest="sha256:" + "c" * 64):
     return {"name": name, "digest": digest, "size": 1000}
 
 
-def release(tag, assets, prerelease=False, draft=False):
-    return {"tag_name": tag, "assets": assets, "prerelease": prerelease, "draft": draft}
+def release(tag, assets, prerelease=False, draft=False, published=None):
+    made = {"tag_name": tag, "assets": assets, "prerelease": prerelease, "draft": draft}
+    if published:
+        made["published_at"] = published
+    return made
 
 
 class FakeGitHub:
@@ -73,10 +76,36 @@ class VersionTests(unittest.TestCase):
         self.assertEqual(new_version("vk-285-112", "vk-285-112", "vk-290-001"), "vk-290-001")
 
 
+class IsOlderTests(unittest.TestCase):
+    def test_compares_versions_not_text(self):
+        self.assertTrue(is_older("v1.9.0", "v1.10.0"))
+        self.assertFalse(is_older("v1.10.0", "v1.9.0"))
+        self.assertTrue(is_older("build-76", "build-135"))
+        self.assertTrue(is_older("ps5-v1.0.0", "ps5-v1.0.6"))
+
+    def test_prereleases_and_unlike_tags_are_never_older(self):
+        self.assertFalse(is_older("1.0.0", "1.0.0-beta.5"))
+        self.assertFalse(is_older("v8.1.0-alpha-8", "v8.0.0-alpha-8"))
+        self.assertFalse(is_older("build-5", "v1.0.0"))
+        self.assertFalse(is_older("nightly", "v1.0.0"))
+
+
 class FindUpdateTests(unittest.TestCase):
     def find(self, releases, data=OLD, icon_exists=True):
         return find_update(Record(Path("PPSA01234.json"), data), FakeGitHub(releases),
                            icon_exists=lambda url: icon_exists)
+
+    def test_the_newest_release_is_the_one_published_last_not_the_first_GitHub_lists(self):
+        # A repository whose tags were moved can have the listed release first even though a later
+        # one was published after it (Nuvio Max'd: v1.0.0.8 first, v1.0.0.11 second).
+        update, reason = self.find([
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)],
+                    published="2026-11-05T01:20:10Z"),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z"),
+            release("v0.5.5", [asset("example-0.5.5-PPSA01234.zip")], published="2026-11-05T02:46:04Z"),
+        ])
+        self.assertEqual(reason, "")
+        self.assertEqual(update.data["version"], "0.6.0")
 
     def test_proposes_the_newest_release_including_prereleases(self):
         update, reason = self.find([
@@ -94,8 +123,55 @@ class FindUpdateTests(unittest.TestCase):
 
     def test_skips_drafts_and_up_to_date(self):
         update, reason = self.find([release("v0.9.0", [asset("x.zip")], draft=True),
-                                    release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")])])
+                                    release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)])])
         self.assertEqual((update, reason), (None, "up to date"))
+
+    def test_same_tag_with_a_replaced_file_is_reported(self):
+        update, reason = self.find([release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")])])
+        self.assertIsNone(update)
+        self.assertIn("file was replaced", reason)
+
+    def test_an_older_newest_release_is_not_proposed(self):
+        update, reason = self.find([release("v0.4.9", [asset("example-0.4.9-PPSA01234.zip")])])
+        self.assertIsNone(update)
+        self.assertIn("older than the listed", reason)
+
+    def test_a_newer_data_release_does_not_hide_the_apps_release(self):
+        update, reason = self.find([
+            release("database-2026.11.03-r5", [asset("database.json")]),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)]),
+        ])
+        self.assertEqual(reason, "")
+        self.assertEqual(update.tag, "v0.6.0")
+
+    def test_a_desktop_only_release_falls_back_to_the_previous_one(self):
+        update, reason = self.find([
+            release("v0.7.0", [asset("example-Windows-0.7.0.zip")]),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")]),
+        ])
+        self.assertEqual(update.tag, "v0.6.0")
+
+    def test_no_usable_release_keeps_the_newest_ones_reason(self):
+        update, reason = self.find([
+            release("v0.7.0", [asset("example-Windows-0.7.0.zip")]),
+            release("v0.6.0", [asset("notes.txt")]),
+            release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip", digest="sha256:" + "a" * 64)]),
+        ])
+        self.assertIsNone(update)
+        self.assertIn("v0.7.0", reason)
+        self.assertIn("desktop", reason)
+
+    def test_unprefixed_tags_after_a_ps5_prefix_are_still_followed(self):
+        ps5 = dict(OLD, version="1.0.0", artifact_url=OLD["artifact_url"].replace(
+            "v0.5.0/example-0.5.0-PPSA01234.zip", "ps5-v1.0.0/PPSA01234.zip"),
+            icon_url=OLD["icon_url"].replace("v0.5.0", "ps5-v1.0.0"))
+        update, reason = self.find([release("1.5.5", [asset("PPSA01234.zip")]),
+                                    release("ps5-v1.0.0", [asset("PPSA01234.zip", digest="sha256:" + "a" * 64)])],
+                                   data=ps5)
+        self.assertEqual(reason, "")
+        self.assertEqual(update.tag, "1.5.5")
 
     def test_skips_releases_that_are_not_versions(self):
         update, reason = self.find([release("build-cache", [asset("ccache-clang18.tar")], prerelease=True),
@@ -148,6 +224,24 @@ class BumpPolicyTests(unittest.TestCase):
 
     def test_newest_release_bump_is_recognised(self):
         self.assertTrue(is_release_bump(self.old, self.new, self.github))
+
+    def test_a_newer_data_release_does_not_stop_a_bump(self):
+        github = FakeGitHub([release("database-2026.11.03-r5", [asset("database.json")]),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
+        self.assertTrue(is_release_bump(self.old, self.new, github))
+        github = FakeGitHub([release("v0.7.0", [asset("example-0.7.0-PPSA01234.zip")]),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
+        self.assertFalse(is_release_bump(self.old, self.new, github))
+
+    def test_the_newest_release_is_found_by_publication_date_not_by_GitHubs_order(self):
+        # The listed release comes first in GitHub's list, but the bump's release was published later.
+        github = FakeGitHub([release("v0.5.0", [asset("example-0.5.0-PPSA01234.zip")], published="2026-11-05T01:20:10Z"),
+                             release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z")])
+        self.assertTrue(is_release_bump(self.old, self.new, github))
+        # And a release published after the bump's still stops it, wherever GitHub lists it.
+        github = FakeGitHub([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T15:47:12Z"),
+                             release("v0.7.0", [asset("example-0.7.0-PPSA01234.zip")], published="2026-11-06T09:00:00Z")])
+        self.assertFalse(is_release_bump(self.old, self.new, github))
 
     def test_other_changes_are_not_a_bump(self):
         renamed = Record(self.new.path, dict(self.new.data, name="Other Name"))

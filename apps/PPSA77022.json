@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA77022",
+  "name": "Parasitic Event Revisited",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "SETUP: Own discs in app/parasite-eve-data/discs/disc1.bin + disc2.bin; read readme.txt. Back up app/user. https://discord.gg/Yg88tHYXK. Based on khasinski/parasite-eve-pc; thanks contributors.",
+  "license": "Unlicensed",
+  "author": "GUMMIBRI",
+  "version": "1.1.6",
+  "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ps5",
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ps5/releases/download/v1.1.6/Parasitic-Event-Revisited-v1.1.6-Build20.zip",
+  "sha256": "e4ebb3c9e4e6844d1598f0b4a14792b63821232218e0c46394039f4c0e878375",
+  "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/parasite-eve-ps5/1405c55d7d26c70bdff604f5fdbfef3dd36bc7b3/docs/images/parasite-eve-store-icon.png"
+}

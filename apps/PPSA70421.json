@@ -6,9 +6,9 @@
   "description": "An interactive museum of video game history and culture, with illustrated stories, soundtracks, collectible pins, playable experiences and creative workshops.",
   "license": "GPL-3.0",
   "author": "LoZazaMastro",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "source_repo": "https://github.com/LoZazaMastro/Pixel-Museum",
-  "artifact_url": "https://github.com/LoZazaMastro/Pixel-Museum/releases/download/v0.1.5/PPSA70421.zip",
-  "sha256": "532e9f88fc2453034e30c5ecb1a932900122bba69867f381f7bce567621e46da",
-  "icon_url": "https://raw.githubusercontent.com/LoZazaMastro/Pixel-Museum/v0.1.5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/LoZazaMastro/Pixel-Museum/releases/download/v0.1.8/PPSA70421.zip",
+  "sha256": "53e5966f70d2c3173c3c566850695985408c5921f064675817d33158b46f6d19",
+  "icon_url": "https://raw.githubusercontent.com/LoZazaMastro/Pixel-Museum/v0.1.8/sce_sys/icon0.png"
 }

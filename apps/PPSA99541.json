@@ -6,10 +6,9 @@
   "description": "A native PS5 library front end with 52 system categories, saved layouts and clearly labelled emulator launch routes.",
   "license": "GPL-3.0",
   "author": "Iswebro",
-  "version": "v0.1.0-beta.1",
+  "version": "v0.1.1",
   "source_repo": "https://github.com/Iswebro/console-shelf-ps5",
-  "artifact_url": "https://github.com/Iswebro/console-shelf-ps5/releases/download/v0.1.0-beta.1/PPSA99541.zip",
-  "sha256": "4cca4e0c05b58b74733f8bc4392ba5b26bbd05232dde41932be11093a4ab91d6",
-  "icon_url": "https://raw.githubusercontent.com/Iswebro/console-shelf-ps5/v0.1.0-beta.1/assets/branding/isshelf-home-icon.png"
+  "artifact_url": "https://github.com/Iswebro/console-shelf-ps5/releases/download/v0.1.1/PPSA99541.zip",
+  "sha256": "4e3ee2b5932f72c01ffe267a3e333d447a8e49f13be53ce08446b31cd165cc5b",
+  "icon_url": "https://raw.githubusercontent.com/Iswebro/console-shelf-ps5/v0.1.1/assets/branding/isshelf-home-icon.png"
 }
-

@@ -1,0 +1,14 @@
+{
+  "titleid": "BNTL00001",
+  "name": "Bounce Tales",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PS5 port of the Nokia J2ME platformer Bounce Tales: 16:9 widescreen, sharp text, DualSense controls, 60 fps. Requires your own copy of the game (.jar).",
+  "license": "GPL-3.0",
+  "author": "Youss Riaal",
+  "version": "1.0.0",
+  "source_repo": "https://github.com/youss17x/Bounce-Tales-PS5",
+  "artifact_url": "https://github.com/youss17x/Bounce-Tales-PS5/releases/download/v1.0.0/BNTL00001-v1.0.0.zip",
+  "sha256": "c81a89133ae1098ea31ca2023b5b2b6ae5db61121a2a2f154096e80774b29bfd",
+  "icon_url": "https://raw.githubusercontent.com/youss17x/Bounce-Tales-PS5/v1.0.0/sce_sys/icon0.png"
+}

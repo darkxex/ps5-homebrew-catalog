@@ -243,6 +243,55 @@ def process_icon(data: bytes) -> tuple[bytes, str]:
     return output.getvalue(), "webp"
 
 
+BACKDROP_MAX_AGE = 60 * 60 * 24 * 7   # seconds a cached backdrop is used before it is fetched again
+BACKDROP_SIZE = (1920, 1080)      # 1080p at most
+# Part of what the cached backdrop is keyed by: change it with the way the picture is converted, so a
+# cache that holds pictures made the old way is not used (and is pruned).
+BACKDROP_CACHE_KEY = "#backdrop-webp94"
+
+
+def process_backdrop(data: bytes) -> bytes:
+    """An app's pic0.dds (the picture the console shows behind the app) as a WebP the stage can use.
+
+    Needs Pillow, which reads the DDS. Raises ValueError when the file is not a picture it can decode."""
+    try:
+        from PIL import Image
+    except ImportError as error:
+        raise ValueError("Pillow is needed to read pic0.dds") from error
+    try:
+        with Image.open(io.BytesIO(data)) as image:
+            if image.format != "DDS":
+                raise ValueError("not a DDS image")
+            image = image.convert("RGB")
+            image.thumbnail(BACKDROP_SIZE, Image.Resampling.LANCZOS)
+            output = io.BytesIO()
+            image.save(output, "WEBP", quality=94, method=6)
+    except (OSError, NotImplementedError, Image.DecompressionBombError) as error:
+        raise ValueError(f"unreadable pic0.dds: {error}") from error
+    return output.getvalue()
+
+
+def _backdrop(record: Record, cache: Path | None) -> bytes | None:
+    """The app's backdrop as WebP, or None when it has no pic0.dds or pic1.dds.
+
+    The converted picture is kept in the cache (an empty file means "no picture"), for as long as
+    BACKDROP_MAX_AGE, so a build does not fetch an 8 MB original for every app.
+    """
+    entry = cache / (hashlib.sha256((record.icon_source + BACKDROP_CACHE_KEY).encode()).hexdigest() + ".bg") if cache else None
+    if entry and entry.is_file():
+        kept = entry.read_bytes()
+        # A picture is big, and its URL names a release tag: keep it for a week. A "no picture" is
+        # one cheap request to check again, so it is asked again after a day.
+        if time.time() - entry.stat().st_mtime < (BACKDROP_MAX_AGE if kept else ICON_MAX_AGE * 24):
+            return kept or None
+    original = artifacts.fetch_backdrop(record.data)
+    result = process_backdrop(original) if original else None
+    if entry:
+        cache.mkdir(parents=True, exist_ok=True)
+        entry.write_bytes(result or b"")
+    return result
+
+
 def size_label(size: int | None) -> str:
     """"31.8 MB", "548 GB": sizes as people say them, as ProsperoStore words them."""
     if not size:
@@ -632,6 +681,9 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
     placeholder = assets.add("placeholder", "svg", (shared_dir / "placeholder.svg").read_bytes())
     shutil.copyfile(own["favicon.svg"] if own["favicon.svg"].is_file() else shared_dir / "favicon.svg",
                     root / "favicon.svg")
+    # The "Get it on ProsperoStore" badges (the developer page's badge window): developers link to them from
+    # their READMEs, so they live at fixed addresses, not content-hashed ones.
+    shutil.copytree(shared_dir / "press", root / "press")
 
     icons: dict[str, str] = {}
     api_icons: dict[str, dict[int, bytes]] = {}
@@ -657,6 +709,20 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
         icons[record.id] = assets.add(f"icon-{record.id}", extension, content)
         originals[record.id] = original
 
+    # An app's own pic0.dds (or pic1.dds), when it ships one, is the stage's picture instead of the ambient one.
+    backdrops: dict[str, str] = {}
+    if fetch_icons:
+        for record in records:
+            if record.reserved or record.icon_source is None:
+                continue
+            try:
+                content = _backdrop(record, icon_cache)
+            except (artifacts.DownloadError, OSError, ValueError) as error:
+                report.warning(f"apps/{record.path.name}", f"pic0.dds/pic1.dds not used: {error}")
+                continue
+            if content:
+                backdrops[record.id] = assets.add(f"backdrop-{record.id}", "webp", content)
+
     # Each app's ambient picture and main colour, for the themes that show them. The colours
     # go into the stylesheet as one rule per app: the pages carry no inline styles.
     ambients: dict[str, str] = {}
@@ -678,7 +744,9 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
     if icon_cache and icon_cache.is_dir() and fetch_icons:
         wanted = {hashlib.sha256(r.icon_source.encode()).hexdigest() + ".img"
                   for r in records if r.icon_source}
-        for entry in icon_cache.glob("*.img"):
+        wanted |= {hashlib.sha256((r.icon_source + BACKDROP_CACHE_KEY).encode()).hexdigest() + ".bg"
+                   for r in records if r.icon_source}
+        for entry in (*icon_cache.glob("*.img"), *icon_cache.glob("*.bg")):
             if entry.name not in wanted:
                 entry.unlink()
 
@@ -797,6 +865,9 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
             status="soon" if record.reserved else "available",
             format="",
             ambient=e(ambients.get(record.id, "")),
+            backdrop=e(backdrops.get(record.id, "")),
+            page_art=e(backdrops.get(record.id) or ambients.get(record.id, "")),
+            page_art_class=" is-picture" if record.id in backdrops else "",
             accent=e(accents.get(record.id, "")),
             size_label=e(size_label(known[record.id][0].size)),
             author_html=e(d["author"]),
@@ -965,6 +1036,10 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
                        body=dev_template.substitute(
                            shared, owner=e(owner), owner_url=e(f"https://github.com/{owner}"), credit_line=credit,
                            apps="\n".join(rows), app_total=str(len(group)),
+                           badge_path=e(f"{base}press/"), badge_site=e(f"{site_url}{base}press/"),
+                           badge_options="".join(
+                               f'<option value="{e(r.id)}" data-page="{e(site_url + page_url(r))}">{e(r.data["name"])}</option>'
+                               for r in group),
                            apps_label=f"{len(group)} app{'' if len(group) == 1 else 's'}",
                            downloads_chip=(f'<li data-i18n="n.downloads" data-v-n="{total_downloads}">{total_downloads} '
                                            f'download{"" if total_downloads == 1 else "s"}</li>' if known_counts else "")))
@@ -1069,6 +1144,10 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
 
 {base}assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+{base}press/*
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
 
 {base}catalog/*
   Access-Control-Allow-Origin: *

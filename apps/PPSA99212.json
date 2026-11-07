@@ -1,1 +1,14 @@
-{"titleid":"PPSA99212","name":"Lost Odyssey","kind":"game","category":"pc-ports","description":"PS5 port of Lost Odyssey using static recompilation. No game assets included.","license":"GPL-3.0","author":"Dragonscales","version":"0.2.0-beta.3","source_repo":"https://github.com/dragonscales123/LostOdysseyRecompPS5","artifact_url":"https://github.com/dragonscales123/LostOdysseyRecompPS5/releases/download/v0.2.0-beta.3/LostOdyssey-PS5.zip","sha256":"df59ff4635893362dfd158dd2a87ccb4942a51292aacc58ab52b9df89ac29128","icon_url":"https://raw.githubusercontent.com/dragonscales123/LostOdysseyRecompPS5/v0.2.0-beta.3/ps5/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA99212",
+  "name": "Lost Odyssey",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "PS5 port of Lost Odyssey using static recompilation. No game assets included.",
+  "license": "GPL-3.0",
+  "author": "Dragonscales",
+  "version": "0.2.0-beta.5",
+  "source_repo": "https://github.com/dragonscales123/LostOdysseyRecompPS5",
+  "artifact_url": "https://github.com/dragonscales123/LostOdysseyRecompPS5/releases/download/v0.2.0-beta.5/LostOdyssey-PS5.zip",
+  "sha256": "cb7c9e336c3a7a02533720c1526474bfd933b50a024cf4d69cc7bb9d4b057abb",
+  "icon_url": "https://raw.githubusercontent.com/dragonscales123/LostOdysseyRecompPS5/v0.2.0-beta.5/ps5/sce_sys/icon0.png"
+}

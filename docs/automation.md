@@ -10,7 +10,7 @@ library and run by four workflows.
 | [Comments](../.github/workflows/comments.yml) | Every hour, on every discussion comment, and on every push to `main` that changes `apps/` | `python3 -m catalog comments --sync`: one discussion per listed app, likes and comments written to the `comments-data` branch; see [Comments and likes](#comments-and-likes) |
 | [Scan the catalog](../.github/workflows/scan-catalog.yml) | Manual only | `catalog scan`: one report on every listed app, or on the title IDs given; see [Release scan](#release-scan) |
 | [Catalog health](../.github/workflows/health.yml) | Daily 06:17 UTC and manual | `catalog health --slice today` |
-| [Release updates](../.github/workflows/updates.yml) | Three times a day, 07:37, 15:37 and 23:37 UTC, and manual | `catalog updates --open-prs` |
+| [Release updates](../.github/workflows/updates.yml) | Every four hours (03:37, 07:37, 11:37, 15:37, 19:37 and 23:37 UTC; GitHub often delays or skips scheduled runs), and manual | `catalog updates --open-prs` |
 | [Discovery](../.github/workflows/discovery.yml) | Three times a day, 06:53, 14:53 and 22:53 UTC, and manual | `catalog discover --open-prs --issue`; without `--open-prs` while the repository variable `DISCOVERY_OPEN_PRS` is `false` |
 
 Results appear as annotations and in each run's job summary.
@@ -100,7 +100,8 @@ squash-merged by the catalog's GitHub App when **all** of this holds:
 - **a release bump** (the file exists): only `version`, `artifact_url`, `sha256`, `icon_url`,
   `description`, `license` and `internalOnly` (added or removed) differ from the listed record, the file is a new one, it is a release file of the same
   `source_repo`, a changed icon stays in that repository, and the release is the **newest** one
-  of that repository;
+  of that repository (the one published last, by its publication date: GitHub's own list is not always in
+  that order, for instance when a developer moved or recreated tags);
 - **a reservation released** (the file exists and was a reservation): the author is the account
   whose commit added the reservation, owns the new `source_repo` (or is a public member of its
   organization), the release is the **newest** of that repository, the file is a release file of
