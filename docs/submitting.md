@@ -108,7 +108,7 @@ lowercase hexadecimal, without a `sha256:` prefix.
 
 **The quick way:** the [submit page](https://prosperostore.net/submit/) does steps 3 and 4 for
 you. Paste your repository and it reads your releases in your browser, takes the title ID and name from
-`sce_sys/param.json` at the release tag and the digest GitHub reports, and leaves you to choose the release and its
+`sce_sys/param.json` and the digest GitHub reports (the `param.json` is looked up anywhere in the repository, first on the default branch's latest commit, then at the release tag; one with an `icon0.png` beside it wins), and leaves you to choose the release and its
 file, the type, category and description. Its button opens the record in GitHub's editor, which forks this repository
 and opens the pull request from your account (the editor shows the file on one line; that is valid JSON).
 If the repository doesn't commit `sce_sys/param.json`, it asks for the release's `.zip` from your computer instead:

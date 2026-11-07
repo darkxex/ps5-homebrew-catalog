@@ -116,14 +116,25 @@ def draft_record(repo_value: str, github: GitHub, apps_dir: Path, tag: str | Non
     record["version"] = tag_version(tag)
     draft.facts.append(f"file: {asset['name']} ({asset.get('size', 0):,} bytes), GitHub digest {digest}")
 
-    # Native title evidence: sce_sys/param.json at the release tag, else inside the release's ZIP.
-    params = find_param_json(github.tree(owner, name, tag))
+    # Native title evidence: sce_sys/param.json on the default branch (its latest commit, pinned by SHA), else at the
+    # release tag, else inside the release's ZIP.
+    ref = tag
+    params: list[str] = []
+    branch = repo.get("default_branch")
+    sha = github.branch_sha(owner, name, branch) if branch else None
+    if sha:
+        params = find_param_json(github.tree(owner, name, sha))
+        if params:
+            ref = sha
+            draft.facts.append(f"sce_sys found on the default branch {branch} (commit {sha[:7]})")
+    if not params:
+        params = find_param_json(github.tree(owner, name, tag))
     in_release = False
     if params:
         param_path = draft.param_path = params[0]
         if len(params) > 1:
             draft.todo.append(f"several param.json files {params}; {param_path} was used, confirm it is the app's")
-        param_text = github.file_text(owner, name, param_path, tag) or ""
+        param_text = github.file_text(owner, name, param_path, ref) or ""
     else:
         member = None
         if asset["name"].lower().endswith(".zip"):
@@ -175,7 +186,7 @@ def draft_record(repo_value: str, github: GitHub, apps_dir: Path, tag: str | Non
                               f"the repository, pinned to {tag}")
     else:
         icon_path = param_path.rsplit("/", 1)[0] + "/icon0.png"
-        icon_url = f"https://raw.githubusercontent.com/{full_name}/{quote(tag, safe='')}/{quote(icon_path)}"
+        icon_url = f"https://raw.githubusercontent.com/{full_name}/{quote(ref, safe='')}/{quote(icon_path)}"
         try:
             image_format, warnings = artifacts.inspect_icon(artifacts.fetch_small(icon_url, artifacts.MAX_ICON_BYTES))
         except (artifacts.DownloadError, OSError):
@@ -184,7 +195,7 @@ def draft_record(repo_value: str, github: GitHub, apps_dir: Path, tag: str | Non
             record["icon_url"] = icon_url
             draft.facts.append(f"icon: {icon_url} ({image_format})" + (f"; {'; '.join(warnings)}" if warnings else ""))
         else:
-            draft.todo.append(f"no usable icon at {icon_path}; find the app's icon in the repository, pinned to {tag}")
+            draft.todo.append(f"no usable icon at {icon_path}; find the app's icon in the repository, pinned to {ref}")
 
     # Profile name as a starting point for `author`.
     profile = github.user(owner) or {}
@@ -213,7 +224,7 @@ def draft_record(repo_value: str, github: GitHub, apps_dir: Path, tag: str | Non
         if title_name and other.data["name"].casefold() == title_name.casefold():
             draft.todo.append(f"the name {title_name!r} is already used by {other.id}; choose a distinct name")
 
-    section = license_section(github.file_text(owner, name, "README.md", tag) or "")
+    section = license_section(github.file_text(owner, name, "README.md", ref) or "")
     if section:
         draft.facts.append("README license section: " + section)
     return draft

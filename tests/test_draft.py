@@ -45,7 +45,37 @@ class FakeGitHub:
         return {"name": "Dev Person"}
 
 
+class BranchGitHub(FakeGitHub):
+    """The default branch holds the app in kit/sce_sys (beside a sample and a stale root copy); the release tag holds nothing."""
+    BRANCH = ["README.md", "kit/examples/demo/sce_sys/param.json", "kit/sce_sys/param.json", "kit/sce_sys/icon0.png",
+              "sce_sys/param.json"]
+
+    def repo(self, owner, name):
+        return dict(super().repo(owner, name), default_branch="main")
+
+    def branch_sha(self, owner, name, branch):
+        return "a" * 40
+
+    def tree(self, owner, name, ref):
+        return self.BRANCH if ref == "a" * 40 else ["README.md"]
+
+
 class DraftTests(unittest.TestCase):
+    def test_default_branch_comes_first_and_the_param_json_with_an_icon_wins(self):
+        result = draft_record("Dev/Example", BranchGitHub(), self.apps)
+        self.assertEqual(result.blockers, [])
+        self.assertEqual(result.param_path, "kit/sce_sys/param.json")
+        self.assertEqual(result.record["icon_url"],
+                         "https://raw.githubusercontent.com/Dev/Example/" + "a" * 40 + "/kit/sce_sys/icon0.png")
+
+    def test_tag_is_used_when_the_default_branch_has_no_param_json(self):
+        class OnlyTag(BranchGitHub):
+            def tree(self, owner, name, ref):
+                return ["README.md"] if ref == "a" * 40 else ["sce_sys/param.json", "sce_sys/icon0.png"]
+        result = draft_record("Dev/Example", OnlyTag(), self.apps)
+        self.assertEqual(result.param_path, "sce_sys/param.json")
+        self.assertIn("/v1.2.0/sce_sys/icon0.png", result.record["icon_url"])
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.apps = Path(self.tmp.name) / "apps"

@@ -252,6 +252,7 @@
       state.owner = repo.full_name.split("/")[0];
       state.name = repo.full_name.split("/")[1];
       state.sourceRepo = "https://github.com/" + repo.full_name;
+      state.branch = repo.default_branch || "";
       // The repository's own description is a starting point; the developer edits it.
       state.description = typeof repo.description === "string" ? repo.description.replace(/\s+/g, " ").trim().slice(0, 200) : "";
       var spdx = repo.license && repo.license.spdx_id;
@@ -286,14 +287,29 @@
     state.tag = release.tag_name;
     state.assets = (release.assets || []).filter(function (a) { return ARTIFACTS.test(a.name); });
     state.zipAsset = null;
-    var at = RAW + "/" + state.fullName + "/" + encodeURIComponent(state.tag) + "/";
-    // The tree is always read: the root's sce_sys/ may be a stale copy while the app's own (with its icon) sits in a folder such as kit/.
-    return get("/repos/" + state.fullName + "/git/trees/" + encodeURIComponent(state.tag) + "?recursive=1").then(function (tree) {
-      var params = paramFiles(tree || {});
-      if (!params.length) throw new NeedZip();
-      if (params.length > 1) state.warnings.push(problem("submit.warn.params", { path: params[0] }));
-      state.paramPath = params[0];
-      return raw(at + segments(params[0]));
+    state.ref = state.tag;
+    // The default branch first (its latest commit, pinned by SHA), then the release's tag; the tree is always read, since the
+    // app's own sce_sys/ (with its icon) may sit in a folder such as kit/ while the root holds a stale copy.
+    var look = function (ref) {
+      return get("/repos/" + state.fullName + "/git/trees/" + encodeURIComponent(ref) + "?recursive=1").then(function (tree) {
+        var params = paramFiles(tree || {});
+        if (!params.length) return null;
+        return { ref: ref, params: params };
+      });
+    };
+    var onBranch = state.branch
+      ? get("/repos/" + state.fullName + "/commits/" + encodeURIComponent(state.branch)).then(function (commit) {
+          return commit && commit.sha ? look(commit.sha) : null;
+        })
+      : Promise.resolve(null);
+    return onBranch.then(function (found) {
+      return found || look(state.tag);
+    }).then(function (found) {
+      if (!found) throw new NeedZip();
+      if (found.params.length > 1) state.warnings.push(problem("submit.warn.params", { path: found.params[0] }));
+      state.ref = found.ref;
+      state.paramPath = found.params[0];
+      return raw(RAW + "/" + state.fullName + "/" + encodeURIComponent(found.ref) + "/" + segments(found.params[0]));
     }).then(function (text) {
       return completeRelease(state, text, null);
     });
@@ -319,7 +335,7 @@
     // When param.json came from the ZIP its folder in the repository is unknown: the usual sce_sys/ at the root is tried.
     var base = zip ? zip.param.slice(Math.max(0, zip.param.indexOf("sce_sys/"))) : state.paramPath;
     var iconPath = base.replace(/param\.json$/, "icon0.png");
-    state.iconUrl = RAW + "/" + state.fullName + "/" + encodeURIComponent(state.tag) + "/" + segments(iconPath);
+    state.iconUrl = RAW + "/" + state.fullName + "/" + encodeURIComponent(state.ref || state.tag) + "/" + segments(iconPath);
     var icon = raw(state.iconUrl, true);
     return icon.then(function (icon) {
       var type = icon && icon.byteLength <= MAX_ICON ? imageType(icon) : "";
@@ -332,7 +348,7 @@
         if (size && (size[0] !== size[1] || size[0] < 256)) state.warnings.push(problem("submit.warn.icon", { w: size[0], h: size[1] }));
       }
       if (state.description) return null;
-      return raw(RAW + "/" + state.fullName + "/" + encodeURIComponent(state.tag) + "/README.md").then(function (readme) {
+      return raw(RAW + "/" + state.fullName + "/" + encodeURIComponent(state.ref || state.tag) + "/README.md").then(function (readme) {
         state.description = firstParagraph(readme);
       });
     }).then(function () {
@@ -679,6 +695,7 @@
     function offerZip(index) {
       var release = repoState.releases[index];
       repoState.tag = release.tag_name;
+      repoState.ref = repoState.tag;
       repoState.assets = (release.assets || []).filter(function (a) { return ARTIFACTS.test(a.name); });
       repoState.warnings = repoState.repoWarnings.slice();
       if (!repoState.assets.some(function (a) { return /\.zip$/i.test(a.name); })) {      // only a ZIP can be read

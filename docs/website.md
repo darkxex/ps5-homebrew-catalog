@@ -139,7 +139,7 @@ dist/
   The developer chooses the release (the newest that has a file to list; if it lacks `param.json`, the next ones are
   tried) and the file of that release, and fills in what needs judgement: type, category (only the ones that suit the
   type), description (the repository's, or the README's first paragraph, as a start), name and license. The icon is
-  always a link: the repository's `sce_sys/icon0.png` at the tag when it exists, or one pasted (any PNG, JPEG or WebP
+  always a link: the `icon0.png` beside the chosen `param.json` (default branch's latest commit first, then the tag) when it exists, or one pasted (any PNG, JPEG or WebP
   will do); the field is marked and the button stays off until there is a valid one. A repository that is already
   listed is stopped, with a link to its developer page.
   - *No `param.json` in the repository:* the page asks for the release's `.zip` from the developer's disk, reads it there

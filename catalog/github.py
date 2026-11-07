@@ -106,6 +106,11 @@ class GitHub:
     def user(self, login: str) -> dict | None:
         return self._get(f"/users/{quote(login)}")
 
+    def branch_sha(self, owner: str, name: str, branch: str) -> str | None:
+        """The SHA of the latest commit of a branch, or None when it can't be found."""
+        commit = self._get(f"/repos/{quote(owner)}/{quote(name)}/commits/{quote(branch, safe='')}") or {}
+        return commit.get("sha")
+
     def tree(self, owner: str, name: str, ref: str) -> list[str]:
         """Paths of all files at ref (GitHub may truncate very large trees)."""
         tree = self._get(f"/repos/{quote(owner)}/{quote(name)}/git/trees/{quote(ref, safe='')}?recursive=1") or {}
