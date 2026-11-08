@@ -1,0 +1,14 @@
+{
+  "titleid": "FAKE99260",
+  "name": "PS5Term",
+  "kind": "app",
+  "category": "utilities",
+  "description": "Terminal for jailbroken PS5: a built-in shell, an SSH and SFTP server, and optional Alpine Linux. Works with a controller, keyboard or mouse.",
+  "license": "GPL-3.0-or-later",
+  "author": "phantomptr",
+  "version": "00.001.003",
+  "source_repo": "https://github.com/phantomptr/ps5term",
+  "artifact_url": "https://github.com/phantomptr/ps5term/releases/download/00.001.003/PS5Term-00.001.003.zip",
+  "sha256": "42119a693118e14edc725e7bdb220232bda21dcb8e78ab065c43091110248c58",
+  "icon_url": "https://raw.githubusercontent.com/phantomptr/ps5term/00.001.003/sce_sys/icon0.png"
+}
