@@ -55,6 +55,15 @@ class PickAssetTests(unittest.TestCase):
         chosen, how = pick_asset([asset("renamed.zip"), asset("notes.txt")], "old.zip", "1", "1", "2")
         self.assertEqual(chosen["name"], "renamed.zip")
 
+    def test_a_lone_file_of_another_title_id_is_not_the_successor(self):
+        chosen, how = pick_asset([asset("PPSA26371.-.Geometry.Dash.Lite.zip")],
+                                 "PPSA26370.-.Subway.Surfers.v2.zip", "1.0.0", "1.0.0", "1.0.1")
+        self.assertIsNone(chosen)
+        self.assertIn("another title ID", how)
+        chosen, _ = pick_asset([asset("PPSA26370.-.Subway.Surfers.v3.zip")],
+                               "PPSA26370.-.Subway.Surfers.v2.zip", "1.0.0", "1.0.0", "1.0.1")
+        self.assertEqual(chosen["name"], "PPSA26370.-.Subway.Surfers.v3.zip")
+
     def test_ambiguous_or_missing(self):
         self.assertIsNone(pick_asset([asset("a.zip"), asset("b.zip")], "old.zip", "1", "1", "2")[0])
         self.assertIsNone(pick_asset([asset("a.ffpkg")], "old.zip", "1", "1", "2")[0])

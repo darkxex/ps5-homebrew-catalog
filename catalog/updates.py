@@ -27,7 +27,7 @@ from urllib.parse import quote, unquote
 
 from . import artifacts
 from .github import GitHub
-from .records import Record, load_record, tag_version
+from .records import TITLE_ID, Record, load_record, tag_version
 from .report import Report
 
 BUMP_FIELDS = ("version", "artifact_url", "sha256", "icon_url", "icon_member")
@@ -140,6 +140,11 @@ def pick_asset(assets: list[dict], old_name: str, old_tag: str, old_version: str
             if expected in by_name:
                 return by_name[expected], "file name with the new version"
     if len(candidates) == 1:
+        # A repository that holds several apps can publish one file per app: a lone file that names
+        # a different title ID than the old one belongs to another app, not to this one.
+        wanted, found = set(TITLE_ID.findall(old_name)), set(TITLE_ID.findall(candidates[0]["name"]))
+        if found and not found & wanted:
+            return None, f"the only .{ext} file, {candidates[0]['name']}, names another title ID than {old_name!r}"
         return candidates[0], f"the only .{ext} file"
     if not candidates:
         return None, f"the release has no .{ext} file"
