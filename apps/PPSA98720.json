@@ -6,9 +6,9 @@
   "description": "Plays your own Breath of the Wild dump in PS VR2 with Sense controllers via Crementif's BetterVR mod in Cemu (experimental; firmware 5.50, 7.61, 8.40, 9.00, 10.00, 11.60, 12.40, 13.60; tested 13.60).",
   "license": "GPL-3.0",
   "author": "Papyszoo",
-  "version": "build19-hmd2-fw",
+  "version": "0.1.1",
   "source_repo": "https://github.com/Papyszoo/botw-bettervr-ps5",
-  "artifact_url": "https://github.com/Papyszoo/botw-bettervr-ps5/releases/download/build19-hmd2-fw/BotW-VR-build19-hmd2-fw.zip",
-  "sha256": "a4003e8f756d2ed837184fb82cd5332cdb9aa2f424952a961cc5e946aac285af",
-  "icon_url": "https://raw.githubusercontent.com/Papyszoo/botw-bettervr-ps5/build19-hmd2-fw/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Papyszoo/botw-bettervr-ps5/releases/download/v0.1.1/BotW-VR-v0.1.1.zip",
+  "sha256": "8130bd87df4f8fd9ecf0b900b419b69c97b0a71abf0ea51c26eae172b7fa39d3",
+  "icon_url": "https://raw.githubusercontent.com/Papyszoo/botw-bettervr-ps5/v0.1.1/sce_sys/icon0.png"
 }
