@@ -449,7 +449,7 @@ def cmd_pr(args) -> int:
 
 def cmd_automerge(args) -> int:
     """CI: merge a pull request that moves the author's own app to its newest release, releases
-    the title ID they reserved, or adds another app of theirs when they already have one in the catalog.
+    the title ID they reserved, or adds another app of theirs or reserves a title ID when they already have an app in the catalog.
 
     Base-branch code; the pull request's files are read only as data. It runs after the submission
     check and the release scan passed; their warnings don't hold it back. Whatever it
@@ -508,6 +508,7 @@ def cmd_automerge(args) -> int:
             holder = reservation_holder(changes[0].path, hub) if old and old.reserved else None
             reasons += bump_reasons(author, changes, old, new, hub, holder)
 
+    reserving = adds and new is not None and new.reserved
     output = os.environ.get("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as handle:
@@ -517,7 +518,7 @@ def cmd_automerge(args) -> int:
             report.notice(name, "left for a maintainer: " + reason)
         return report.emit("Automatic merge", "Nothing was merged.")
     if not args.merge:
-        report.notice(name, f"@{author} " + ("adds another app of their own" if adds
+        report.notice(name, f"@{author} " + (("reserves a title ID" if reserving else "adds another app of their own") if adds
                                              else "moves apps to their newest release" if by_bot
                                              else "moves their own app to its newest release") + ", and every check passed")
         return report.emit("Automatic merge", "This pull request can be merged without a maintainer.")
@@ -528,15 +529,17 @@ def cmd_automerge(args) -> int:
         # author); the repository's ruleset lets the app merge it through a pull request instead.
         if not by_bot:
             bot.approve_pull(repository, number, sha,
-                             ("A new app by a developer who already has one in the catalog, from their own "
-                              "repository; the submission check and the release scan passed."
+                             (("A reservation by a developer who already has an app in the catalog; it carries "
+                               "no download, and the submission check passed." if reserving else
+                               "A new app by a developer who already has one in the catalog, from their own "
+                               "repository; the submission check and the release scan passed.")
                               if adds else
                               "A release bump by the app's developer: only the version, file, sha256, icon and "
                               "description changed, the release is the newest of the app's repository, and the submission "
                               "check and the release scan passed.")
                              + " Merged automatically; it is published with the catalog's next publication.")
         bot.merge_pull(repository, number, sha, f"{pull['title']} (#{number})")
-        report.notice(name, f"merged: @{author} " + ("added another app of their own" if adds
+        report.notice(name, f"merged: @{author} " + (("reserved a title ID" if reserving else "added another app of their own") if adds
                                                       else "moved apps to their newest release" if by_bot
                                                       else "moved their own app to its newest release"))
     except GitHubError as error:

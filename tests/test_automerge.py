@@ -219,6 +219,28 @@ class NewAppReasonsTests(unittest.TestCase):
         hub = github(owner_type="Organization", member=True)
         self.assertEqual(self.reasons(author="member", hub=hub), [])
 
+    def test_a_developer_with_a_listed_app_reserving_a_title_id_is_merged(self):
+        held = load_record(write_record(Path(self.tmp.name) / "held", reservation()), Report())
+        self.assertEqual(self.reasons(new=held), [])
+        self.assertEqual(self.reasons(author="Example", new=held), [])
+        hub = github(owner_type="Organization", member=True)
+        self.assertEqual(self.reasons(author="member", new=held, hub=hub), [])
+
+    def test_a_reservation_by_a_developer_without_a_listed_app_is_left_for_a_maintainer(self):
+        held = load_record(write_record(Path(self.tmp.name) / "held", reservation()), Report())
+        hub = github(owner_type="Organization", member=False)
+        hub.account_type = lambda login: "User" if login == "newcomer" else "Organization"
+        self.assertEqual(self.reasons(author="newcomer", new=held, hub=hub),
+                         ["@newcomer has no app in the catalog yet, so the reservation waits for a maintainer"])
+
+    def test_a_reservation_is_not_merged_when_github_cannot_be_asked(self):
+        held = load_record(write_record(Path(self.tmp.name) / "held", reservation()), Report())
+        hub = github()
+        def fail(login):
+            raise cli.GitHubError("boom")
+        hub.account_type = fail
+        self.assertEqual(self.reasons(author="newcomer", new=held, hub=hub), ["GitHub could not be asked: boom"])
+
     def test_a_developer_without_a_listed_app_is_left_for_a_maintainer(self):
         hub = github(owner_type="Organization", member=False)
         hub.account_type = lambda login: "User" if login == "newcomer" else "Organization"
@@ -230,13 +252,11 @@ class NewAppReasonsTests(unittest.TestCase):
     def test_someone_who_does_not_own_the_new_apps_repository_is_left_for_a_maintainer(self):
         self.assertEqual(self.reasons(author="stranger"), ["@stranger does not own example/second-app"])
 
-    def test_a_modification_a_removal_a_reservation_and_several_files_are_left_for_a_maintainer(self):
+    def test_a_modification_a_removal_and_several_files_are_left_for_a_maintainer(self):
         self.assertEqual(self.reasons(changes=MODIFIED), ["it is not a new app"])
         self.assertIn("2 files", self.reasons(changes=ADDED + MODIFIED)[0])
         self.assertEqual(self.reasons(changes=[Change("A", "apps/PPSA04321.json", "100755")]),
                          ["the record is not a regular file"])
-        held = load_record(write_record(Path(self.tmp.name) / "held", reservation()), Report())
-        self.assertEqual(self.reasons(new=held), ["it adds a reservation"])
         self.assertEqual(new_app_reasons("example", ADDED, None, self.listed, github()),
                          ["the proposed record could not be read"])
 

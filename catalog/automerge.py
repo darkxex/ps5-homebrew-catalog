@@ -1,8 +1,8 @@
 """Which pull requests are merged without a maintainer.
 
-Four kinds are: a developer moving their own app to its newest release, a developer releasing
+Five kinds are: a developer moving their own app to its newest release, a developer releasing
 the title ID they reserved, a developer who already has an app in the catalog adding another one
-of their own, and the catalog bot's own
+of their own or reserving a title ID, and the catalog bot's own
 pull request that moves apps to their newest release (every record in it checked like a
 developer's own bump).
 
@@ -54,10 +54,12 @@ def has_listed_app(author: str, listed: list[Record], github: GitHub) -> bool:
 
 def new_app_reasons(author: str, changes: list[Change], new: Record | None, listed: list[Record],
                     github: GitHub) -> list[str]:
-    """Why a pull request that adds an app is left for a maintainer; an empty list means it may be merged.
+    """Why a pull request that adds an app or a reservation is left for a maintainer; an empty list means it may be merged.
 
     new is the proposed record, for a pull request whose only change is one added record; listed is
-    the catalog on the base branch.
+    the catalog on the base branch. A reservation has no repository to own, so it is merged when
+    the author already has an app in the catalog; the submission check has already limited how
+    many title IDs one account may hold.
     """
     if len(changes) != 1:
         return [f"it changes {len(changes)} files; a new app is one record"]
@@ -71,7 +73,12 @@ def new_app_reasons(author: str, changes: list[Change], new: Record | None, list
     if new is None:
         return ["the proposed record could not be read"]
     if new.reserved:
-        return ["it adds a reservation"]
+        try:
+            if not has_listed_app(author, listed, github):
+                return [f"@{author} has no app in the catalog yet, so the reservation waits for a maintainer"]
+        except GitHubError as error:
+            return [f"GitHub could not be asked: {error}"]
+        return []
 
     reasons = []
     try:
