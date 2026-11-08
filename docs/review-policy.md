@@ -83,6 +83,8 @@ A reservation (a record whose `artifact_url`, `source_repo` and `icon_url` are
   history. Only that account can update or release it (automated); maintainers
   handle transfers.
 - Each account can hold up to 5 reservations (automated).
+- A new reservation from an account that already has an app in the catalog is merged by the
+  bot; from any other account it waits for a maintainer, who also reviews it as below.
 - Releasing it also requires owning the new `source_repo` (automated).
 - A reservation that hasn't changed for 180 days is flagged by the
   health check. Maintainers ask the holder in an issue and release the title ID

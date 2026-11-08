@@ -90,7 +90,7 @@ The CI workflow does run PR code (tests), with the standard read-only
 ## Automatic merge of a developer's pull request
 
 A developer who publishes a new release and updates their own record, who releases the title ID
-they reserved, or who already has an app in the catalog and adds another of their own, is not
+they reserved, or who already has an app in the catalog and adds another of their own or reserves a title ID, is not
 kept waiting for a maintainer. After the submission check and the release scan have both passed, two more jobs of
 the same workflow run `python3 -m catalog automerge`, and the pull request is approved and
 squash-merged by the catalog's GitHub App when **all** of this holds:
@@ -109,6 +109,10 @@ squash-merged by the catalog's GitHub App when **all** of this holds:
 - **a new app** (the file is added, and is not a reservation): the file is a release file of its
   `source_repo`, its icon is in that repository, and the author already has an app in the
   catalog, as the owner of its repository or a public member of the organization that owns it;
+- **a new reservation** (the file is added and is a reservation): the author already has an app in
+  the catalog, as above. There is no repository to own yet, so nothing else is checked here; the
+  submission check still enforces the limit of 5 reservations per account and a free title ID. A
+  reservation by an account with no listed app waits for a maintainer;
 - the author owns the app's `source_repo`, or is a public member of the organization that owns
   it. The bot's own update pull requests do not need this. A pull request for a repository
   that belongs to someone else always waits for a maintainer, whatever else it changes;
