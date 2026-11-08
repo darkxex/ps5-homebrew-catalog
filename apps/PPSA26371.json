@@ -6,9 +6,9 @@
   "description": "Geometry Dash Lite for PS5 with its own controller support. Needs your own APK (2.2.148).",
   "license": "GPL-3.0",
   "author": "AZiZ",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source_repo": "https://github.com/ZiZc3/Hydroid",
-  "artifact_url": "https://github.com/ZiZc3/Hydroid/releases/download/1.0.0/PPSA26371.-.Geometry.Dash.Lite.zip",
-  "sha256": "a244e8a4f5e22d0ea7f11e7794e7137ab3f48833209b479a8ea389df8cc133e4",
+  "artifact_url": "https://github.com/ZiZc3/Hydroid/releases/download/1.0.1/PPSA26371.-.Geometry.Dash.Lite.zip",
+  "sha256": "edae7739aa3316f0c92a5bdae463eae9e2190ba3894bf885db8e6208c524ce14",
   "icon_url": "https://raw.githubusercontent.com/ZiZc3/Hydroid/d8371afd75e3da6ab888d467d1e6bb00c32d2beb/games/geometry-dash-lite/icon0.png"
 }
