@@ -5,7 +5,7 @@
   "category": "pc-ports",
   "description": "The open-source roguelike Dungeon Crawl Stone Soup, with tiles graphics and controller support.",
   "license": "GPL-2.0-or-later",
-  "author": "DCSS dev team, PS5 port by plutobox",
+  "author": "plutobox",
   "version": "01.000.000",
   "source_repo": "https://github.com/plutobox/ps5-crawl",
   "artifact_url": "https://github.com/plutobox/ps5-crawl/releases/download/01.000.000/PPSA92041.zip",
