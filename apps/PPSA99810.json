@@ -7,8 +7,8 @@
   "license": "GPL-3.0",
   "author": "RafaelNGP",
   "version": "1.6.3",
-  "source_repo": "https://github.com/RafaelNGP/xbox-cloud-gaming-ps5",
-  "artifact_url": "https://github.com/RafaelNGP/xbox-cloud-gaming-ps5/releases/download/v1.6.3/PPSA99810.zip",
-  "sha256": "db4c21d9a825b9f499c18069a19547703867d8633ad24f958699b75082d2008e",
-  "icon_url": "https://raw.githubusercontent.com/RafaelNGP/xbox-cloud-gaming-ps5/v1.6.3/ps5/sce_sys/icon0.png"
+  "source_repo": "https://github.com/RafaelNGP/psbox-cloud-gaming",
+  "artifact_url": "https://github.com/RafaelNGP/psbox-cloud-gaming/releases/download/v1.6.3/PPSA99810.zip",
+  "sha256": "1c117cc8210c4f4386b907f8f72984ec77cedc34c6d8bd2ea86bddedca9e2669",
+  "icon_url": "https://raw.githubusercontent.com/RafaelNGP/psbox-cloud-gaming/v1.6.3/ps5/sce_sys/icon0.png"
 }
