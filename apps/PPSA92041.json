@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA92041",
+  "name": "Dungeon Crawl Stone Soup",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "The open-source roguelike Dungeon Crawl Stone Soup, with tiles graphics and controller support.",
+  "license": "GPL-2.0-or-later",
+  "author": "DCSS dev team, PS5 port by plutobox",
+  "version": "01.000.000",
+  "source_repo": "https://github.com/plutobox/ps5-crawl",
+  "artifact_url": "https://github.com/plutobox/ps5-crawl/releases/download/01.000.000/PPSA92041.zip",
+  "sha256": "2db19453080799f99167c5e452e93ad2229c3f284a39afdeb15af2d3f24f97b2",
+  "icon_url": "https://raw.githubusercontent.com/plutobox/ps5-crawl/01.000.000/sce_sys/icon0.png"
+}
