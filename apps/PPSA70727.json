@@ -1,1 +1,14 @@
-{"titleid":"PPSA70727","name":"osu!","kind":"game","category":"pc-ports","description":"osu!standard running natively on a jailbroken PS5","license":"GPL-3.0","author":"actuallyssstaris","version":"1.0.0","source_repo":"https://github.com/actuallyssstaris/ProjectCadence","artifact_url":"https://github.com/actuallyssstaris/ProjectCadence/releases/download/v1.0.0/ProjectCadence-v1.0.0.zip","sha256":"9e2cc7af148c3a87662d0184c4671ebb4c106d02d1901f16033185c716afb3e0","icon_url":"https://raw.githubusercontent.com/actuallyssstaris/ProjectCadence/badc8cbb63b11e841eef39fe9b73b882a092ce76/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA70727",
+  "name": "osu!",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "osu!standard running natively on a jailbroken PS5",
+  "license": "GPL-3.0",
+  "author": "actuallyssstaris",
+  "version": "1.5.1",
+  "source_repo": "https://github.com/actuallyssstaris/ProjectCadence",
+  "artifact_url": "https://github.com/actuallyssstaris/ProjectCadence/releases/download/v1.5.1/projectcadence-v1.5.1.zip",
+  "sha256": "7f2634138040c36cd1c640303ca48c1756fa215999d27acffbe3cc7c04bd5e28",
+  "icon_url": "https://raw.githubusercontent.com/actuallyssstaris/ProjectCadence/badc8cbb63b11e841eef39fe9b73b882a092ce76/sce_sys/icon0.png"
+}

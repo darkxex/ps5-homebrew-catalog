@@ -1,1 +1,14 @@
-{"titleid":"PPSA99008","name":"PS5_Lichii","kind":"app","category":"emulators","description":"Experimental NS2 Emulator for the PS5","license":"GPL-3.0","author":"Mihawk","version":"1.00.00","source_repo":"https://github.com/mihawk-99/PS5_Lichii","artifact_url":"https://github.com/mihawk-99/PS5_Lichii/releases/download/v1.00.00/PS5_Lichii-v1.00.00.zip","sha256":"788ac5480bfbd1eb4d9c14a15d154d137f949c5d468781c3b92073f87f0772c9","icon_url":"https://raw.githubusercontent.com/mihawk-99/PS5_Lichii/2cc7711af6c0d5be628343a1da2c19bffdcad879/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA99008",
+  "name": "PS5_Lichii",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Experimental NS2 Emulator for the PS5",
+  "license": "GPL-3.0",
+  "author": "Mihawk",
+  "version": "1.10.00",
+  "source_repo": "https://github.com/mihawk-99/PS5_Lichii",
+  "artifact_url": "https://github.com/mihawk-99/PS5_Lichii/releases/download/v1.10.00/PS5_Lichii-v1.10.00.zip",
+  "sha256": "7f2e0619cffdff2aea6f0ad30a3e2a89cab15ace550c3f58651b368dcb19fe7f",
+  "icon_url": "https://raw.githubusercontent.com/mihawk-99/PS5_Lichii/2cc7711af6c0d5be628343a1da2c19bffdcad879/sce_sys/icon0.png"
+}
