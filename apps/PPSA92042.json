@@ -5,7 +5,7 @@
   "category": "pc-ports",
   "description": "The classic open-source roguelike NetHack 5.0, played with the DualSense: button menus, a hint bar and the system keyboard.",
   "license": "NGPL",
-  "author": "NetHack DevTeam, PS5 port by plutobox",
+  "author": "plutobox",
   "version": "01.000.001",
   "source_repo": "https://github.com/plutobox/ps5-NetHack",
   "artifact_url": "https://github.com/plutobox/ps5-NetHack/releases/download/01.000.001/PPSA92042.zip",
