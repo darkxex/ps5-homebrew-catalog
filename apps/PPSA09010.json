@@ -1,1 +1,14 @@
-{"titleid":"PPSA09010","name":"Class of '09: The Re-Up","kind":"game","category":"pc-ports","description":"Class of '09: The Re-Up - unofficial PS5 homebrew runtime","license":"Unlicensed","author":"dannyboyjaros","version":"1.0.1","source_repo":"https://github.com/dannyboyjaros/ps5classof09thereup","artifact_url":"https://github.com/dannyboyjaros/ps5classof09thereup/releases/download/v1.0.1/PPSA09010.zip","sha256":"c79e476faee262c487ae5726deadf65db3a4af77d0d228228f7a9a6030ae086d","icon_url":"https://raw.githubusercontent.com/dannyboyjaros/ps5classof09thereup/4f5bd1fc4638b524b7403f4060c4bd0e739dd414/kit/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA09010",
+  "name": "Class of '09: The Re-Up",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "Class of '09: The Re-Up - unofficial PS5 homebrew runtime",
+  "license": "Unlicensed",
+  "author": "dannyboyjaros",
+  "version": "1.0.2",
+  "source_repo": "https://github.com/dannyboyjaros/ps5classof09thereup",
+  "artifact_url": "https://github.com/dannyboyjaros/ps5classof09thereup/releases/download/v1.0.2/PPSA09010.zip",
+  "sha256": "e5d867b523a5df3f710621456924b77ea1540cf82053e24ac548d115a2eb873b",
+  "icon_url": "https://raw.githubusercontent.com/dannyboyjaros/ps5classof09thereup/4f5bd1fc4638b524b7403f4060c4bd0e739dd414/kit/sce_sys/icon0.png"
+}
