@@ -6,9 +6,9 @@
   "description": "osu!standard running natively on a jailbroken PS5",
   "license": "GPL-3.0",
   "author": "actuallyssstaris",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "source_repo": "https://github.com/actuallyssstaris/ProjectCadence",
-  "artifact_url": "https://github.com/actuallyssstaris/ProjectCadence/releases/download/v1.5.1/projectcadence-v1.5.1.zip",
-  "sha256": "7f2634138040c36cd1c640303ca48c1756fa215999d27acffbe3cc7c04bd5e28",
+  "artifact_url": "https://github.com/actuallyssstaris/ProjectCadence/releases/download/v2.0.0/projectcadence-v2.0.0.zip",
+  "sha256": "b0e28a329cf90f600d36d402ef3f8e5aa9ebdec7d8a572b7d8523afd5b1ec396",
   "icon_url": "https://raw.githubusercontent.com/actuallyssstaris/ProjectCadence/badc8cbb63b11e841eef39fe9b73b882a092ce76/sce_sys/icon0.png"
 }
