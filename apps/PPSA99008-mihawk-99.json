@@ -6,9 +6,9 @@
   "description": "Experimental NS2 Emulator for the PS5",
   "license": "GPL-3.0",
   "author": "Mihawk",
-  "version": "1.10.00",
+  "version": "1.20.00",
   "source_repo": "https://github.com/mihawk-99/PS5_Lichii",
-  "artifact_url": "https://github.com/mihawk-99/PS5_Lichii/releases/download/v1.10.00/PS5_Lichii-v1.10.00.zip",
-  "sha256": "7f2e0619cffdff2aea6f0ad30a3e2a89cab15ace550c3f58651b368dcb19fe7f",
+  "artifact_url": "https://github.com/mihawk-99/PS5_Lichii/releases/download/v1.20.00/PS5_Lichii-v1.20.00.zip",
+  "sha256": "f2377248477cd8c09af76c59ed687a9ff0f553a8266d53e6c3ebba87f8778938",
   "icon_url": "https://raw.githubusercontent.com/mihawk-99/PS5_Lichii/2cc7711af6c0d5be628343a1da2c19bffdcad879/sce_sys/icon0.png"
 }
