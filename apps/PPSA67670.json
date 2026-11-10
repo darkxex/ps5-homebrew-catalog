@@ -6,9 +6,9 @@
   "description": "A controller front-end for Payload Manager (pldmgr), which it brings: start, install and update payloads, edit your boot chain with a USB safety net, and install the Signal suite.",
   "license": "GPL-3.0-or-later",
   "author": "Marice",
-  "version": "00.001.002",
+  "version": "00.001.003",
   "source_repo": "https://github.com/Marice/ps5-payloader",
-  "artifact_url": "https://github.com/Marice/ps5-payloader/releases/download/v00.001.002/PPSA67670.zip",
-  "sha256": "65c3016a588e35f847d1692281c26b36416293de0ddef71ba8926a799385a07b",
-  "icon_url": "https://raw.githubusercontent.com/Marice/ps5-payloader/v00.001.002/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Marice/ps5-payloader/releases/download/v00.001.003/PPSA67670.zip",
+  "sha256": "5647525a1fab0397678599d1c4abbed466d03fc6c9b46f159719db93c1652357",
+  "icon_url": "https://raw.githubusercontent.com/Marice/ps5-payloader/v00.001.003/sce_sys/icon0.png"
 }
