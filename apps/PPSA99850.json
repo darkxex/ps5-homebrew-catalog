@@ -1,14 +1,14 @@
 {
   "titleid": "PPSA99850",
-  "name": "Boxshelf PS5",
+  "name": "Vitrine",
   "kind": "app",
   "category": "utilities",
-  "description": "Needs Elf Arsenal running. A native PS5 port of Boxshelf's 3D game shelf: one tab per platform, real box art and your emulator libraries. EN/PT/ES.",
+  "description": "Needs Elf Arsenal running. A native PS5 shelf of 3D game cases, one tab per platform, with real box art and your emulator libraries. Based on Boxshelf. EN/PT/ES.",
   "license": "GPL-3.0",
   "author": "kauansilvalopes",
-  "version": "ps5-v0.1.0",
-  "source_repo": "https://github.com/kauansilvalopes/boxshelf-ps5",
-  "artifact_url": "https://github.com/kauansilvalopes/boxshelf-ps5/releases/download/ps5-v0.1.0/PPSA99850.zip",
-  "sha256": "eab81920680d25f439032ea63b2925a9812f3c1ef4838b7b71366462faedef3f",
-  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/boxshelf-ps5/ps5-v0.1.0/ps5/sce_sys/icon0.png"
+  "version": "ps5-v0.2.1",
+  "source_repo": "https://github.com/kauansilvalopes/vitrine",
+  "artifact_url": "https://github.com/kauansilvalopes/vitrine/releases/download/ps5-v0.2.1/PPSA99850.zip",
+  "sha256": "79a906e0caf8ad40658cb91e39d1095941320716294df4fad605a28a6fc44566",
+  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/vitrine/ps5-v0.2.1/ps5/sce_sys/icon0.png"
 }
