@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99207",
+  "name": "Parallax Browser",
+  "kind": "app",
+  "category": "utilities",
+  "description": "A WebKit browser for the PS5 with tabs, ad blocking and hardware video decoding, which can play the video on a page in the PS VR2.",
+  "license": "GPL-3.0",
+  "author": "Rik Leigh",
+  "version": "0.1.0",
+  "source_repo": "https://github.com/rikleigh/parallax-browser",
+  "artifact_url": "https://github.com/rikleigh/parallax-browser/releases/download/v0.1.0/parallax-browser-0.1.0.zip",
+  "sha256": "c4b21e929cea260a0e408cbdda3797e3aecb71c60ed250d5f320fd27d00344d6",
+  "icon_url": "https://raw.githubusercontent.com/rikleigh/parallax-browser/v0.1.0/port/webkit/apps/title/sce_sys/icon0.png"
+}
