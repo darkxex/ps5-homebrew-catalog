@@ -3,12 +3,12 @@
   "name": "Nuvio Max'd",
   "kind": "app",
   "category": "video",
-  "description": "Experimental Nuvio Max'd test build for PS5 with playback source switching, live subtitle controls, audio sync steps and optional time-grid EPG, plus profiles, IPTV and media servers.",
+  "description": "Experimental Nuvio Max'd for PS5 with an optional privileged USB playlist reader for sandbox access failures (unconfirmed fix), private mount diagnostics, profiles, IPTV and media servers.",
   "license": "GPL-3.0",
   "author": "HandshakeHackin",
-  "version": "1.0.0.14-native-experimental",
+  "version": "1.0.0.16-native-experimental",
   "source_repo": "https://github.com/HandshakeHackin/Nuvio-maxd-releases",
-  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.14-native-experimental/PPSA99288.zip",
-  "sha256": "16fc97017a169e7abfb7fe6b5ec8a001feaf5dc968f19669265d61078d0ffd12",
-  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.14-native-experimental/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.16-native-experimental/PPSA99288.zip",
+  "sha256": "fbd7dbaed5e029f2e3c8dd153cf8b0f64f4fb4509da2e984e0473849ee09308a",
+  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.16-native-experimental/sce_sys/icon0.png"
 }
