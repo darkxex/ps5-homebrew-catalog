@@ -6,9 +6,9 @@
   "description": "Needs Elf Arsenal running. A native PS5 shelf of 3D game cases, one tab per platform, with real box art and your emulator libraries. Based on Boxshelf. EN/PT/ES.",
   "license": "GPL-3.0",
   "author": "kauansilvalopes",
-  "version": "ps5-v0.2.2",
+  "version": "ps5-v0.2.5",
   "source_repo": "https://github.com/kauansilvalopes/vitrine",
-  "artifact_url": "https://github.com/kauansilvalopes/vitrine/releases/download/ps5-v0.2.2/PPSA99850.zip",
-  "sha256": "ea6f6e7d81794485f07e644469b8f1310aabab468885887d87dae0f68e861fea",
-  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/vitrine/ps5-v0.2.2/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/kauansilvalopes/vitrine/releases/download/ps5-v0.2.5/PPSA99850.zip",
+  "sha256": "45251ad72becd1dbbbd597687bf69a5cbed938217021546f80f48b1980f337f2",
+  "icon_url": "https://raw.githubusercontent.com/kauansilvalopes/vitrine/ps5-v0.2.5/ps5/sce_sys/icon0.png"
 }
