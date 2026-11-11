@@ -1,14 +1,1 @@
-{
-  "titleid": "PPSA98515",
-  "name": "EglantinePS5",
-  "kind": "app",
-  "category": "emulators",
-  "description": "VERY experimental Nintendo Switch 2 emulator port for PS5.",
-  "license": "GPL-3.0-or-later",
-  "author": "heydemoura",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
-}
+{"titleid":"PPSA98515","name":"EglantinePS5","kind":"app","category":"emulators","description":"VERY experimental Nintendo Switch 2 emulator port for PS5","license":"GPL-3.0","author":"Heyde Moura","version":"1.000.001","source_repo":"https://github.com/heydemoura/EglantinePS5","artifact_url":"https://github.com/heydemoura/EglantinePS5/releases/download/v1.000.001/EglantinePS5-v1.000.001.zip","sha256":"02209c322ade58151e958932489ff163b90624436b77d390652a9bb61403d604","icon_url":"https://raw.githubusercontent.com/heydemoura/EglantinePS5/268d43a28d0d363fb449d291238514527567383e/sce_sys/icon0.png"}
