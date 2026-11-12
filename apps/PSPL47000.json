@@ -6,9 +6,9 @@
   "description": "All-in-one media, cloud gaming and homebrew hub for the PS5: YouTube, Spotify, Plex, Shop, Android Link, Xbox Cloud and VNC, emulators, file tools and PS Play Social in one app.",
   "license": "Unlicensed",
   "author": "InsideMatrixDEV",
-  "version": "1.005-beta-build105",
+  "version": "1.005-beta-build106",
   "source_repo": "https://github.com/MounirHero/PS-PLAY-3.0",
-  "artifact_url": "https://github.com/MounirHero/PS-PLAY-3.0/releases/download/v1.005-beta-build105/PSPL47000.zip",
-  "sha256": "1937ce67434f53110f5cadc36151ca8e791241a02a243019b63f91532c8dfa85",
-  "icon_url": "https://raw.githubusercontent.com/MounirHero/PS-PLAY-3.0/v1.005-beta-build105/PSPL47000/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/MounirHero/PS-PLAY-3.0/releases/download/v1.005-beta-build106/PSPL47000.zip",
+  "sha256": "c84244204ff98eada063148d3cfa160bfee15a0cf495fafcfe24638eb7672a49",
+  "icon_url": "https://raw.githubusercontent.com/MounirHero/PS-PLAY-3.0/v1.005-beta-build106/PSPL47000/sce_sys/icon0.png"
 }
