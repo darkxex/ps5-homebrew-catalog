@@ -1,0 +1,14 @@
+{
+  "titleid": "PSPL47000",
+  "name": "PS Play 3.0",
+  "kind": "app",
+  "category": "utilities",
+  "description": "An all-in-one mediahub, shop, cloud gaming and homebrew hub for the PS5",
+  "license": "Unlicensed",
+  "author": "InsideMatrixDEV",
+  "version": "1.005-beta-build103",
+  "source_repo": "https://github.com/MounirHero/PS-PLAY-3.0",
+  "artifact_url": "https://github.com/MounirHero/PS-PLAY-3.0/releases/download/v1.005-beta-build103/PSPL47000.zip",
+  "sha256": "8c53a2d9d341d88c815721c4290bc30f5835dbf3ff50ef6baa46947fe2f18e18",
+  "icon_url": "https://raw.githubusercontent.com/MounirHero/PS-PLAY-3.0/804c8b16a104ac7a01d8307445c23f2b541d31d0/PSPL47000/sce_sys/icon0.png"
+}
