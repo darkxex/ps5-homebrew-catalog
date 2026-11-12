@@ -6,9 +6,9 @@
   "description": "Nuvio Pro is a controller-first streaming app for jailbroken PS5s, with EVO Player playback, PS5 keyboard search, profiles and resume support. The console hosts its own UI. Tested on firmware 12.70.",
   "license": "GPL-3.0",
   "author": "Shashank",
-  "version": "0.2.0-alpha.1",
+  "version": "pr-6-8a62b173aef4",
   "source_repo": "https://github.com/speed-y/nuvio-pro-ps5",
-  "artifact_url": "https://github.com/speed-y/nuvio-pro-ps5/releases/download/v0.2.0-alpha.1/PPSA99996.zip",
-  "sha256": "98aafcebe32db94cca7622b4883eb90d8fec3f99ac5f0eb79ec2f05b2aa48c81",
-  "icon_url": "https://raw.githubusercontent.com/speed-y/nuvio-pro-ps5/v0.2.0-alpha.1/assets/icon.png"
+  "artifact_url": "https://github.com/speed-y/nuvio-pro-ps5/releases/download/pr-6-8a62b173aef4/PPSA99996.zip",
+  "sha256": "a8fe4cffb1d3d64149c60912fcd09f87112453497ae330fde73887f60c94f639",
+  "icon_url": "https://raw.githubusercontent.com/speed-y/nuvio-pro-ps5/pr-6-8a62b173aef4/assets/icon.png"
 }
