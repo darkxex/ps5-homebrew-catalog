@@ -88,6 +88,15 @@ class _RemoteFile(io.RawIOBase):
         return len(data)
 
 
+def zip_names(url: str, budget: int = MAX_RANGE_BYTES) -> list[str]:
+    """The paths of the files in a remote ZIP. Only the archive's directory is fetched, never the archive."""
+    try:
+        with zipfile.ZipFile(_RemoteFile(url, budget)) as archive:
+            return [m.filename for m in archive.infolist() if not m.is_dir()]
+    except (zipfile.BadZipFile, NotImplementedError, OSError, EOFError, RuntimeError) as error:
+        raise DownloadError(f"{url} is not a readable ZIP archive: {error}") from error
+
+
 def read_zip_member(url: str, suffix: str, max_bytes: int, budget: int = MAX_RANGE_BYTES) -> tuple[str, bytes] | None:
     """(path, content) of the file in a remote ZIP whose path is `suffix` (nearest the top first), or None.
 
