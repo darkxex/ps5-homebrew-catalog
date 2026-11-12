@@ -6,9 +6,9 @@
   "description": "Native PS5 port of Star Fox Adventures; PAL release for firmware 12.40 with save/load and in-menu language selection. Requires your own disc image; no game data included.",
   "license": "MIT AND GPL-3.0-or-later",
   "author": "BaZZtian",
-  "version": "0.1.4",
+  "version": "00.001.005",
   "source_repo": "https://github.com/BaZZtian/PS5-FoxHollow",
-  "artifact_url": "https://github.com/BaZZtian/PS5-FoxHollow/releases/download/v0.1.4/FoxHollow-0.1.4-PPSA99573.zip",
-  "sha256": "3b4af2f5d24e8069558e9a3b4f7b47f10002b23965f5a3fdfa09dafed2fafba8",
-  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PS5-FoxHollow/v0.1.4/assets/branding/foxhollow-icon-v2.png"
+  "artifact_url": "https://github.com/BaZZtian/PS5-FoxHollow/releases/download/v00.001.005/FoxHollow-v00.001.005-PPSA99573.zip",
+  "sha256": "dd5c47cc694e7415eee451c40acd13dfd2a48caa5c930bd44d6c57d162731ce3",
+  "icon_url": "https://raw.githubusercontent.com/BaZZtian/PS5-FoxHollow/v00.001.005/assets/branding/foxhollow-icon-v2.png"
 }
