@@ -9,7 +9,10 @@ A release becomes the proposed update when:
   of the listed one (same name, or the same name with the version changed, or
   the only asset of that type); a file built for a desktop OS or CPU is never
   chosen for a listed file that is not one;
-- GitHub reports a SHA-256 digest for that asset (nothing is downloaded).
+- GitHub reports a SHA-256 digest for that asset (nothing is downloaded);
+- when it is a ZIP, the archive holds the app's `eboot.bin` (at the top, or in a `<titleid>/` folder),
+  read from the archive's directory alone. A release of something else (a front end, a data pack)
+  that lacks it is passed over for the previous release.
 
 The version follows the tag in the record's existing style, and a tag-pinned
 icon_url is moved to the new tag when the icon exists there. Everything else in
@@ -157,7 +160,7 @@ def new_version(old_version: str, old_tag: str, new_tag: str) -> str:
     return tag_version(new_tag)
 
 
-def find_update(record: Record, github: GitHub, icon_exists=None) -> tuple[Update | None, str]:
+def find_update(record: Record, github: GitHub, icon_exists=None, archive_ok=None) -> tuple[Update | None, str]:
     """Return (update, "") or (None, reason there is nothing to propose).
 
     The releases newer than the listed one are tried newest first; the first that has a successor
@@ -176,7 +179,7 @@ def find_update(record: Record, github: GitHub, icon_exists=None) -> tuple[Updat
         if is_older(tag, record.tag):
             first_reason = first_reason or f"newest release {tag} is older than the listed {record.tag}; not proposed"
             continue
-        update, reason = _propose(record, release, tag, icon_exists)
+        update, reason = _propose(record, release, tag, icon_exists, archive_ok)
         if update:
             return update, ""
         first_reason = first_reason or reason
@@ -194,7 +197,7 @@ def _same_tag(record: Record, release: dict) -> str:
     return "up to date"
 
 
-def _propose(record: Record, release: dict, tag: str, icon_exists) -> tuple[Update | None, str]:
+def _propose(record: Record, release: dict, tag: str, icon_exists, archive_ok=None) -> tuple[Update | None, str]:
     asset, how = pick_asset(release.get("assets", []), record.asset_name, record.tag,
                             record.data["version"], tag)
     if asset is None:
@@ -222,6 +225,8 @@ def _propose(record: Record, release: dict, tag: str, icon_exists) -> tuple[Upda
     problems = validate(record.path.name, data)
     if problems:
         return None, f"newer release {tag} found, but the updated record would be invalid: {problems[0]}"
+    if _extension(asset["name"]) == "zip" and not (archive_ok or _archive_has_eboot)(data["artifact_url"], record.titleid):
+        return None, f"newer release {tag} found, but {asset['name']} has no `eboot.bin`, so it is not a build of this app"
     return Update(record, data, tag, bool(release.get("prerelease")), notes), ""
 
 
@@ -248,6 +253,18 @@ def _icon_exists(url: str) -> bool:
         return artifacts.inspect_icon(artifacts.fetch_small(url, artifacts.MAX_ICON_BYTES))[0] is not None
     except (artifacts.DownloadError, OSError):
         return False
+
+
+def _archive_has_eboot(url: str, titleid: str) -> bool:
+    """False only when the ZIP was read and holds no `eboot.bin` (at the top, or in `<titleid>/`).
+
+    An archive that cannot be read now proves nothing, so it is still proposed: the pull request's
+    own checks read it again and a maintainer sees the result."""
+    try:
+        names = artifacts.zip_names(url)
+    except (artifacts.DownloadError, OSError):
+        return True
+    return any(n == "eboot.bin" or n.endswith(f"{titleid}/eboot.bin") for n in names)
 
 
 def validate(filename: str, data: dict) -> list[str]:
