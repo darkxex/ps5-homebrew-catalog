@@ -3,7 +3,7 @@
   "name": "Nuvio Max'd",
   "kind": "app",
   "category": "video",
-  "description": "Experimental Nuvio Max'd for PS5 with an optional privileged USB playlist reader for sandbox access failures (unconfirmed fix), private mount diagnostics, profiles, IPTV and media servers.",
+  "description": "Experimental Nuvio Max'd for PS5 with profiles, IPTV, media servers and an optional privileged USB playlist reader. MDBList episode-history and carousel fixes await console confirmation.",
   "license": "GPL-3.0",
   "author": "HandshakeHackin",
   "version": "1.0.0.23-native-experimental",
