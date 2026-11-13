@@ -6,9 +6,9 @@
   "description": "XBOX emulator for PS5",
   "license": "GPL-3.0",
   "author": "Press5elect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "source_repo": "https://github.com/Press5elect/OGBox",
-  "artifact_url": "https://github.com/Press5elect/OGBox/releases/download/v1.0.0/OGBox-v1.0.0.zip",
-  "sha256": "f332e696bb5cf810dd46f9b56a67a18660eedceca1999fbd01ed2d8d9cd902e3",
-  "icon_url": "https://raw.githubusercontent.com/Press5elect/OGBox/v1.0.0/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Press5elect/OGBox/releases/download/v1.0.1/OGBox-v1.0.1.zip",
+  "sha256": "f0fc19c55bf7d1c0213cd9d1c485ec981729bb1c96a15bd9af9a05a55529a2fc",
+  "icon_url": "https://raw.githubusercontent.com/Press5elect/OGBox/v1.0.1/ps5/sce_sys/icon0.png"
 }
