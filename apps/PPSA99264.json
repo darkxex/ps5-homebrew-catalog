@@ -6,9 +6,9 @@
   "description": "Native PS5 port of Smash Remix, the Super Smash Bros. 64 mod, built on the SSB64 decompilation and libultraship. Bring your own Smash Remix ROM.",
   "license": "MIT",
   "author": "Lucas Oliveira",
-  "version": "v2.0.1-port.11",
+  "version": "v2.0.1-port.12",
   "source_repo": "https://github.com/lucasliet/BattleShip-remix",
-  "artifact_url": "https://github.com/lucasliet/BattleShip-remix/releases/download/v2.0.1-port.11/BattleShip-Remix-ps5-PPSA99264.zip",
-  "sha256": "a0c28abaa076d2ad4513dd566457f2e50b9e13aa0a21b3809c2a246370858719",
-  "icon_url": "https://raw.githubusercontent.com/lucasliet/BattleShip-remix/v2.0.1-port.11/assets/icon-remix.png"
+  "artifact_url": "https://github.com/lucasliet/BattleShip-remix/releases/download/v2.0.1-port.12/BattleShip-Remix-ps5-PPSA99264.zip",
+  "sha256": "8e07b9030e939c818935ccc9973952721be63f60c9956d84830cb754fe9c378f",
+  "icon_url": "https://raw.githubusercontent.com/lucasliet/BattleShip-remix/v2.0.1-port.12/assets/icon-remix.png"
 }
