@@ -6,9 +6,9 @@
   "description": "A roguelike built on the real Mega Man Battle Network 6, from your own ROM: every run jacks MegaMan into a newly generated net of battles, loot and guardian Navis.",
   "license": "MIT",
   "author": "Saschb2b",
-  "version": "0.21.1",
+  "version": "0.21.2",
   "source_repo": "https://github.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless",
-  "artifact_url": "https://github.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/releases/download/v0.21.1/cyberworld-endless-ps5.zip",
-  "sha256": "761823f6597db5f6cb3df76a7b5689c2af50bc2d7bde55b64697a287edeadade",
-  "icon_url": "https://raw.githubusercontent.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/v0.21.1/ps5/icon0.png"
+  "artifact_url": "https://github.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/releases/download/v0.21.2/cyberworld-endless-ps5.zip",
+  "sha256": "bdf56004de23495f108ceb9e42d5e51beb3b911d40210df1d11f56ab1cce877d",
+  "icon_url": "https://raw.githubusercontent.com/saschb2b/Mega-Man-Battle-Network-Cyberworld-Endless/v0.21.2/ps5/icon0.png"
 }
