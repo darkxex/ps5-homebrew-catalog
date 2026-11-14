@@ -1,1 +1,15 @@
-{"titleid":"PPSA99950","name":"PS5 Backup Center","kind":"app","category":"utilities","description":"Back up, compare and sync your PS5 games, saves, apps and DLC across two PS5s, USB drives, a NAS, Switch and Switch 2 emulators, from the TV or any browser.","license":"GPL-3.0","author":"Console Center Studio","version":"2.98.4","source_repo":"https://github.com/consolecenterstudio/ps5-backup-center","artifact_url":"https://github.com/consolecenterstudio/ps5-backup-center/releases/download/v2.98.4/PPSA99950.zip","sha256":"ca023a0ec7aea88f5ca64c6b803b3e18aa1fdb6528d3423ef64e61eafc31f049","icon_url":null,"icon_member":"PPSA99950/sce_sys/icon0.png"}
+{
+  "titleid": "PPSA99950",
+  "name": "PS5 Backup Center",
+  "kind": "app",
+  "category": "utilities",
+  "description": "Back up, compare and sync your PS5 games, saves, apps and DLC across two PS5s, USB drives, a NAS, Switch and Switch 2 emulators, from the TV or any browser.",
+  "license": "GPL-3.0",
+  "author": "Console Center Studio",
+  "version": "2.99.5",
+  "source_repo": "https://github.com/consolecenterstudio/ps5-backup-center",
+  "artifact_url": "https://github.com/consolecenterstudio/ps5-backup-center/releases/download/v2.99.5/PPSA99950.zip",
+  "sha256": "12ea416b70c9dafc5895f7edf0c5c202a45b8a67f4379d1770a6e8bd538decd1",
+  "icon_url": null,
+  "icon_member": "PPSA99950/sce_sys/icon0.png"
+}
