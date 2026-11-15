@@ -6,9 +6,9 @@
   "description": "PCSX2 port for PS5 that runs PS2 games natively with a Vulkan renderer, up to 6x resolution and settings from your phone. Bring your own BIOS and games.",
   "license": "GPL-3.0",
   "author": "Sword",
-  "version": "vk-285-190",
+  "version": "vk-285-321",
   "source_repo": "https://github.com/Swordpdf/PS5SX2",
-  "artifact_url": "https://github.com/Swordpdf/PS5SX2/releases/download/vk-285-190/PS5SX2-vk-285-190.zip",
-  "sha256": "8cec2731ac94a4b0001bc42f502d1f2eab128574cad6e9736238ca20557a55ed",
+  "artifact_url": "https://github.com/Swordpdf/PS5SX2/releases/download/vk-285-321/PS5SX2-vk-285-321.zip",
+  "sha256": "2c72e77a4e58583d6e42909e3d7b82deb5321f39b17776ff4954c05b4825d241",
   "icon_url": "https://raw.githubusercontent.com/Swordpdf/PS5SX2/main/ps5/sce_sys/icon0.png"
 }
