@@ -6,9 +6,9 @@
   "description": "Minecraft Java runs natively on PS5 with a Native Java 25 Runtime. Java ownership required. GUI: mihawk-99/PS5_VKHomebrewUI; icons: MultiMC/Prism.",
   "license": "GPL-3.0-or-later",
   "author": "mateo-cogeanu",
-  "version": "01.000.281",
+  "version": "01.000.285",
   "source_repo": "https://github.com/mateo-cogeanu/ProsperoCraft",
-  "artifact_url": "https://github.com/mateo-cogeanu/ProsperoCraft/releases/download/01.000.281/PPSA99874.zip",
-  "sha256": "ab92eafe8a1569d90a6a6e26339ec29ba69f149f6bd3e4f3567eeb2215c770a9",
+  "artifact_url": "https://github.com/mateo-cogeanu/ProsperoCraft/releases/download/01.000.285/PPSA99874.zip",
+  "sha256": "c46d07bb0ca56988e83cacc7f5b2b495f8ff70f36c4dbaca134d5ba15f505ae4",
   "icon_url": "https://raw.githubusercontent.com/mateo-cogeanu/ProsperoCraft/01.000.108/assets/branding/icon0.png"
 }
