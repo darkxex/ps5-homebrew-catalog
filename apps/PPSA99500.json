@@ -6,9 +6,9 @@
   "description": "Halo: Combat Evolved, built from the decompilation of the Xbox game. Needs your own disc image.",
   "license": "AGPL-3.0",
   "author": "thelinkin3000",
-  "version": "build-142",
+  "version": "build-143",
   "source_repo": "https://github.com/thelinkin3000/SlipstreamCE",
-  "artifact_url": "https://github.com/thelinkin3000/SlipstreamCE/releases/download/build-142/halo-ps5-release.zip",
-  "sha256": "ff34d2c0647f2717c0ebc60e02cd34819f7a657df1a6a47226505fe31886903a",
-  "icon_url": "https://raw.githubusercontent.com/thelinkin3000/SlipstreamCE/build-142/port/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/thelinkin3000/SlipstreamCE/releases/download/build-143/halo-ps5-release.zip",
+  "sha256": "9e7e207e6d84d83f650129c9387b871f9eb2e63a3d7db866486209be294a2918",
+  "icon_url": "https://raw.githubusercontent.com/thelinkin3000/SlipstreamCE/build-143/port/ps5/sce_sys/icon0.png"
 }
