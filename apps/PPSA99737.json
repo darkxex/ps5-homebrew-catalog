@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99737",
+  "name": "PhazonEchoses",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Standalone PS5 port for Metroid Prime 2: Echoes. Requires your own supported GameCube disc image.",
+  "license": null,
+  "author": "BaZZtian",
+  "version": null,
+  "source_repo": null,
+  "artifact_url": null,
+  "sha256": null,
+  "icon_url": null
+}
