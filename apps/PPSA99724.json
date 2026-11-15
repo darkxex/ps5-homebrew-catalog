@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99724",
+  "name": "Punktfunk",
+  "kind": "app",
+  "category": "streaming",
+  "description": "Low-latency game and desktop streaming from a Punktfunk host, up to 4K at 120 Hz with HDR10 and DualSense rumble and adaptive triggers.",
+  "license": "MIT OR Apache-2.0",
+  "author": "Punktfunk",
+  "version": "0.1.2",
+  "source_repo": "https://github.com/punktfunk/client-ps5",
+  "artifact_url": "https://github.com/punktfunk/client-ps5/releases/download/v0.1.2/PPSA99724.zip",
+  "sha256": "f205dd334379741c16b583661dabe79b671acb39cbe42c35631320d47de2405c",
+  "icon_url": "https://raw.githubusercontent.com/punktfunk/client-ps5/v0.1.2/packaging/sce_sys/icon0.png"
+}
