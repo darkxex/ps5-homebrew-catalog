@@ -60,11 +60,6 @@ $body
 </main>
 <footer class="foot">
   <div class="foot__inner">
-    <div class="foot__sponsor">
-      <span class="foot__sponsor-title" data-i18n="foot.sponsor">Sponsor this project</span>
-      <a href="https://ko-fi.com/angelxex" rel="noopener" title="ko-fi.com/angelxex"><svg class="foot__logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#29abe0"/><path d="M6 11h15v8.5a4.5 4.5 0 0 1-4.5 4.5h-6A4.5 4.5 0 0 1 6 19.500z" fill="#fff"/><path d="M21 12.500h1.500a3 3 0 0 1 0 6H21" fill="none" stroke="#fff" stroke-width="2"/><path d="M13.500 21.500l-3.300-3.200a2.100 2.100 0 0 1 3.300-2.600 2.100 2.100 0 0 1 3.300 2.600z" fill="#ff5e5b"/></svg><span>Ko-fi</span></a>
-      <a href="https://buymeacoffee.com/angelxex" rel="noopener" title="buymeacoffee.com/angelxex"><svg class="foot__logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M10 3h12l-1 3H11z" fill="#fff" stroke="#0d0c22" stroke-width="1.500" stroke-linejoin="round"/><path d="M8.500 8h15l-2 21h-11z" fill="#fd0" stroke="#0d0c22" stroke-width="1.500" stroke-linejoin="round"/><path d="M9 12h14" stroke="#0d0c22" stroke-width="1.500"/></svg><span>Buy me a coffee</span></a>
-    </div>
     <nav class="foot__nav" aria-label="Catalog" data-i18n-attr="aria-label:foot.catalog">
       <a href="$submit_url" data-i18n="foot.publish">Publish an app</a>
       <a href="$repo/blob/main/docs/review-policy.md" data-i18n="foot.policy">Review policy</a>
@@ -76,5 +71,17 @@ $body
     <p class="foot__fine"><span data-i18n-html="foot.fine" data-v-repo="$repo" data-v-commit="$commit" data-v-short="$commit_short">Lists native PS5 homebrew apps only. Community-run and not affiliated with Sony Interactive Entertainment. Downloads come from each developer's own GitHub release; this site doesn't host them. Each developer is solely responsible for their app's licensing and content. Listings are provided as-is, without warranty, and a listing is not a security audit. <a href="$repo#disclaimer">Disclaimer</a> · Maintained by <a href="https://github.com/darkxex">darkxex</a>, created by <a href="https://github.com/blackbearreloaded">BlackBearReloaded</a> · Built from <a href="$repo/commit/$commit">$commit_short</a></span>$commit_time.</p>
   </div>
 </footer>
+<aside class="social" data-social hidden aria-label="Follow me" data-i18n-attr="aria-label:social.label">
+  <div class="social__card">
+    <p class="social__text"><span class="social__mark" aria-hidden="true"></span><span><span data-i18n="social.text">Follow and support</span> <strong>ProsperoStore</strong></span></p>
+    <div class="social__links">
+      <a class="social__link" href="https://x.com/AngelXex1" rel="noopener" target="_blank" aria-label="X (Twitter): @AngelXex1"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>@AngelXex1</span></a>
+      <a class="social__link" href="https://discord.gg/Drx8tsqq3B" rel="noopener" target="_blank" aria-label="Discord"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#5865f2" d="M20.317 4.37a19.8 19.8 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.6 12.6 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.1.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.06.06 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.086-2.157-2.419s.955-2.419 2.157-2.419c1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419s.955-2.419 2.157-2.419c1.21 0 2.176 1.095 2.157 2.42 0 1.332-.947 2.418-2.157 2.418z"/></svg><span>Discord</span></a>
+      <a class="social__link" href="https://ko-fi.com/angelxex" rel="noopener" target="_blank" aria-label="Ko-fi"><svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#29abe0"/><path d="M6 11h15v8.5a4.5 4.5 0 0 1-4.5 4.5h-6A4.5 4.5 0 0 1 6 19.500z" fill="#fff"/><path d="M21 12.500h1.500a3 3 0 0 1 0 6H21" fill="none" stroke="#fff" stroke-width="2"/><path d="M13.500 21.500l-3.300-3.200a2.100 2.100 0 0 1 3.300-2.600 2.100 2.100 0 0 1 3.300 2.600z" fill="#ff5e5b"/></svg><span>Ko-fi</span></a>
+      <a class="social__link" href="https://buymeacoffee.com/angelxex" rel="noopener" target="_blank" aria-label="Buy me a coffee"><svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path d="M10 3h12l-1 3H11z" fill="#fff" stroke="#0d0c22" stroke-width="1.500" stroke-linejoin="round"/><path d="M8.500 8h15l-2 21h-11z" fill="#fd0" stroke="#0d0c22" stroke-width="1.500" stroke-linejoin="round"/><path d="M9 12h14" stroke="#0d0c22" stroke-width="1.500"/></svg><span>Buy me a coffee</span></a>
+    </div>
+    <button type="button" class="social__close" data-social-close aria-label="Close" data-i18n-attr="aria-label:social.close">&times;</button>
+  </div>
+</aside>
 </body>
 </html>
