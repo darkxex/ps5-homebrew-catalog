@@ -6,9 +6,9 @@
   "description": "VLC media player for PS5: videos, music, photos, subtitles, DVD images and more",
   "license": "GPL-3.0",
   "author": "AZiZ",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "source_repo": "https://github.com/ZiZc3/VLC",
-  "artifact_url": "https://github.com/ZiZc3/VLC/releases/download/v0.6.0/PPSA85300.zip",
-  "sha256": "10267b5df557c8eddda698bd5d225e03dabac8def8ed966b6c40b14caf05adf0",
-  "icon_url": "https://raw.githubusercontent.com/ZiZc3/VLC/v0.6.0/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/ZiZc3/VLC/releases/download/v0.6.1/PPSA85300.zip",
+  "sha256": "7cbc702f18610fc09bd361813a83dd639353c3631b7f796e620539408f395d27",
+  "icon_url": "https://raw.githubusercontent.com/ZiZc3/VLC/v0.6.1/ps5/sce_sys/icon0.png"
 }

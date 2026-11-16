@@ -100,9 +100,9 @@ class IsOlderTests(unittest.TestCase):
 
 
 class FindUpdateTests(unittest.TestCase):
-    def find(self, releases, data=OLD, icon_exists=True):
+    def find(self, releases, data=OLD, icon_exists=True, archive_ok=True):
         return find_update(Record(Path("PPSA01234.json"), data), FakeGitHub(releases),
-                           icon_exists=lambda url: icon_exists)
+                           icon_exists=lambda url: icon_exists, archive_ok=lambda url, titleid: archive_ok)
 
     def test_the_newest_release_is_the_one_published_last_not_the_first_GitHub_lists(self):
         # A repository whose tags were moved can have the listed release first even though a later
@@ -201,6 +201,37 @@ class FindUpdateTests(unittest.TestCase):
         self.assertEqual(update.data["icon_url"], OLD["icon_url"])
         self.assertTrue(any("icon kept" in note for note in update.notes))
 
+    def test_a_zip_without_eboot_is_passed_over_for_the_previous_release(self):
+        # A release of something else in the same repository (a front end, a data pack) ships a
+        # lone .zip that is "the only one of its type", but it holds no eboot.bin.
+        update, reason = self.find([
+            release("es-data-1", [asset("front-end.zip")], prerelease=True, published="2026-11-06T00:00:00Z"),
+            release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")], published="2026-11-05T00:00:00Z"),
+        ], archive_ok=False)
+        self.assertIsNone(update)
+        self.assertIn("eboot.bin", reason)
+
+    def test_the_eboot_check_reads_the_chosen_file_and_the_title_id(self):
+        seen = []
+        find_update(Record(Path("PPSA01234.json"), OLD),
+                    FakeGitHub([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])]),
+                    icon_exists=lambda url: True,
+                    archive_ok=lambda url, titleid: seen.append((url, titleid)) or True)
+        self.assertEqual(seen, [("https://github.com/example/example-app/releases/download/v0.6.0/"
+                                 "example-0.6.0-PPSA01234.zip", "PPSA01234")])
+
+    def test_only_an_archive_that_was_read_and_lacks_eboot_is_rejected(self):
+        from catalog import artifacts, updates
+        url = "https://example.invalid/a.zip"
+        for names, expected in ((["eboot.bin", "sce_sys/param.json"], True),
+                                (["PPSA01234/eboot.bin"], True),
+                                (["PPSA09999/eboot.bin"], False),
+                                (["ES-DE/es-de.elf", "readme.txt"], False)):
+            with mock.patch.object(artifacts, "zip_names", return_value=names):
+                self.assertEqual(updates._archive_has_eboot(url, "PPSA01234"), expected, names)
+        with mock.patch.object(artifacts, "zip_names", side_effect=artifacts.DownloadError("no ranges")):
+            self.assertTrue(updates._archive_has_eboot(url, "PPSA01234"))
+
     def test_needs_a_digest(self):
         update, reason = self.find([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip", digest=None)])])
         self.assertIsNone(update)
@@ -228,7 +259,8 @@ class BumpPolicyTests(unittest.TestCase):
     def setUp(self):
         self.github = FakeGitHub([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])])
         self.old = Record(Path("PPSA01234.json"), OLD)
-        update, _ = find_update(self.old, self.github, icon_exists=lambda url: True)
+        update, _ = find_update(self.old, self.github, icon_exists=lambda url: True,
+                                archive_ok=lambda url, titleid: True)
         self.new = Record(Path("PPSA01234.json"), update.data)
 
     def test_newest_release_bump_is_recognised(self):
@@ -309,10 +341,10 @@ class OpenPullRequestTests(unittest.TestCase):
 
         first, _ = find_update(Record(self.clone / "apps" / "PPSA01234.json", OLD),
                                FakeGitHub([release("v0.6.0", [asset("example-0.6.0-PPSA01234.zip")])]),
-                               icon_exists=lambda url: True)
+                               icon_exists=lambda url: True, archive_ok=lambda url, titleid: True)
         second, _ = find_update(Record(self.clone / "apps" / "PPSA04321.json", OTHER),
                                 FakeGitHub([release("2.0", [asset("other-PPSA04321.zip", "sha256:" + "d" * 64)])]),
-                                icon_exists=lambda url: True)
+                                icon_exists=lambda url: True, archive_ok=lambda url, titleid: True)
         self.updates = [first, second]
         self.created, self.updated, self.closed, self.open_pr = [], [], [], {}
         self.github = mock.Mock(

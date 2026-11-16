@@ -1,0 +1,14 @@
+{
+  "titleid": "NAVI00001",
+  "name": "Navi5",
+  "kind": "app",
+  "category": "music",
+  "description": "Navidrome/OpenSubsonic music client for jailbroken PS5, featuring a minimalist liquid-glass UI, artist, album and playlist browsing, search, and gapless playback.",
+  "license": "GPL-3.0-or-later",
+  "author": "willindiana",
+  "version": "v0.8.0-beta.1",
+  "source_repo": "https://github.com/willindiana/navi5",
+  "artifact_url": "https://github.com/willindiana/navi5/releases/download/v0.8.0-beta.1/Navi5-00.008.000.zip",
+  "sha256": "5833b959227b0e5170bf13f3424a7da9251ac77b585f853607f3985546440633",
+  "icon_url": "https://raw.githubusercontent.com/willindiana/navi5/v0.8.0-beta.1/app/sce_sys/icon0.png"
+}

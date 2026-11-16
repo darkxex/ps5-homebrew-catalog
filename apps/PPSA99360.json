@@ -7,8 +7,8 @@
   "license": "GPL-3.0",
   "author": "premohq",
   "version": "5.1.0",
-  "source_repo": "https://github.com/premohq/PS5-ECAM",
-  "artifact_url": "https://github.com/premohq/PS5-ECAM/releases/download/v5.1.0/PS5-ECAM-v5.1.0.zip",
+  "source_repo": "https://github.com/premohq/PlayTendoh",
+  "artifact_url": "https://github.com/premohq/PlayTendoh/releases/download/v5.1.0/PS5-ECAM-v5.1.0.zip",
   "sha256": "c6a0c0b50617d923a5e7a5cb37d799c746118342cd850d5bca634c3670a6562f",
-  "icon_url": "https://raw.githubusercontent.com/premohq/PS5-ECAM/v5.1.0/sce_sys/icon0.png"
+  "icon_url": "https://raw.githubusercontent.com/premohq/PlayTendoh/v5.1.0/sce_sys/icon0.png"
 }

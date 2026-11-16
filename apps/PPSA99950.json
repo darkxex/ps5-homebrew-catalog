@@ -1,0 +1,15 @@
+{
+  "titleid": "PPSA99950",
+  "name": "PS5 Backup Center",
+  "kind": "app",
+  "category": "utilities",
+  "description": "Back up, compare and sync your PS5 games, saves, apps and DLC across two PS5s, USB drives, a NAS, Switch and Switch 2 emulators, from the TV or any browser.",
+  "license": "GPL-3.0",
+  "author": "Console Center Studio",
+  "version": "3.0.0",
+  "source_repo": "https://github.com/consolecenterstudio/ps5-backup-center",
+  "artifact_url": "https://github.com/consolecenterstudio/ps5-backup-center/releases/download/v3.0.0/PPSA99950.zip",
+  "sha256": "60cbb9e0e1e8657513ae30038114115c743fa2772c932f1c44e3a28f8c771b84",
+  "icon_url": null,
+  "icon_member": "PPSA99950/sce_sys/icon0.png"
+}
