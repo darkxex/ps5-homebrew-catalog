@@ -620,7 +620,7 @@ def write_api(root: Path, url: str, records: list[Record], report: Report, *, up
         }
         _write_json(root / "apps" / f"{rid}.json", app)
         entry = ({key: app[key] for key in (
-            "id", "titleid", "status", "conflicts_with", "name", "kind", "category", "author", "version", "content_version", "format", "size",
+            "id", "titleid", "status", "conflicts_with", "name", "kind", "category", "description", "author", "version", "content_version", "format", "size",
             "released", "updated", "added", "icon_small", "icon_hash")}
             | {"sandbox": ((safety or {}).get(rid) or {}).get("sandbox"),
                # Who the apps are grouped under (the website's developer pages): the owner of the repository, as
