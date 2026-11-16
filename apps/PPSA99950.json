@@ -3,7 +3,7 @@
   "name": "PS5 Backup Center",
   "kind": "app",
   "category": "utilities",
-  "description": "Download games from a paired PS5, install and transfer them, and back up, compare, sync and restore saves across PS5, USB, NAS and cloud from your TV or browser. Manage PS5 apps, DLC and saves from Switch and compatible emulators.",
+  "description": "Download games from a paired PS5, then install or transfer them. Back up, compare, sync and restore saves across PS5, USB, NAS and cloud. Manage PS5 apps, DLC, Switch and emulator saves.",
   "license": "GPL-3.0",
   "author": "Console Center Studio",
   "version": "3.1.0",
