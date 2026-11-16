@@ -902,7 +902,7 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
             updated_iso=e(updated.get(record.path.name, "")),
             total=f"{total:03d}",
             search_text=e(" ".join((d["name"], d["author"], d["titleid"], d["description"], d["kind"],
-                                    CATEGORIES[d["category"]]))),
+                                    CATEGORIES[d["category"]], d["category"]))),
         )
         return values
 
