@@ -85,6 +85,14 @@ class ContentVersionTests(unittest.TestCase):
         self.assertEqual(found, ("01.000.020", "app/sce_sys/param.json"))
         self.assertEqual(fetched, ["https://raw.githubusercontent.com/example/example-app/v0.6.0/app/sce_sys/param.json"])
 
+    def test_an_icon_on_a_branch_still_reads_the_param_json_at_the_tag(self):
+        data = dict(DATA, icon_url="https://raw.githubusercontent.com/example/example-app/master/app/sce_sys/icon0.png")
+        fetched = []
+        found = find_content_version(Record(self.record.path, data), FakeGitHub(),
+                                     fetch=lambda url, limit: fetched.append(url) or param().encode())
+        self.assertEqual(found, ("01.000.020", "app/sce_sys/param.json"))
+        self.assertEqual(fetched, ["https://raw.githubusercontent.com/example/example-app/v0.6.0/app/sce_sys/param.json"])
+
     def test_falls_back_to_the_tree_and_skips_other_titles(self):
         github = FakeGitHub({"vendor/sample/sce_sys/param.json": param("PPSA09999", "01.000.900"),
                              "ps5/sce_sys/param.json": param(version="01.000.021"), "README.md": "x"})

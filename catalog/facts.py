@@ -83,7 +83,9 @@ def find_content_version(record: Record, github: GitHub, fetch=None) -> tuple[st
     raw = f"https://raw.githubusercontent.com/{record.owner}/{record.repo}/"
     icon = data["icon_url"] or ""
     if icon.startswith(raw) and icon.endswith("/sce_sys/icon0.png"):
-        url = icon.removesuffix("icon0.png") + "param.json"
+        # The icon's ref is usually a branch (master); the release's param.json is the one at its tag.
+        _, _, folder = icon.removeprefix(raw).removesuffix("icon0.png").partition("/")
+        url = f"{raw}{record.tag}/{folder}param.json"
         try:
             found = _content_version(fetch(url, MAX_PARAM_BYTES).decode("utf-8", errors="replace"), data["titleid"])
         except (artifacts.DownloadError, OSError):
