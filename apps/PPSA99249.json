@@ -6,9 +6,9 @@
   "description": "PCSX2 (PlayStation 2) as a standalone PS5 title on RADV, with a controller-first Big Picture library, network shares, USB disc drives and RetroAchievements.",
   "license": "GPL-3.0-or-later",
   "author": "Press5elect",
-  "version": "v1.0.21",
+  "version": "v1.0.22",
   "source_repo": "https://github.com/Press5elect/Crux2",
-  "artifact_url": "https://github.com/Press5elect/Crux2/releases/download/v1.0.21/Crux2-v1.0.21.zip",
-  "sha256": "d3d1f0e27f8195fd6e3f8ba709c2bfc53c1340915ec3e220ed9d52f78f2f3f62",
-  "icon_url": "https://raw.githubusercontent.com/Press5elect/Crux2/v1.0.21/ps5/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Press5elect/Crux2/releases/download/v1.0.22/Crux2-v1.0.22.zip",
+  "sha256": "501283ce83748daf42423417e78d3f806eea55176f24c0ff1611a895e93b1759",
+  "icon_url": "https://raw.githubusercontent.com/Press5elect/Crux2/v1.0.22/ps5/sce_sys/icon0.png"
 }
