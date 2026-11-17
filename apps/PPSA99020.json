@@ -6,9 +6,9 @@
   "description": "The Getaway (PS2) remastered with modern graphics, reworked controls and driving, mods and online free roam; you bring your own disc image.",
   "license": "LicenseRef-SecondCoat-Freeware",
   "author": "Second Coat",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "source_repo": "https://github.com/SecondCoat/second-coat-london",
-  "artifact_url": "https://github.com/SecondCoat/second-coat-london/releases/download/v0.4.1/getaway-ps5-PPSA99020.zip",
-  "sha256": "f2ce727e8af7b1453b0ff0646d0023bdd279adea3a46b9eb7efbed2d0c9c9563",
-  "icon_url": "https://raw.githubusercontent.com/SecondCoat/second-coat-london/v0.4.1/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/SecondCoat/second-coat-london/releases/download/v0.4.2/getaway-ps5-PPSA99020.zip",
+  "sha256": "4cd22854c3e9b1d25bd298002b98d619c2ba40461b9a8820a5a7d6df223b2912",
+  "icon_url": "https://raw.githubusercontent.com/SecondCoat/second-coat-london/v0.4.2/sce_sys/icon0.png"
 }
