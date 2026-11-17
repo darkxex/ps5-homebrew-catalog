@@ -6,10 +6,10 @@
   "description": "Plays your Steam games on the PS5: sign in to Steam, download your Windows games and run each one through Wine as its own title.",
   "license": "GPL-3.0",
   "author": "leolobato",
-  "version": "0.11.0",
+  "version": "0.12.0-beta.1",
   "source_repo": "https://github.com/leolobato/playden-ps5",
-  "artifact_url": "https://github.com/leolobato/playden-ps5/releases/download/v0.11.0/playden-ps5-0.11.0.zip",
-  "sha256": "e7a5579a693c4d7f48f1f66fd3339f9f27ef503de56809e1950cb036d77736d3",
-  "icon_url": "https://raw.githubusercontent.com/leolobato/playden-ps5/v0.11.0/sce_sys/icon0.png",
+  "artifact_url": "https://github.com/leolobato/playden-ps5/releases/download/v0.12.0-beta.1/playden-ps5-0.12.0-beta.1.zip",
+  "sha256": "a4ee41d8c9350db5fcbd82dc400cfcc7c1847a1eb103f51464d5f948b6fb253d",
+  "icon_url": "https://raw.githubusercontent.com/leolobato/playden-ps5/v0.12.0-beta.1/sce_sys/icon0.png",
   "internalOnly": true
 }
