@@ -3,7 +3,7 @@
   "name": "Breath of the Wild VR",
   "kind": "app",
   "category": "emulators",
-  "description": "Plays your own Breath of the Wild dump in PS VR2 with Sense controllers via Crementif's BetterVR 1.0.0 mod in Crementif's Cemu fork (experimental; VR on firmware 5.50, 7.61, 8.40, 9.00, 10.00, 11.60, 12.40, 13.60; tested 13.60; Sense vibration on 13.60).",
+  "description": "Plays your Breath of the Wild dump in PS VR2 with Sense controllers via Crementif's BetterVR 1.0.0 in Cemu (experimental; firmware 5.50, 7.61, 8.40, 9.00, 10.00, 11.60, 12.40, 13.60; tested 13.60).",
   "license": "GPL-3.0",
   "author": "Papyszoo",
   "version": "0.5.0",
