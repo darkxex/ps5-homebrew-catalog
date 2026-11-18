@@ -3,7 +3,7 @@
   "name": "Parallax Browser",
   "kind": "app",
   "category": "utilities",
-  "description": "A WebKit browser for the PS5 with tabs, ad blocking and hardware video decoding, which can play the video on a page in the PS VR2.",
+  "description": "A fast Web browser for the PS5 with WebGL, WebGPU, Gamepad API, hardware video decoding up to 8K, and PS VR2 video playback.",
   "license": "GPL-3.0",
   "author": "Rik Leigh",
   "version": "0.2.1",
