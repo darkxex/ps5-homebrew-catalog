@@ -3,7 +3,7 @@
   "name": "Cyberworld Endless",
   "kind": "game",
   "category": "homebrew-games",
-  "description": "A roguelike built on the real Mega Man Battle Network 6, from your own ROM: every run jacks MegaMan into a newly generated net of battles, loot and guardian Navis.",
+  "description": "A Battle Network roguelike: a new net every run, with viruses, Navis and chips from BN4, BN5 and BN6, and the Net Square online. It plays the original games from your own ROMs.",
   "license": "MIT",
   "author": "Saschb2b",
   "version": "0.23.0",
