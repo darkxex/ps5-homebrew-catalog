@@ -3,7 +3,7 @@
   "name": "Cyberworld Endless",
   "kind": "game",
   "category": "homebrew-games",
-  "description": "A Battle Network roguelike: a new net every run, with viruses and Navis from BN4, BN5 and BN6 and their chips in one folder. NetBattle, trade and dive together in the online Net Square. It plays the original games from your own ROMs, on PC, phones, handhelds, consoles and the browser.",
+  "description": "A Battle Network roguelike: a new net every run, with viruses, Navis and chips from BN4, BN5 and BN6, and the Net Square online. It plays the original games from your own ROMs.",
   "license": "MIT",
   "author": "Saschb2b",
   "version": "0.23.0",
