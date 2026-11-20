@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99735",
+  "sha256": null,
+  "category": "homebrew-games",
+  "artifact_url": null,
+  "version": null,
+  "author": "BaZZtian",
+  "icon_url": null,
+  "license": null,
+  "source_repo": null,
+  "name": "PhazonCorruption",
+  "description": "Native PS5 port of Metroid Prime 3: Corruption, currently in development.",
+  "kind": "game"
+}

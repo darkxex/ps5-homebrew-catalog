@@ -15,7 +15,7 @@ API itself, and there is no server behind it, only files on a CDN.
 | Path | Holds | Size | Use it to |
 | --- | --- | --- | --- |
 | [`/api/v1/versions.json`](https://prosperostore.net/api/v1/versions.json) | The current version of every available app | about 65 bytes per app | check many installed apps for updates in one request |
-| [`/api/v1/index.json`](https://prosperostore.net/api/v1/index.json) | One compact entry per app, reservations included | about 330 bytes per app | show the catalog as a list |
+| [`/api/v1/index.json`](https://prosperostore.net/api/v1/index.json) | One compact entry per app, reservations included | about 450 bytes per app | show the catalog as a list |
 | `/api/v1/apps/<ID>.json` | Everything about one app. `<ID>` is the app's `id`: its title ID, or `<TITLEID>-<owner>` when another app shares the title ID | about 1 KB | show one app, install it, or let an app check itself |
 | [`/api/v1/manifest.json`](https://prosperostore.net/api/v1/manifest.json) and `manifest.sig` | The hash of every JSON file above, the catalog's sequence number, and a signature over both | about 90 bytes per app | verify that the catalog is genuine before installing from it |
 | [`/api/v1/news.json`](https://prosperostore.net/api/v1/news.json) and `news.sig` | Short messages from the catalog's maintainers, newest first, and a signature over the file | under 64 KB | show what is new; see [News](#news-newsjson) |
@@ -182,6 +182,7 @@ badge in lists.
       "name": "ProsperoLight",
       "kind": "app",
       "category": "streaming",
+      "description": "A media streaming app for the PS5.",
       "author": "BlackBearReloaded",
       "version": "01.000.070",
       "content_version": "01.000.070",
@@ -200,7 +201,7 @@ badge in lists.
 
 `apps` is sorted by title ID and includes reservations (`status` tells them
 apart). Each entry is a subset of the app's own file, with the same meanings;
-fetch `apps/<TITLEID>.json` for the description, license, download and hash.
+fetch `apps/<TITLEID>.json` for the license, download and hash.
 `icon_hash` is there so a list can keep its icons; see [Caching icons](#caching-icons).
 `generated` and `commit` say which build of the catalog this is; `count` is the
 length of `apps`.

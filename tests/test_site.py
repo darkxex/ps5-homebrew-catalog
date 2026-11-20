@@ -192,7 +192,7 @@ class SiteBuildTests(unittest.TestCase):
         index = json.loads((api / "index.json").read_text(encoding="utf-8"))
         self.assertEqual((index["schema"], index["count"], index["commit"]), (3, 3, "abc1234def"))
         self.assertEqual([a["titleid"] for a in index["apps"]], ["PPSA01234", "PPSA04321", "PPSA05555"])
-        self.assertNotIn("description", index["apps"][0])
+        self.assertEqual(index["apps"][0]["description"], "Quote \" and <b>tags</b> & ampersands.")
         # When the catalog listed each app (null here: the test records have no git history).
         self.assertIn("added", index["apps"][0])
         self.assertIn("added", app)

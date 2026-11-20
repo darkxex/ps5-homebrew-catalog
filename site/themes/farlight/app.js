@@ -840,5 +840,18 @@
       else if (event.key === "Escape" && event.target === search) { search.value = ""; search.dispatchEvent(new Event("input")); search.blur(); }
     });
     if ($("[data-tiles]")) home(); else page();
+    const social = $("[data-social]");
+    if (social) {
+      let seen = false;
+      // Closed banners stay hidden for a week, then come back. (An old "1" value counts as expired.)
+      try { seen = Date.now() - Number(localStorage.getItem("social-seen")) < 7 * 24 * 60 * 60 * 1000; } catch (_) {}
+      const close = () => {
+        social.hidden = true;
+        try { localStorage.setItem("social-seen", String(Date.now())); } catch (_) {}
+      };
+      if (!seen) social.hidden = false;
+      $("[data-social-close]").addEventListener("click", close);
+      document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !social.hidden) close(); });
+    }
   });
 })();

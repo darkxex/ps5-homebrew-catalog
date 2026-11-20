@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA84840",
+  "name": "FLEX",
+  "kind": "app",
+  "category": "video",
+  "description": "Player for the movies and TV shows on your own Windows PC running the FLEX media server (required): poster grid, themed home rows, search, resume, and updates from the PC.",
+  "license": "Unlicensed",
+  "author": "MrRobotto512",
+  "version": "0.8.4",
+  "source_repo": "https://github.com/MrRobotto512/FLEX",
+  "artifact_url": "https://github.com/MrRobotto512/FLEX/releases/download/v0.8.4/PPSA84840.zip",
+  "sha256": "0e2d551e015f940616199d0b0635309ce0cda947ce8bc05baed9793c88883ffc",
+  "icon_url": "https://raw.githubusercontent.com/MrRobotto512/FLEX/4a144c76637c5fdd4664df28da7d2917d5251e60/ps5-client/app/sce_sys/icon0.png"
+}
