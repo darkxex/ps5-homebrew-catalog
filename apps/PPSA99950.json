@@ -6,10 +6,10 @@
   "description": "Download games from a paired PS5, then install or transfer them. Back up, compare, sync and restore saves across PS5, USB, NAS and cloud. Manage PS5 apps, DLC, Switch and emulator saves.",
   "license": "GPL-3.0",
   "author": "Console Center Studio",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "source_repo": "https://github.com/consolecenterstudio/ps5-backup-center",
-  "artifact_url": "https://github.com/consolecenterstudio/ps5-backup-center/releases/download/v3.1.0/PPSA99950.zip",
-  "sha256": "7a716a89ce4d5a38bd2d5c46c2ecd81147e434154c05bf0d5a39c12b331a9568",
+  "artifact_url": "https://github.com/consolecenterstudio/ps5-backup-center/releases/download/v3.2.0/PPSA99950.zip",
+  "sha256": "f8622c81291659bbf33948f8055f287e0bd075d3fd2ab98b277d33b2d5838378",
   "icon_url": null,
   "icon_member": "PPSA99950/sce_sys/icon0.png"
 }
