@@ -3,7 +3,7 @@
   "name": "PS5 Backup Center",
   "kind": "tool",
   "category": "utilities",
-  "description": "Download, install, transfer and share games from your TV or browser. Built-in BitTorrent, shared-link downloads, game libraries and installation from NAS, USB or cloud. Back up, compare and restore saves across your PS5 consoles and storage.",
+  "description": "Download, install, transfer and share games via BitTorrent and shared links. Manage libraries and back up, compare and restore saves across PS5, USB, NAS and cloud, from your TV or browser.",
   "license": "GPL-3.0",
   "author": "Console Center Studio",
   "version": "3.2.0",
