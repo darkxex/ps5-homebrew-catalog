@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA98567",
+  "name": "YmirPS5",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Sega Saturn emulator for PS5 with USB optical disc support and save states.",
+  "license": "GPL-3.0",
+  "author": "Wamphyre",
+  "version": "0.7.2",
+  "source_repo": "https://github.com/Wamphyre/YmirPS5",
+  "artifact_url": "https://github.com/Wamphyre/YmirPS5/releases/download/v0.7.2/YmirPS5-0.7.2-PPSA98567.zip",
+  "sha256": "6b427e08682b09496b3ec8e6e07d6b26d9d97002d007f28854fa3e56486cb958",
+  "icon_url": "https://raw.githubusercontent.com/Wamphyre/YmirPS5/e7fd9a0d56d3ca98c041e1d05ab79be9f0331969/apps/ymir-ps5/assets/icon0.png"
+}
