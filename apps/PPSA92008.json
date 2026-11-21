@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA92008",
+  "name": "Pokémon Prosperous Platinum",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Pokémon Platinum decomp port for the PS5",
+  "license": "MIT",
+  "author": "cybervisi0n",
+  "version": "0.2.3",
+  "source_repo": "https://github.com/cybervisi0n/pokeplatinum",
+  "artifact_url": "https://github.com/cybervisi0n/pokeplatinum/releases/download/v0.2.3/release_ps5.zip",
+  "sha256": "d9a390c0eb64c69fcf0e35d06163e4f4def80dcd6f4f7f432de6ad648f95f1e9",
+  "icon_url": "https://raw.githubusercontent.com/cybervisi0n/pokeplatinum/f983c87a547023a79df2d04833e45804456ae454/prospero/sce_sys/icon0.png"
+}
