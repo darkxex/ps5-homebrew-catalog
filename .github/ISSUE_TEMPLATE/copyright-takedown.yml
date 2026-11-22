@@ -1,0 +1,89 @@
+name: Copyright infringement report (takedown)
+description: Report a listed app that contains copyrighted files you own, so it can be withdrawn.
+labels: ["copyright"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form if a listed app includes or distributes files you own the rights to
+        without your permission, such as game assets, firmware, keys, ROMs, images or code.
+        The catalog reviews every report and withdraws the listing when the claim is valid
+        (see the [review policy](https://github.com/darkxex/ps5-homebrew-catalog/blob/main/docs/review-policy.md#withdrawals)).
+
+        - This issue is **public**. Don't paste personal contact details, and don't attach or
+          link copies of the copyrighted material.
+        - If you prefer to report in private, use
+          [private reporting](https://github.com/darkxex/ps5-homebrew-catalog/security/advisories/new)
+          and mention that it is a copyright report.
+        - Only the rights holder or someone authorized to act for them should file this report.
+  - type: input
+    id: titleid
+    attributes:
+      label: Title ID
+      description: The title ID of the listed app, as shown in its page or in `apps/<TITLEID>.json`.
+      placeholder: PPSA01234
+    validations:
+      required: true
+  - type: input
+    id: app_name
+    attributes:
+      label: App name or listing URL
+      placeholder: https://github.com/darkxex/ps5-homebrew-catalog/blob/main/apps/PPSA01234.json
+    validations:
+      required: false
+  - type: input
+    id: rights_holder
+    attributes:
+      label: Rights holder
+      description: The person or company that owns the copyrighted work.
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to the rights holder
+      options:
+        - I am the rights holder
+        - I am an authorized representative of the rights holder
+    validations:
+      required: true
+  - type: textarea
+    id: work
+    attributes:
+      label: Copyrighted work
+      description: Describe the work you own (name of the game, software or content) and, if you can, where the original is officially published.
+    validations:
+      required: true
+  - type: textarea
+    id: location
+    attributes:
+      label: Where the infringing files are
+      description: >-
+        Give the release asset, repository URL or file paths that contain the material
+        (for example the download URL of the release asset, or a path inside the app's repository).
+        Be as specific as possible so it can be located.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Why this is unauthorized
+      description: Explain why the use isn't licensed or permitted, and anything else the maintainers should know.
+    validations:
+      required: true
+  - type: checkboxes
+    id: statements
+    attributes:
+      label: Statements
+      options:
+        - label: I have a good-faith belief that the use of this material is not authorized by the rights holder, its agent, or the law.
+          required: true
+        - label: The information in this report is accurate, and I am the rights holder or authorized to act on their behalf.
+          required: true
+  - type: input
+    id: signature
+    attributes:
+      label: Full name (as signature)
+      description: Typing your name here serves as your signature for this report.
+    validations:
+      required: true
