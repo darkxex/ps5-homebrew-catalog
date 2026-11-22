@@ -1,0 +1,14 @@
+{
+  "titleid": "LAPY69432",
+  "name": "EliVier Explorer",
+  "kind": "app",
+  "category": "utilities",
+  "description": "A dual-pane file explorer for the controller: copy, move and delete with a safety net, and viewers for text, pictures (also DDS), hex and MP3 with playlists.",
+  "license": "GPL-3.0-or-later",
+  "author": "Marice",
+  "version": "00.001.000",
+  "source_repo": "https://github.com/Marice/ps5-elivier-explorer",
+  "artifact_url": "https://github.com/Marice/ps5-elivier-explorer/releases/download/v00.001.000/LAPY69432.zip",
+  "sha256": "9be9f31f79f90a0fb3363ee35ff9961c7ead5d434b61ebd1d80ed3758fa85165",
+  "icon_url": "https://raw.githubusercontent.com/Marice/ps5-elivier-explorer/v00.001.000/sce_sys/icon0.png"
+}
