@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA72386",
+  "name": "Flashpoint PS5",
+  "kind": "game",
+  "category": "pc-ports",
+  "description": "A PS5 homebrew app (PPSA72386) for browsing and playing the Flashpoint Archive on the TV.",
+  "license": "GPL-3.0",
+  "author": "Richie133",
+  "version": "0.0.5-alpha",
+  "source_repo": "https://github.com/Richie133/flashpointps5",
+  "artifact_url": "https://github.com/Richie133/flashpointps5/releases/download/v0.0.5-alpha/PPSA72386.zip",
+  "sha256": "77708f6f90715dd6e973699c83ce700800c28144914a19fc39e1ee08dcb867db",
+  "icon_url": "https://raw.githubusercontent.com/Richie133/flashpointps5/72cc8109d144cbf7d12a16164dd20f3a333e1a52/sce_sys/icon0.png"
+}
