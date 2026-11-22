@@ -6,9 +6,9 @@
   "description": "Nes emulator for ps5. Based on fceux",
   "license": "GPL-3.0",
   "author": "Richie133",
-  "version": "01.000.000",
+  "version": "01.001.000",
   "source_repo": "https://github.com/Richie133/fceuxs5",
-  "artifact_url": "https://github.com/Richie133/fceuxs5/releases/download/01.000.000/fceuxs5-v1.0-PPSA51855.zip",
-  "sha256": "e5da31207b85a97e63c6b2c0fd069db11a42ca60dd9093a1ff442fdfdad8ac55",
+  "artifact_url": "https://github.com/Richie133/fceuxs5/releases/download/01.001.000/fceuxs5-v1.1-PPSA51855.zip",
+  "sha256": "b3bd749cd3bd2c4df9cbb5e1c86a73844acf878ba5f41cbc070bd7b28e77b1d3",
   "icon_url": "https://raw.githubusercontent.com/Richie133/fceuxs5/88244393d0fceb05fc99e1fdb7883173034b3ad8/sce_sys/icon0.png"
 }
