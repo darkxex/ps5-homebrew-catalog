@@ -6,9 +6,9 @@
   "description": "Turns your photos into 3D Gaussian splat scenes on the console and lets you view them in PSVR2. Works offline; photos and scenes can also live on SMB or NFS shares.",
   "license": "GPL-3.0",
   "author": "Papyszoo",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "source_repo": "https://github.com/Papyszoo/photo-splat-vr",
-  "artifact_url": "https://github.com/Papyszoo/photo-splat-vr/releases/download/v0.6.1/photo-splat-vr-v0.6.1.zip",
-  "sha256": "f755df34a9f815deed9f05dd304ec309bf34eb4a95305d6c82a5a0af1aeea78c",
-  "icon_url": "https://raw.githubusercontent.com/Papyszoo/photo-splat-vr/v0.6.1/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Papyszoo/photo-splat-vr/releases/download/v0.6.2/photo-splat-vr-v0.6.2.zip",
+  "sha256": "8edb9e8bf06f65ad770e1375e5736ec3c72b3dfb679db3222c7b12a110a397cd",
+  "icon_url": "https://raw.githubusercontent.com/Papyszoo/photo-splat-vr/v0.6.2/sce_sys/icon0.png"
 }
