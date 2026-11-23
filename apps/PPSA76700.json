@@ -3,7 +3,7 @@
   "name": "RipperPS",
   "kind": "app",
   "category": "utilities",
-  "description": "Dumps games for many platforms on a jailbroken PS5 from any disc the PS5 drive or a supported external drive can read, and uploads them to remote destinations.",
+  "description": "Rip your game, movie and music discs right on your PS5. Still experimental and getting better over time, and you can help by running the drive test in Settings with different kinds of discs.",
   "license": "GPL-3.0",
   "author": "s0liton",
   "version": "0.1.0",
