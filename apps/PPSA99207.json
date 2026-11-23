@@ -6,9 +6,9 @@
   "description": "A fast Web browser for the PS5 with WebGL, WebGPU, Gamepad API, hardware video decoding up to 8K, and PS VR2 video playback.",
   "license": "GPL-3.0",
   "author": "Rik Leigh",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "source_repo": "https://github.com/rikleigh/parallax-browser",
-  "artifact_url": "https://github.com/rikleigh/parallax-browser/releases/download/v0.4.1/parallax-browser-0.4.1.zip",
-  "sha256": "0d9a1d0bc34f7d09d968c0cacc51914ee60271c8d22d4e57ce9b0b0579b41cea",
-  "icon_url": "https://raw.githubusercontent.com/rikleigh/parallax-browser/v0.4.1/port/webkit/apps/title/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/rikleigh/parallax-browser/releases/download/v0.4.2/parallax-browser-0.4.2.zip",
+  "sha256": "c8d22f85558ea3840ad3dd026b9d4f8f91d9315e651174f8d536aaf0415d87a7",
+  "icon_url": "https://raw.githubusercontent.com/rikleigh/parallax-browser/v0.4.2/port/webkit/apps/title/sce_sys/icon0.png"
 }
