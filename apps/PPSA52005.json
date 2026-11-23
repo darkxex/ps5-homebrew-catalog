@@ -6,9 +6,9 @@
   "description": "Kamtape is a retro YouTube clone. Now on ps5",
   "license": "GPL-3.0",
   "author": "Richie133",
-  "version": "0.2.0-beta",
+  "version": "0.3.0-beta",
   "source_repo": "https://github.com/Richie133/Kamtape-PS5",
-  "artifact_url": "https://github.com/Richie133/Kamtape-PS5/releases/download/v0.2.0-beta/PPSA52005.zip",
-  "sha256": "3847314fc35f3c879beecf5b5d98c3e26560ca577e56daa1802d0e28363a32d5",
+  "artifact_url": "https://github.com/Richie133/Kamtape-PS5/releases/download/v0.3.0-beta/PPSA52005.zip",
+  "sha256": "af2f1881e066925b13eba8bb0d9c3b0741629e414c847060ee8f3e7b41dacc24",
   "icon_url": "https://raw.githubusercontent.com/Richie133/Kamtape-PS5/de88e2438e1deefa43f0130f05d067d9a4ad1640/sce_sys/icon0.png"
 }
