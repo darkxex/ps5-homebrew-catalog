@@ -6,9 +6,9 @@
   "description": "Dumps games for many platforms on a jailbroken PS5 from any disc the PS5 drive or a supported external drive can read, and uploads them to remote destinations.",
   "license": "GPL-3.0",
   "author": "s0liton",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "0.1.0",
+  "source_repo": "https://github.com/s0liton/RipperPS",
+  "artifact_url": "https://github.com/s0liton/RipperPS/releases/download/v0.1.0/PPSA76700.zip",
+  "sha256": "75dcdd48ab936c9f4c97e50cddb5112c75884a9fe76bef33033e7ae9d5050d70",
+  "icon_url": "https://raw.githubusercontent.com/s0liton/RipperPS/v0.1.0/platform/ps5/app/ripper/ps5/sce_sys/icon0.png"
 }
