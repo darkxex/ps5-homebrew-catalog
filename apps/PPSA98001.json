@@ -6,9 +6,9 @@
   "description": "Runs the official, unmodified PokeMMO Linux client natively on a jailbroken PS5.",
   "license": "GPL-3.0",
   "author": "Shabbypenguin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "source_repo": "https://github.com/Shabbypenguin/PokeMMO-Prospero",
-  "artifact_url": "https://github.com/Shabbypenguin/PokeMMO-Prospero/releases/download/v1.0.5/PPSA98001.zip",
-  "sha256": "4bb71f9839b7e01afbd0d612deb921d3df3dbc09558aa7c42bcd5d2148c7bc04",
-  "icon_url": "https://raw.githubusercontent.com/Shabbypenguin/PokeMMO-Prospero/v1.0.5/assets/branding/icon0.png"
+  "artifact_url": "https://github.com/Shabbypenguin/PokeMMO-Prospero/releases/download/v1.0.6/PPSA98001.zip",
+  "sha256": "cb03b8eb94bbda1170862f2c6c33e88d0835113e0817bf038883ddbb4f3e4109",
+  "icon_url": "https://raw.githubusercontent.com/Shabbypenguin/PokeMMO-Prospero/v1.0.6/assets/branding/icon0.png"
 }
