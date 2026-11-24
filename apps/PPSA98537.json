@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA98537",
+  "name": "CannonBall PS5",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PlayStation 5 port of CannonBall, the enhanced OutRun engine, featuring smooth 60 FPS gameplay and DualSense support.",
+  "license": "GPL-3.0",
+  "author": "Jonathan Burtenshaw",
+  "version": "1.0.0",
+  "source_repo": "https://github.com/JJBurtenshaw/CannonBall-PS5",
+  "artifact_url": "https://github.com/JJBurtenshaw/CannonBall-PS5/releases/download/v1.0.0/CannonBall-PS5-v1.0.0.zip",
+  "sha256": "7c3e586ed3b4baafd7b30d2e1147e8aec941e19f3baaf330f3364bb7f73b4319",
+  "icon_url": "https://raw.githubusercontent.com/JJBurtenshaw/CannonBall-PS5/e2f39d9708e0f79f6a9836d58e68dbcd45ee960b/sce_sys/icon0.png"
+}
