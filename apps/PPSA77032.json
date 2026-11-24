@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA77032",
+  "name": "Legend of Dragoon PS5",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native Legend of Dragoon PS5 port in development. Requires your own game discs.",
+  "license": null,
+  "author": "GUMMIBRI",
+  "version": "0.0.2-alpha",
+  "source_repo": null,
+  "artifact_url": null,
+  "sha256": null,
+  "icon_url": null
+}
