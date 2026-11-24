@@ -3,7 +3,7 @@
   "name": "YmirPS5",
   "kind": "app",
   "category": "emulators",
-  "description": "Sega Saturn emulator for PS5 with USB optical disc support and save states.",
+  "description": "Play Sega Saturn games on PS5 with original CD support via an external USB optical drive, Vulkan rendering, FSR 1 upscaling, FSR 3 frame generation, built-in cheats, RAM expansion, and save states.",
   "license": "GPL-3.0",
   "author": "Wamphyre",
   "version": "0.7.2",
