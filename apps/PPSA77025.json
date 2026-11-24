@@ -3,12 +3,13 @@
   "name": "The 3rd Birthday",
   "kind": "game",
   "category": "console-ports",
-  "description": "The 3rd Birthday for PS5, in development toward 0.1 beta. Requires your own game data.",
-  "license": null,
+  "description": "Early PS5 beta of The 3rd Birthday. Requires your own ULUS10567.iso beside EBOOT. Native save writes remain disabled; compatibility is limited.",
+  "license": "Unlicensed",
   "author": "GUMMIBRI",
   "version": "0.1-beta",
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "source_repo": "https://github.com/GUMMIBRI/the-3rd-birthday-recomp",
+  "artifact_url": "https://github.com/GUMMIBRI/the-3rd-birthday-recomp/releases/download/v0.1-beta/Parasite-Eve-3-PS5-0.1-beta.zip",
+  "sha256": "523f92da8443ae0b254525d5f5f8ade7cb00a086dabfa483e7b31451e8aaf983",
+  "icon_url": null,
+  "icon_member": "PPSA77025/sce_sys/icon0.png"
 }
