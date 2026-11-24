@@ -3,12 +3,13 @@
   "name": "Parasite Eve 2 PS5",
   "kind": "game",
   "category": "console-ports",
-  "description": "Parasite Eve II for PS5, in development toward 0.1 beta. Requires your own North American game discs.",
-  "license": null,
+  "description": "Early PS5 beta of Parasite Eve II. Requires your own North American discs. Saving, menus, fonts and audio remain under qualification.",
+  "license": "CC0-1.0",
   "author": "GUMMIBRI",
   "version": "0.1-beta",
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ii-pc",
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ii-pc/releases/download/v0.1-beta/Parasite-Eve-2-PS5-0.1-beta.zip",
+  "sha256": "2ef86f1a191857bdc3aad2b65156580c7c17ab393f688cf818f73fa497cceda1",
+  "icon_url": null,
+  "icon_member": "PPSA77023/sce_sys/icon0.png"
 }
