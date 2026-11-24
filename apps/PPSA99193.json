@@ -6,9 +6,9 @@
   "description": "Native PS5 port of Mario Kart World (mkw-recomp). Install this, then build the full title on your PC from your own Switch 2 dump (1.8.0 or 1.0.0) with the Pit Stop builder.",
   "license": "MIT AND GPL-3.0-or-later",
   "author": "exploitizm",
-  "version": "ps5-0.2.1",
+  "version": "ps5-0.3.0",
   "source_repo": "https://github.com/exploitizm/mkw-pit-stop",
-  "artifact_url": "https://github.com/exploitizm/mkw-pit-stop/releases/download/ps5-0.2.1/mkw-pit-stop-0.2.1-ps5-placeholder-PPSA99193.zip",
-  "sha256": "4a830c72a731e38ce021d5e1b1bb62decaeb9d7e6b3ebf2d6723384f8c86ba74",
-  "icon_url": "https://raw.githubusercontent.com/exploitizm/mkw-pit-stop/ps5-0.2.1/docs/images/icon0.png"
+  "artifact_url": "https://github.com/exploitizm/mkw-pit-stop/releases/download/ps5-0.3.0/mkw-pit-stop-0.3.0-ps5-placeholder-PPSA99193.zip",
+  "sha256": "bb3a2ceb51782d5c449dc13c0f6cab5f8f9cac949b9921003b82d6fd79243162",
+  "icon_url": "https://raw.githubusercontent.com/exploitizm/mkw-pit-stop/ps5-0.3.0/docs/images/icon0.png"
 }
