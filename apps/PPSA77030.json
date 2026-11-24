@@ -1,9 +1,9 @@
 {
-  "titleid": "PPSA99841",
+  "titleid": "PPSA77030",
   "name": "Soul Calibur PS5",
   "kind": "game",
   "category": "console-ports",
-  "description": "Soul Calibur for PS5, in development toward 0.1 beta. Requires your own USA GDI and tracks. Shared title ID conflicts with Estante.",
+  "description": "Soul Calibur for PS5, in development toward 0.1 beta. Requires your own USA GDI and tracks.",
   "license": null,
   "author": "GUMMIBRI",
   "version": "0.1-beta",
