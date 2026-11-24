@@ -1,0 +1,15 @@
+{
+  "titleid": "PPSA99841",
+  "name": "Soul Calibur PS5",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Early PS5 beta of Soul Calibur. Requires your own USA GDI and tracks. Audio stutter remains. Shared title ID conflicts with Estante.",
+  "license": "Unlicensed",
+  "author": "GUMMIBRI",
+  "version": "0.1-beta",
+  "source_repo": "https://github.com/GUMMIBRI/voldorium",
+  "artifact_url": "https://github.com/GUMMIBRI/voldorium/releases/download/v0.1-beta/Soul-Calibur-PS5-0.1-beta.zip",
+  "sha256": "accfdabf09da023f94b645e0ec7f683113bcf2259e2100757b99d478253c2a23",
+  "icon_url": null,
+  "icon_member": "PPSA99841/sce_sys/icon0.png"
+}
