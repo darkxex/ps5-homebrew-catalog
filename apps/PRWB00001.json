@@ -6,9 +6,9 @@
   "description": "A WebKit web browser for the PS5, driven by the controller: tabs, bookmarks, video playback, an ad blocker and SponsorBlock.",
   "license": "GPL-3.0-or-later",
   "author": "kvaps",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "source_repo": "https://github.com/kvaps/ProsperoWeb",
-  "artifact_url": "https://github.com/kvaps/ProsperoWeb/releases/download/v0.3.0/PRWB00001.zip",
-  "sha256": "a911392997fd7e15d4e5a042d07400a3206235cc28a7f3b0e112fa0a42c138f5",
-  "icon_url": "https://raw.githubusercontent.com/kvaps/ProsperoWeb/v0.3.0/assets/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/kvaps/ProsperoWeb/releases/download/v0.3.1/PRWB00001.zip",
+  "sha256": "3d5a85f2cc86a891de46d1b6e9a70a8b8b3806ee3b176fe46791d791c038c2f9",
+  "icon_url": "https://raw.githubusercontent.com/kvaps/ProsperoWeb/v0.3.1/assets/sce_sys/icon0.png"
 }
