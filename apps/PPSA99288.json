@@ -6,9 +6,9 @@
   "description": "Experimental PS5 media app with profiles, IPTV, media servers and an optional privileged USB reader. Updated playback/network/text dependencies need console confirmation.",
   "license": "GPL-3.0",
   "author": "HandshakeHackin",
-  "version": "1.0.0.26-native",
+  "version": "1.0.1.0-native",
   "source_repo": "https://github.com/HandshakeHackin/Nuvio-maxd-releases",
-  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.0.26-native/PPSA99288.zip",
-  "sha256": "bd4150bb0b220cfd52875f553e389a077eb138bc68c4799a426b98b0dba95b94",
-  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.0.26-native/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/HandshakeHackin/Nuvio-maxd-releases/releases/download/v1.0.1.0-native/PPSA99288.zip",
+  "sha256": "d13de557ac2e2a6da05ef4826bdf22171661705f545806a6283604210658356d",
+  "icon_url": "https://raw.githubusercontent.com/HandshakeHackin/Nuvio-maxd-releases/v1.0.1.0-native/sce_sys/icon0.png"
 }
