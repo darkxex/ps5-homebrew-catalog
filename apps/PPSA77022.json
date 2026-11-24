@@ -3,7 +3,7 @@
   "name": "Parasite Eve PS5",
   "kind": "game",
   "category": "console-ports",
-  "description": "SETUP: Own discs in app/parasite-eve-data/discs/disc1.bin + disc2.bin; read readme.txt. Back up app/user. https://discord.gg/Yg88tHYXK. Based on khasinski/parasite-eve-pc; thanks contributors.",
+  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK\n\nSETUP: Own discs in app/parasite-eve-data/discs/disc1.bin + disc2.bin; read readme.txt. Back up app/user. Based on khasinski/parasite-eve-pc; thanks contributors.",
   "license": "Unlicensed",
   "author": "GUMMIBRI",
   "version": "1.2.1",
