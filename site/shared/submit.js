@@ -287,12 +287,23 @@
     state.tag = release.tag_name;
     state.assets = (release.assets || []).filter(function (a) { return ARTIFACTS.test(a.name); });
     state.zipAsset = null;
+    state.iconPaths = [];
+    state.iconRef = "";
     state.ref = state.tag;
     // The default branch first (its latest commit, pinned by SHA), then the release's tag; the tree is always read, since the
     // app's own sce_sys/ (with its icon) may sit in a folder such as kit/ while the root holds a stale copy.
     var look = function (ref) {
       return get("/repos/" + state.fullName + "/git/trees/" + encodeURIComponent(ref) + "?recursive=1").then(function (tree) {
         var params = paramFiles(tree || {});
+        // Where the repository keeps an icon0.png, in case param.json has to come from the ZIP.
+        if (!state.iconPaths || !state.iconPaths.length) {
+          state.iconPaths = ((tree && tree.tree) || []).filter(function (item) {
+            return item.type === "blob" && /(^|\/)sce_sys\/icon0\.png$/.test(item.path);
+          }).map(function (item) { return item.path; }).sort(function (a, b) {
+            return (a.split("/").length - b.split("/").length) || (a < b ? -1 : 1);
+          });
+          state.iconRef = ref;
+        }
         if (!params.length) return null;
         return { ref: ref, params: params };
       });
@@ -335,12 +346,22 @@
     // When param.json came from the ZIP its folder in the repository is unknown: the usual sce_sys/ at the root is tried.
     var base = zip ? zip.param.slice(Math.max(0, zip.param.indexOf("sce_sys/"))) : state.paramPath;
     var iconPath = base.replace(/param\.json$/, "icon0.png");
-    state.iconUrl = RAW + "/" + state.fullName + "/" + encodeURIComponent(state.ref || state.tag) + "/" + segments(iconPath);
+    var iconRef = state.ref || state.tag;
+    // From the ZIP: the repository's own icon0.png (wherever it sits) is the link to offer, the ZIP's is the picture.
+    if (zip && state.iconPaths && state.iconPaths.length) { iconPath = state.iconPaths[0]; iconRef = state.iconRef || iconRef; }
+    state.iconUrl = RAW + "/" + state.fullName + "/" + encodeURIComponent(iconRef) + "/" + segments(iconPath);
+    var fromZip = zip && zip.icon && zip.icon.byteLength <= MAX_ICON && imageType(zip.icon) ? zip.icon : null;
     var icon = raw(state.iconUrl, true);
     return icon.then(function (icon) {
+      var inRepo = icon && icon.byteLength <= MAX_ICON && imageType(icon) ? icon : null;
+      if (fromZip) {
+        if (!inRepo) state.iconUrl = "";                  // no link to it: the developer gives one
+        icon = fromZip;
+      }
       var type = icon && icon.byteLength <= MAX_ICON ? imageType(icon) : "";
       var size = type === "png" ? pngSize(icon) : null;
-      if (!type) {
+      if (!type || (fromZip && !inRepo)) {
+        if (type) state.iconData = dataUrl(icon, type);
         state.iconUrl = "";
         state.warnings.push(problem("submit.warn.noicon"));
       } else {
@@ -767,14 +788,19 @@
         if (!entries) throw new Stop([problem("submit.zip.fail")]);
         var paramEntry = zipEntry(entries, "sce_sys/param.json");
         if (!paramEntry) throw new Stop([problem("submit.zip.nofile")]);
-        return zipFile(buffer, paramEntry, MAX_PARAM).then(function (data) { return { data: data, name: paramEntry.name }; });
+        var iconEntry = zipEntry(entries, "sce_sys/icon0.png");
+        var iconRead = iconEntry && iconEntry.name.slice(0, iconEntry.name.length - 9) === paramEntry.name.slice(0, paramEntry.name.length - 10)
+          ? zipFile(buffer, iconEntry, MAX_ICON) : Promise.resolve(null);
+        return Promise.all([zipFile(buffer, paramEntry, MAX_PARAM), iconRead]).then(function (both) {
+          return { data: both[0], icon: both[1], name: paramEntry.name };
+        });
       }).then(function (param) {
         if (!param.data) throw new Stop([problem("submit.zip.fail")]);
         repoState.warnings = repoState.repoWarnings.slice();
         repoState.warnings.push(problem("submit.warn.inzip", { file: repoState.assets[found].name }));
         repoState.paramPath = param.name;
         repoState.zipAsset = found;
-        return completeRelease(repoState, new TextDecoder().decode(param.data), { param: param.name });
+        return completeRelease(repoState, new TextDecoder().decode(param.data), { param: param.name, icon: param.icon });
       }).then(function (done) {
         if (mine !== ticket) return;
         zipStatus.textContent = "";
