@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA58001",
+  "name": "Lantern Miner",
+  "kind": "game",
+  "category": "homebrew-games",
+  "description": "Lantern Miner: a cosy Manic Miner-style cavern platformer for jailbroken PS5 (beta)",
+  "license": "GPL-3.0",
+  "author": "Superfurry",
+  "version": "0.9.1-beta",
+  "source_repo": "https://github.com/RedHotBallBag/lantern-miner-ps5",
+  "artifact_url": "https://github.com/RedHotBallBag/lantern-miner-ps5/releases/download/v0.9.1-beta/LanternMiner-v0.9.1-beta.zip",
+  "sha256": "482c46be49fa5f98e8c31e85de9ef538e0b86a692e415aae220769d490741648",
+  "icon_url": "https://raw.githubusercontent.com/RedHotBallBag/lantern-miner-ps5/ac5d37413a1514ec0354218454ccbce95c58d62e/sce_sys/icon0.png"
+}
