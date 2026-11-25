@@ -76,7 +76,7 @@ GITHUB_LOGIN_URL = "https://prosperostore-login.darkxex.workers.dev"
 # Where the optional ZIP reader of the submit page lives (worker/zip-peek/README.md): it lets the page read
 # sce_sys/param.json and icon0.png out of a release ZIP without downloading it. Empty: the page asks the
 # developer to choose the ZIP from their computer instead.
-ZIP_PEEK_URL = ""
+ZIP_PEEK_URL = "https://prosperostore-zip.darkxex.workers.dev"
 # The categories the submit page offers for each kind (what the listed apps do; the check doesn't enforce it).
 KIND_CATEGORIES = {
     "app": ("emulators", "streaming", "video", "music", "ai", "utilities"),
