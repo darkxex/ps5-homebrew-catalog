@@ -142,10 +142,17 @@ dist/
   always a link: the `icon0.png` beside the chosen `param.json` (default branch's latest commit first, then the tag) when it exists, or one pasted (any PNG, JPEG or WebP
   will do); the field is marked and the button stays off until there is a valid one. A repository that is already
   listed is stopped, with a link to its developer page.
-  - *No `param.json` in the repository:* the page asks for the release's `.zip` from the developer's disk, reads it there
-    (its directory and `sce_sys/param.json`, inflated with the browser's `DecompressionStream`), and checks that its
-    SHA-256 equals the digest GitHub reports for one of the release's files. Nothing is uploaded. The browser can't read
-    the ZIP from GitHub itself, because the download's redirect sends no CORS headers.
+  - *No `param.json` in the repository:* the page reads it, and the `icon0.png` beside it, from the release's `.zip`
+    without downloading the archive: a few ranged reads (its end, the index, the two files, inflated with the browser's
+    `DecompressionStream`) through a small Cloudflare Worker ([`worker/zip-peek/`](../worker/zip-peek/README.md)), because
+    GitHub's download servers send no CORS headers. The file's SHA-256 can't be compared that way, so the page warns, and
+    the catalog's checks read the release file again. An icon found in the ZIP is listed as `icon_member` (`icon_url` null).
+    The Worker's address is `ZIP_PEEK_URL` in `catalog/site.py` (and in the content security policy). Without the Worker,
+    or when it fails, the page asks for the `.zip` from the developer's disk, reads it there, and checks that its SHA-256
+    equals the digest GitHub reports for one of the release's files. Nothing is uploaded.
+  - *A RecompStore link* (`recompstore.com/game/PPSA12345`, which blocks CORS too): the same Worker reads that page and
+    gives back only the GitHub repository it names (its schema.org `sameAs`); the check goes on from that repository.
+    Without the Worker the page asks for the repository instead.
   - *Limits:* requests go without sign-in, which GitHub caps at 60 an hour per address; answers are kept for ten
     minutes in the tab, and a check costs about three. The only address the content security policy allows besides
     raw.githubusercontent.com is `https://api.github.com`. Nothing is sent to the site.

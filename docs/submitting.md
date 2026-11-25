@@ -107,14 +107,18 @@ lowercase hexadecimal, without a `sha256:` prefix.
 ## 4. Write the record
 
 **The quick way:** the [submit page](https://prosperostore.net/submit/) does steps 3 and 4 for
-you. Paste your repository and it reads your releases in your browser, takes the title ID and name from
+you. Paste your repository (or the app's RecompStore link, which names it) and it reads your releases in your browser, takes the title ID and name from
 `sce_sys/param.json` and the digest GitHub reports (the `param.json` is looked up anywhere in the repository, first on the default branch's latest commit, then at the release tag; one with an `icon0.png` beside it wins), and leaves you to choose the release and its
 file, the type, category and description. Its button opens the record in GitHub's editor, which forks this repository
 and opens the pull request from your account (the editor shows the file on one line; that is valid JSON).
-If the repository doesn't commit `sce_sys/param.json`, it asks for the release's `.zip` from your computer instead:
-the file is read in your browser, never uploaded, and its SHA-256 must match the one GitHub lists for that release
-file, so it is the real one. The icon is a link: the repository's `sce_sys/icon0.png` when it exists, or any image
-link you paste. GitHub lets a page make 60 requests an hour without sign-in; if you hit that, the page offers to sign
+If the repository doesn't commit `sce_sys/param.json`, it reads it from the release's `.zip`, together with the
+`sce_sys/icon0.png` beside it: through the site's small ZIP reader ([`worker/zip-peek/`](../worker/zip-peek/README.md)),
+which fetches only the ZIP's index and those two files, never the whole archive (and shows a warning, because the file's
+SHA-256 can't be compared that way; the catalog's checks read the release file again). If the reader can't be used, the
+page asks for the release's `.zip` from your computer: it is read in your browser, never uploaded, and its SHA-256 must
+match the one GitHub lists for that release file, so it is the real one. An icon found in the ZIP is listed as
+`icon_member` with `icon_url` null ([icon inside the release file](metadata.md#icon-inside-the-release-file)); otherwise
+the icon is a link: the repository's `sce_sys/icon0.png` when it exists, or any image link you paste. GitHub lets a page make 60 requests an hour without sign-in; if you hit that, the page offers to sign
 you in with GitHub, which raises it, and asks for no permissions.
 
 **By hand:** fork this repository and add `apps/<TITLEID>.json`:
