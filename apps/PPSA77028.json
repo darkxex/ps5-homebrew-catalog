@@ -1,15 +1,15 @@
 {
   "titleid": "PPSA77028",
-  "name": "ClanBomber",
+  "name": "Clan Bomber",
   "kind": "game",
   "category": "pc-ports",
-  "description": "Native PS5 port of the open-source ClanBomber game, with local CPU matches, controller pause/resume, Normal/Easy CPU difficulty and custom character skins.",
+  "description": "Clan Bomber 2.0 for PS5, featuring PS5-exclusive characters GNU, SUSE, Mandrake, GIMP, and Red Hat alongside Tux and the original cast.",
   "license": "GPL-2.0",
   "author": "GUMMIBRI",
-  "version": "0.1.0",
+  "version": "2.0",
   "source_repo": "https://github.com/GUMMIBRI/ClanBomber-PS5",
-  "artifact_url": "https://github.com/GUMMIBRI/ClanBomber-PS5/releases/download/v0.1.0/ClanBomber-PS5-v0.1.0.zip",
-  "sha256": "fcaad10071d98ec50b29f7e1b8b8b6784edf8200cf3fb58b30cb93a32b1a5300",
+  "artifact_url": "https://github.com/GUMMIBRI/ClanBomber-PS5/releases/download/v2.0/ClanBomber-2.0-r32-v1.zip",
+  "sha256": "3b6cd74a2ba1c09de7a8d1ca7c0d49c89fba431060b9a2d6a2703ed5aa8efb0f",
   "icon_url": null,
   "icon_member": "PPSA77028/sce_sys/icon0.png"
 }
