@@ -3,13 +3,13 @@
   "name": "Clan Bomber",
   "kind": "game",
   "category": "pc-ports",
-  "description": "Native PS5 port of ClanBomber. Version 1.2 adds character sprite improvements, Mandrake and red fedora characters, and animation fixes. Includes game assets; extract PPSA77028 into USB homebrew. Preserve existing settings when updating. A purple outline may remain around bombs.",
+  "description": "Clan Bomber 2.0 for PS5, featuring PS5-exclusive characters GNU, SUSE, Mandrake, GIMP, and Red Hat alongside Tux and the original cast. Local CPU matches and controller menus. Includes game assets; extract PPSA77028 into USB homebrew. Preserve settings and saves when updating. A purple outline may remain around bombs. Same tested r32 gameplay as 1.2, with updated version metadata.",
   "license": "GPL-2.0",
   "author": "GUMMIBRI",
-  "version": "1.2",
+  "version": "2.0",
   "source_repo": "https://github.com/GUMMIBRI/ClanBomber-PS5",
-  "artifact_url": "https://github.com/GUMMIBRI/ClanBomber-PS5/releases/download/v1.2/ClanBomber-1.2-r32-v1.zip",
-  "sha256": "b3c72b67ea24e82a29b6219d298f387e29e0789cc6294266efdd54f1ddc64d59",
+  "artifact_url": "https://github.com/GUMMIBRI/ClanBomber-PS5/releases/download/v2.0/ClanBomber-2.0-r32-v1.zip",
+  "sha256": "3b6cd74a2ba1c09de7a8d1ca7c0d49c89fba431060b9a2d6a2703ed5aa8efb0f",
   "icon_url": null,
   "icon_member": "PPSA77028/sce_sys/icon0.png"
 }
