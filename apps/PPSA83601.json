@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA83601",
+  "name": "TrinityXSX",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Standalone Xbox Series X|S (GDK) game library and compatibility runtime for PS5 combining XCL, vkd3d-proton, DXVK, PS5 Wine, Touchpad Quick Menu HUD, Web Companion, and MihawkGen Frame Generation.",
+  "license": "GPL-2.0",
+  "author": "grzegorz2047",
+  "version": "v0.2.3",
+  "source_repo": "https://github.com/grzegorz2047/TrinityXSX",
+  "artifact_url": "https://github.com/grzegorz2047/TrinityXSX/releases/download/v0.2.3/PPSA83601.zip",
+  "sha256": "2ba1f90b696ff065cb869402c402b3d1137a1aada1c174597e03119a5169f7e3",
+  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityXSX/v0.2.3/sce_sys/icon0.png"
+}
