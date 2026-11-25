@@ -6,9 +6,9 @@
   "description": "Native recompilation of Conker’s Bad Fur Day for PS5, with widescreen, online multiplayer, and more. Requires your own ROM.",
   "license": "MIT",
   "author": "DevOldSchool",
-  "version": "00.001.001",
+  "version": "00.001.002",
   "source_repo": "https://github.com/DevOldSchool/conkers-bfd-recomp-ps",
-  "artifact_url": "https://github.com/DevOldSchool/conkers-bfd-recomp-ps/releases/download/00.001.001/PPSA92064.zip",
-  "sha256": "efb1298feb87996a2ce49ea309d572b8347bd6254939ed9e552a898aeedcc85f",
+  "artifact_url": "https://github.com/DevOldSchool/conkers-bfd-recomp-ps/releases/download/00.001.002/PPSA92064.zip",
+  "sha256": "fee0101e907298085ec0bc1e7cf7c86a293d8a59c075798a3add0c411a3cead1",
   "icon_url": "https://raw.githubusercontent.com/DevOldSchool/conkers-bfd-recomp-ps/f4d9d24269998c71701e5b5368a8287f9d8f04c6/tools/ps5/sce_sys/icon0.png"
 }
