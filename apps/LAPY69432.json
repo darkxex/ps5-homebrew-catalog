@@ -6,9 +6,9 @@
   "description": "A dual-pane file explorer for the controller: copy, move and delete with a safety net, and viewers for text, pictures (also DDS), hex and MP3 with playlists.",
   "license": "GPL-3.0-or-later",
   "author": "Marice",
-  "version": "00.002.001",
+  "version": "00.003.000",
   "source_repo": "https://github.com/Marice/ps5-elivier-explorer",
-  "artifact_url": "https://github.com/Marice/ps5-elivier-explorer/releases/download/v00.002.001/LAPY69432.zip",
-  "sha256": "730295b4bf6b4614f0bd37bd44f9db91e6231d1fd548d6ac2a8d93a87fb49df9",
-  "icon_url": "https://raw.githubusercontent.com/Marice/ps5-elivier-explorer/v00.002.001/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/Marice/ps5-elivier-explorer/releases/download/v00.003.000/LAPY69432.zip",
+  "sha256": "f415991bafc710788b93b1a4bc19becfe9afaa4150a60b932667fb3b57818b47",
+  "icon_url": "https://raw.githubusercontent.com/Marice/ps5-elivier-explorer/v00.003.000/sce_sys/icon0.png"
 }
