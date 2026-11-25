@@ -6,8 +6,13 @@ and `sce_sys/icon0.png` out of a release ZIP **without downloading it**, for a r
 A ZIP keeps its index at the end, so the page needs only a few small byte ranges. GitHub's download servers send no
 CORS headers, so a browser can't ask for them; this Worker asks GitHub and passes the bytes on.
 
+It also lets the page accept a **RecompStore link** (`recompstore.com/game/PPSA12345`), which a browser can't read
+either: the Worker reads that one page, takes the GitHub repository it names, and gives back only `{"repo": "owner/name"}`;
+the page then goes on from the repository as if it had been typed.
+
 It is **not an open proxy**: it reads only `github.com/<owner>/<name>/releases/download/<tag>/<file>.zip`, answers one
-byte range of at most 3 MiB (never a whole file), only to the sites in `ALLOWED_ORIGINS`, and keeps nothing.
+byte range of at most 3 MiB (never a whole file), reads only `recompstore.com/game/<TITLE ID>`, answers only to the sites in
+`ALLOWED_ORIGINS`, and keeps nothing.
 
 It is optional. Without it (or when it fails) the submit page asks the developer to choose the release's ZIP from
 their computer, and reads it there.

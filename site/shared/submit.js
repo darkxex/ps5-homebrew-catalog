@@ -89,6 +89,12 @@
     return match ? [match[1], match[2]] : null;
   }
 
+  /* The title ID of a RecompStore address (recompstore.com/game/PPSA12345), or "". */
+  function recompId(value) {
+    var match = String(value || "").trim().match(/^(?:https?:\/\/)?(?:www\.)?recompstore\.com\/game\/(PPSA\d{5})(?:[\/?#].*)?$/i);
+    return match ? match[1].toUpperCase() : "";
+  }
+
   function tagVersion(tag) { return /^[vV][0-9]/.test(tag) ? tag.slice(1) : tag; }
 
   /* Width and height of a PNG, or null when the bytes are not one. */
@@ -914,7 +920,34 @@
       });
     }
 
+    /* A RecompStore link: the Worker says which GitHub repository the app's page there names, and the check goes on from it. */
+    function resolveRecomp(id) {
+      var mine = ++ticket;
+      if (!zipUrl) { stop([problem("submit.err.recomp")]); return; }
+      button.disabled = true;
+      status.textContent = t("submit.checking");
+      blockers.hidden = true;
+      window.fetch(zipUrl + "/recomp?id=" + encodeURIComponent(id)).then(function (answer) {
+        if (!answer.ok) throw new Error("recomp");
+        return answer.json();
+      }).then(function (data) {
+        if (mine !== ticket) return;
+        if (!data || typeof data.repo !== "string" || !parseRepo(data.repo)) throw new Error("recomp");
+        input.value = data.repo;
+        run();
+      }, function () {
+        if (mine !== ticket) return;
+        stop([problem("submit.err.recomp")]);
+      }).then(function () {
+        if (mine !== ticket) return;
+        button.disabled = false;
+        status.textContent = "";
+      });
+    }
+
     function run() {
+      var recomp = recompId(input.value);
+      if (recomp) { resolveRecomp(recomp); return; }
       var parsed = parseRepo(input.value);
       status.textContent = "";
       if (!parsed) { stop([problem("submit.err.repo")]); return; }
@@ -979,7 +1012,7 @@
     // ?repo=owner/name (from a link) fills the box and checks it.
     try {
       var wanted = new URLSearchParams(window.location.search).get("repo");
-      if (wanted && parseRepo(wanted)) { input.value = wanted; run(); }
+      if (wanted && (parseRepo(wanted) || recompId(wanted))) { input.value = wanted; run(); }
     } catch (error) { /* no URL API: the box stays empty */ }
   }
 

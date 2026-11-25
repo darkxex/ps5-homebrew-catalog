@@ -7,8 +7,14 @@
 
      GET /zip?repo=<owner>/<name>&tag=<tag>&file=<name>.zip      with  Range: bytes=<from>-<to>
 
+   It also answers for a RecompStore link (recompstore.com blocks CORS too): which GitHub repository an app's page
+   there points to, so the page can go on from the repository.
+
+     GET /recomp?id=PPSA12345        ->  {"repo":"<owner>/<name>"}
+
    It is not an open proxy: it only reads github.com/<owner>/<name>/releases/download/<tag>/<name>.zip, only
-   answers a single byte range of at most MAX_RANGE bytes, never passes on a whole file, only answers the sites in
+   answers a single byte range of at most MAX_RANGE bytes, never passes on a whole file, only reads
+   recompstore.com/game/<TITLE ID> and gives back nothing but the repository name, only answers the sites in
    ALLOWED_ORIGINS, and keeps nothing (no database, no logs). Settings, in wrangler.toml: ALLOWED_ORIGINS.
    See README.md. */
 
@@ -18,6 +24,10 @@ const TAG = /^[A-Za-z0-9_.+-][A-Za-z0-9_.+ -]{0,127}$/;
 const FILE = /^[A-Za-z0-9_.+ -]{1,200}\.zip$/i;
 const DOTS = /^\.+$/;                                      // "." and ".." would walk out of the release's address
 const RANGE = /^bytes=(\d*)-(\d*)$/;
+
+const RECOMP_ID = /^PPSA\d{5}$/;
+const GITHUB_REPO = /^https:\/\/github\.com\/([A-Za-z0-9][A-Za-z0-9-]{0,99})\/([A-Za-z0-9_.-]{1,100}?)(?:\.git)?\/?$/;
+const MAX_PAGE = 1024 * 1024;
 
 function allowedOrigins(env) {
   return String(env.ALLOWED_ORIGINS || "").split(",").map((origin) => origin.trim()).filter(Boolean);
@@ -40,6 +50,50 @@ function wanted(header) {
   return Number.isSafeInteger(from) && Number.isSafeInteger(to) && to >= from && to - from < MAX_RANGE ? text : null;
 }
 
+/* The GitHub repository an app's RecompStore page names (its schema.org data, "sameAs"), or "" when it names none. */
+function repoOfPage(html, id) {
+  const blocks = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+  for (let block = blocks.exec(html); block; block = blocks.exec(html)) {
+    let data = null;
+    try { data = JSON.parse(block[1]); } catch (error) { continue; }
+    const nodes = Array.isArray(data && data["@graph"]) ? data["@graph"] : [data];
+    for (const node of nodes) {
+      if (!node || node["@type"] !== "SoftwareApplication" || node.url !== `https://recompstore.com/game/${id}`) continue;
+      for (const link of [].concat(node.sameAs || [])) {
+        const match = typeof link === "string" ? GITHUB_REPO.exec(link) : null;
+        if (match && !DOTS.test(match[2])) return `${match[1]}/${match[2]}`;
+      }
+    }
+  }
+  return "";
+}
+
+async function recomp(url, allowed) {
+  const id = (url.searchParams.get("id") || "").toUpperCase();
+  if (!RECOMP_ID.test(id)) return reply("Bad request", 400, allowed);
+  let upstream;
+  try {
+    upstream = await fetch(`https://recompstore.com/game/${id}`, {
+      headers: { Accept: "text/html", "User-Agent": "prosperostore-zip-peek" }, redirect: "manual",
+    });
+  } catch (error) {
+    return reply("RecompStore could not be reached", 502, allowed);
+  }
+  if (upstream.status === 404) { if (upstream.body) await upstream.body.cancel(); return reply("No such app", 404, allowed); }
+  if (upstream.status !== 200 || Number(upstream.headers.get("Content-Length") || "0") > MAX_PAGE) {
+    if (upstream.body) await upstream.body.cancel();
+    return reply("RecompStore did not give that page", 502, allowed);
+  }
+  const repo = repoOfPage((await upstream.text()).slice(0, MAX_PAGE), id);
+  if (!repo) return reply("That page names no GitHub repository", 404, allowed);
+  return new Response(JSON.stringify({ repo }), {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300",
+      "Access-Control-Allow-Origin": allowed, Vary: "Origin", "Referrer-Policy": "no-referrer", "X-Content-Type-Options": "nosniff",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
@@ -56,8 +110,9 @@ export default {
     }
     if (request.method !== "GET") return reply("Method not allowed", 405, allowed);
     const url = new URL(request.url);
-    if (url.pathname !== "/zip") return reply("Not found", 404, allowed);
+    if (url.pathname !== "/zip" && url.pathname !== "/recomp") return reply("Not found", 404, allowed);
     if (!allowed) return reply("This site may not use this Worker", 403, "");
+    if (url.pathname === "/recomp") return recomp(url, allowed);
 
     const repo = url.searchParams.get("repo") || "";
     const tag = url.searchParams.get("tag") || "";
