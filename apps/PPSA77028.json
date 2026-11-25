@@ -3,7 +3,7 @@
   "name": "Clan Bomber",
   "kind": "game",
   "category": "pc-ports",
-  "description": "Clan Bomber 2.0 for PS5, featuring PS5-exclusive characters GNU, SUSE, Mandrake, GIMP, and Red Hat alongside Tux and the original cast. Local CPU matches and controller menus. Includes game assets; extract PPSA77028 into USB homebrew. Preserve settings and saves when updating. A purple outline may remain around bombs. Same tested r32 gameplay as 1.2, with updated version metadata.",
+  "description": "Clan Bomber 2.0 for PS5, featuring PS5-exclusive characters GNU, SUSE, Mandrake, GIMP, and Red Hat alongside Tux and the original cast. Local CPU matches and controller menus. Includes game assets; extract PPSA77028 into USB homebrew. Preserve settings and saves when updating.",
   "license": "GPL-2.0",
   "author": "GUMMIBRI",
   "version": "2.0",
