@@ -1,0 +1,7 @@
+name = "prosperostore-zip"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# The sites that may ask, comma separated, exactly as a browser writes an origin.
+ALLOWED_ORIGINS = "https://prosperostore.net"

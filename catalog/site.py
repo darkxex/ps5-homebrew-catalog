@@ -73,6 +73,10 @@ KIND_PLURALS = {"app": "Apps", "game": "Games", "tool": "Tools"}
 # Where the optional "Sign in with GitHub" of the submit page lives (worker/github-login/README.md).
 # Empty: the submit page has no sign-in and the limit of GitHub's API without one (60 an hour) applies.
 GITHUB_LOGIN_URL = "https://prosperostore-login.darkxex.workers.dev"
+# Where the optional ZIP reader of the submit page lives (worker/zip-peek/README.md): it lets the page read
+# sce_sys/param.json and icon0.png out of a release ZIP without downloading it. Empty: the page asks the
+# developer to choose the ZIP from their computer instead.
+ZIP_PEEK_URL = ""
 # The categories the submit page offers for each kind (what the listed apps do; the check doesn't enforce it).
 KIND_CATEGORIES = {
     "app": ("emulators", "streaming", "video", "music", "ai", "utilities"),
@@ -1008,7 +1012,7 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
                    body=submit_template.substitute(shared, submit_js=submit_js, category_options=category_options,
                                                    kind_options=kind_options, catalog_url=f"{base}catalog/v1.json",
                                                    kind_categories=e(json.dumps(KIND_CATEGORIES, separators=(",", ":"))),
-                                                   login_url=e(GITHUB_LOGIN_URL)))
+                                                   login_url=e(GITHUB_LOGIN_URL), zip_url=e(ZIP_PEEK_URL)))
 
     # One public page per developer: their listed apps, how they are doing, and the way to edit a listing.
     dev_template, dev_app_template = theme_obj.template("dev.html"), theme_obj.template("dev-app.html")
@@ -1133,6 +1137,7 @@ def build_site(out: Path, apps_dir: Path, report: Report, base: str = DEFAULT_BA
            "style-src 'self' https://fonts.googleapis.com; "
            "font-src https://fonts.gstatic.com; script-src 'self' https://www.googletagmanager.com; "
            "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://translate.googleapis.com "
+           + (ZIP_PEEK_URL + " " if ZIP_PEEK_URL else "") +
            "https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; "
            "base-uri 'self'; form-action 'none'; frame-ancestors 'none'")
     (out / "_headers").write_text(f"""/*

@@ -203,6 +203,12 @@
     var count = view.getUint16(end + 10, true);
     var at = view.getUint32(end + 16, true);
     if (count === 0xffff || at === 0xffffffff) return null;             // ZIP64: not read here
+    return centralEntries(buffer, at, count);
+  }
+
+  /* The `count` entries of a ZIP's central directory, which starts at `at` in `buffer`; null when it is not one. */
+  function centralEntries(buffer, at, count) {
+    var view = new DataView(buffer);
     var decoder = new TextDecoder();
     var entries = [];
     for (var n = 0; n < count; n++) {
@@ -229,6 +235,60 @@
     if (entry.method !== 8 || typeof DecompressionStream === "undefined") return Promise.resolve(null);
     var stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
     return new Response(stream).arrayBuffer().catch(function () { return null; });
+  }
+
+  /* ---- Reading a release ZIP through the ZIP reader Worker (worker/zip-peek): the index and two small files ---- */
+
+  var MAX_DIRECTORY = 3 * 1024 * 1024 - 1;
+
+  /* One byte range of the release file, with the file's whole size when the answer says it. */
+  function peekRange(base, file, range) {
+    var url = base + "/zip?repo=" + encodeURIComponent(file.repo) + "&tag=" + encodeURIComponent(file.tag) + "&file=" + encodeURIComponent(file.name);
+    return window.fetch(url, { headers: { Range: range } }).then(function (answer) {
+      if (answer.status !== 206) throw new Error("range");
+      var total = /\/(\d+)$/.exec(answer.headers.get("Content-Range") || "");
+      return answer.arrayBuffer().then(function (data) { return { data: data, total: total ? Number(total[1]) : 0 }; });
+    });
+  }
+
+  /* The files of the release ZIP and a way to read one of them, or a rejection when the Worker can't give them. */
+  function peekZip(base, file) {
+    // The size first (one byte; GitHub's storage can't give "the last N bytes"), then the end of the file, where the index is.
+    return peekRange(base, file, "bytes=0-0").then(function (first) {
+      if (!first.total) throw new Error("zip");
+      var from = Math.max(0, first.total - 65557);
+      return peekRange(base, file, "bytes=" + from + "-" + (first.total - 1));
+    }).then(function (tail) {
+      var buffer = tail.data;
+      var view = new DataView(buffer);
+      var end = -1;
+      for (var i = buffer.byteLength - 22; i >= 0; i--) {
+        if (view.getUint32(i, true) === 0x06054b50) { end = i; break; }
+      }
+      if (end < 0 || !tail.total) throw new Error("zip");
+      var count = view.getUint16(end + 10, true);
+      var size = view.getUint32(end + 12, true);
+      var at = view.getUint32(end + 16, true);
+      if (count === 0xffff || at === 0xffffffff || size === 0xffffffff || size > MAX_DIRECTORY) throw new Error("zip");
+      var start = tail.total - buffer.byteLength;                      // where the tail begins in the file
+      var directory = at >= start ? Promise.resolve(buffer.slice(at - start, at - start + size))
+        : peekRange(base, file, "bytes=" + at + "-" + (at + size - 1)).then(function (part) { return part.data; });
+      return directory.then(function (data) {
+        var entries = centralEntries(data, 0, count);
+        if (!entries) throw new Error("zip");
+        return {
+          entries: entries,
+          /* One file of the ZIP, as an ArrayBuffer, or null when it can't be read. */
+          read: function (entry, limit) {
+            if (entry.encrypted || entry.size > limit || entry.packed > limit + 1024) return Promise.resolve(null);
+            var last = Math.min(tail.total, entry.local + 30 + 1024 + entry.packed) - 1;
+            return peekRange(base, file, "bytes=" + entry.local + "-" + last).then(function (part) {
+              return zipFile(part.data, { encrypted: false, method: entry.method, packed: entry.packed, size: entry.size, local: 0 }, limit);
+            }).then(function (out) { return out && out.byteLength === entry.size ? out : null; });
+          }
+        };
+      });
+    });
   }
 
   /* The entry whose path ends with `suffix`, the one nearest the top first. */
@@ -431,6 +491,8 @@
     var copy = $("[data-submit-copy]", box);
     // "Sign in with GitHub", when the site was built with the address of its Worker (worker/github-login).
     var loginUrl = box.getAttribute("data-login") || "";
+    // The ZIP reader Worker (worker/zip-peek), when the site was built with its address; without it the ZIP is asked for.
+    var zipUrl = (box.getAttribute("data-zip") || "").replace(/\/+$/, "");
     var loginBox = $("[data-submit-login]", box);
     var loginButton = $("[data-submit-login-button]", box);
     var loginWho = $("[data-submit-login-who]", box);
@@ -709,6 +771,28 @@
         stopRelease([problem("submit.err.param", { tag: repoState.tag, repo: repoState.fullName })]);
         return;
       }
+      zipPending = index;
+      if (!zipUrl) { askZip(index); return; }
+      // The ZIP reader Worker may give param.json and the icon without the developer choosing the file.
+      var mine = ++ticket;
+      state = null;
+      detail.hidden = true;
+      blockers.hidden = true;
+      zipBox.hidden = true;
+      window.setTimeout(function () { if (mine === ticket) status.textContent = t("submit.checking"); }, 0);
+      peekRelease().then(function (done) {
+        if (mine !== ticket) return;
+        status.textContent = "";
+        show(done, false);
+      }, function (error) {
+        if (mine !== ticket) return;
+        status.textContent = "";
+        if (error instanceof Stop) stopRelease(error.list); else askZip(index);
+      });
+    }
+
+    /* The release's ZIP is asked for: the developer chooses it from their computer. */
+    function askZip(index) {
       state = null;
       zipPending = index;
       detail.hidden = true;
@@ -720,6 +804,33 @@
       releaseSelect.parentNode.hidden = repoState.releases.length < 2;
       zipBox.hidden = false;
       step.hidden = false;
+    }
+
+    /* The release's param.json and icon, read through the Worker from the first of its ZIPs (three at most) that has them. */
+    function peekRelease() {
+      var zips = repoState.assets.filter(function (a) { return /\.zip$/i.test(a.name); }).slice(0, 3);
+      var attempt = function (at) {
+        if (at >= zips.length) return Promise.reject(new Error("none"));
+        var one = zips[at];
+        return peekZip(zipUrl, { repo: repoState.fullName, tag: repoState.tag, name: one.name }).then(function (zip) {
+          var paramEntry = zipEntry(zip.entries, "sce_sys/param.json");
+          if (!paramEntry) throw new Error("param");
+          var iconEntry = zipEntry(zip.entries, "sce_sys/icon0.png");
+          var iconRead = iconEntry && iconEntry.name.slice(0, -9) === paramEntry.name.slice(0, -10) ? zip.read(iconEntry, MAX_ICON) : Promise.resolve(null);
+          return Promise.all([zip.read(paramEntry, MAX_PARAM), iconRead]).then(function (both) {
+            if (!both[0]) throw new Error("param");
+            return { asset: one, name: paramEntry.name, data: both[0], icon: both[1], iconName: iconEntry ? iconEntry.name : "" };
+          });
+        }).then(null, function () { return attempt(at + 1); });
+      };
+      return attempt(0).then(function (found) {
+        repoState.warnings = repoState.repoWarnings.slice();
+        repoState.warnings.push(problem("submit.warn.inzip", { file: found.asset.name }));
+        repoState.warnings.push(problem("submit.warn.peek"));
+        repoState.paramPath = found.name;
+        repoState.zipAsset = repoState.assets.indexOf(found.asset);
+        return completeRelease(repoState, new TextDecoder().decode(found.data), { param: found.name, icon: found.icon, iconName: found.iconName });
+      });
     }
 
     /* Reads a release. When the newest fails for a reason of its own (`auto`), the next ones are tried, a few at most,

@@ -381,6 +381,21 @@ class SiteBuildTests(unittest.TestCase):
         submit = (self.out / "submit" / "index.html").read_text(encoding="utf-8")
         self.assertIn('data-login="https://login.example.workers.dev"', submit)
 
+    def test_the_zip_reader_needs_the_workers_address(self):
+        with mock.patch.object(site, "ZIP_PEEK_URL", ""):
+            self.build()
+        submit = (self.out / "submit" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('data-zip=""', submit)            # no Worker: the page asks for the ZIP
+        self.assertNotIn("workers.dev", (self.out / "_headers").read_text(encoding="utf-8").split("connect-src")[1].split(";")[0]
+                         .replace("prosperostore-login.darkxex.workers.dev", ""))
+        with mock.patch.object(site, "ZIP_PEEK_URL", "https://zip.example.workers.dev"):
+            self.build()
+        submit = (self.out / "submit" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('data-zip="https://zip.example.workers.dev"', submit)
+        headers = (self.out / "_headers").read_text(encoding="utf-8")
+        self.assertIn("connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://translate.googleapis.com "
+                      "https://zip.example.workers.dev https://*.google-analytics.com", headers)
+
     def test_without_download_counts_nothing_is_claimed(self):
         self.build()
         page = (self.out / "app" / "PPSA01234" / "index.html").read_text(encoding="utf-8")
