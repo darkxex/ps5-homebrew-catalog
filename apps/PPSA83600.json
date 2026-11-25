@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA83600",
+  "name": "TrinityX360",
+  "kind": "app",
+  "category": "emulators",
+  "description": "Xbox 360 emulator for PS5 on Xenia Canary, built from BrinooTk's PS5X360 source, adding Kinect for more games via a phone, 2x resolution, anti-aliasing and game fixes.",
+  "license": "GPL-3.0",
+  "author": "grzegorz2047",
+  "version": "v1.0.6",
+  "source_repo": "https://github.com/grzegorz2047/TrinityX360",
+  "artifact_url": "https://github.com/grzegorz2047/TrinityX360/releases/download/v1.0.6/PPSA83600.zip",
+  "sha256": "44a9a39dea9a3511804e2bf2a4780a89b512c1e4c2894f94fb042e5a49c572b4",
+  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityX360/v1.0.6/sce_sys/icon0.png"
+}
