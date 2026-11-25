@@ -1,0 +1,15 @@
+{
+  "titleid": "PPSA92046",
+  "name": "Def Jam: Fight for NY REMASTERED",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Def Jam: Fight for NY REMASTERED for PS5, built on Vlad Yanhursky's DefJamFFNY-recomp",
+  "license": "Unlicensed",
+  "author": "Ruben Ripalda",
+  "version": "1.0",
+  "source_repo": "https://github.com/elripalda/defjam-ps5",
+  "artifact_url": "https://github.com/elripalda/defjam-ps5/releases/download/1.0/PPSA92046.zip",
+  "sha256": "909866bcd69b7bb2f4aa2ea6738f90a6d4f0b6cfaeabd75747f50479695f1674",
+  "icon_url": null,
+  "icon_member": "PPSA92046/sce_sys/icon0.png"
+}
