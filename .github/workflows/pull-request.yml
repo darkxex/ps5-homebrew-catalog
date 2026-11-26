@@ -143,10 +143,19 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.ref }}
           fetch-depth: 0
-          persist-credentials: true
+          # The app's token: after a merge the bot may push a branch that trims an over-long description.
+          token: ${{ steps.token.outputs.token }}
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.13'
+      - name: Commit as the app
+        run: |
+          id="$(gh api "/users/${SLUG}%5Bbot%5D" --jq .id)"
+          git config user.name "${SLUG}[bot]"
+          git config user.email "${id}+${SLUG}[bot]@users.noreply.github.com"
+        env:
+          SLUG: ${{ steps.token.outputs.app-slug }}
+          GH_TOKEN: ${{ steps.token.outputs.token }}
       - run: python3 -m catalog automerge --merge
         env:
           GITHUB_TOKEN: ${{ github.token }}

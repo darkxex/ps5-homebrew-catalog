@@ -170,6 +170,20 @@ def text_problem(value: str) -> str | None:
     return None
 
 
+def clamp_description(data: dict) -> bool:
+    """Cut an over-long description to MAX_LENGTH['description'] characters, in place, the last
+    three of them being "...".
+
+    Pull requests keep arriving with a longer one; only its first characters count. Returns True
+    when it was cut. Anything that is not a string is left for the field checks to reject."""
+    value = data.get("description")
+    limit = MAX_LENGTH["description"]
+    if not isinstance(value, str) or len(value) <= limit:
+        return False
+    data["description"] = value[:limit - 3].rstrip() + "..."
+    return True
+
+
 def _check_fields(data: dict) -> list[str]:
     """Validate values; the field set was checked by the caller."""
     problems = []
@@ -288,7 +302,11 @@ def _field_set_problems(data: dict) -> list[str]:
 
 
 def record_problems(data: dict) -> list[str]:
-    """Every field-level problem with a record's data (catalog-wide rules aside)."""
+    """Every field-level problem with a record's data (catalog-wide rules aside).
+
+    A description over the limit is not a problem: only its first characters count."""
+    data = dict(data)
+    clamp_description(data)
     return _field_set_problems(data) or _check_fields(data)
 
 
@@ -309,6 +327,9 @@ def load_record(path: Path, report: Report, display: str | None = None) -> Recor
     if not isinstance(data, dict):
         report.error(name, "must contain a single JSON object")
         return None
+    if clamp_description(data):
+        report.warning(name, f"description is longer than {MAX_LENGTH['description']} characters; "
+                             "it is cut to 200, ending in '...'")
     problems = _field_set_problems(data) or _check_fields(data)
     if not problems:
         problems.extend(filename_problems(path.stem, data))
