@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99006",
+  "name": "ProsperoPuzzles",
+  "kind": "game",
+  "category": "homebrew-games",
+  "description": "50 native logic puzzles for PlayStation 5 homebrew",
+  "license": "GPL-3.0",
+  "author": "BlackBearRevived",
+  "version": "1.000.030",
+  "source_repo": "https://github.com/BlackBearRevived/ProsperoPuzzles",
+  "artifact_url": "https://github.com/BlackBearRevived/ProsperoPuzzles/releases/download/1.000.030/PPSA99006.zip",
+  "sha256": "b947fdd077e034f298332d685bd1c225842391f4cd4f1a9c77e92356ac82275d",
+  "icon_url": "https://raw.githubusercontent.com/BlackBearRevived/ProsperoPuzzles/9f4d07cae292ccea1c45b64849b6d21fb37c0cd9/sce_sys/icon0.png"
+}
