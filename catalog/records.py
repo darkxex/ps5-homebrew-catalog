@@ -171,8 +171,8 @@ def text_problem(value: str) -> str | None:
 
 
 def clamp_description(data: dict) -> bool:
-    """Cut an over-long description to MAX_LENGTH['description'] characters, in place, the last
-    three of them being "...".
+    """Cut an over-long description to at most MAX_LENGTH['description'] characters, in place, at
+    the end of a word, and end it with "...".
 
     Pull requests keep arriving with a longer one; only its first characters count. Returns True
     when it was cut. Anything that is not a string is left for the field checks to reject."""
@@ -180,7 +180,10 @@ def clamp_description(data: dict) -> bool:
     limit = MAX_LENGTH["description"]
     if not isinstance(value, str) or len(value) <= limit:
         return False
-    data["description"] = value[:limit - 3].rstrip() + "..."
+    cut = value[:limit - 3]
+    if not value[limit - 3].isspace() and " " in cut:
+        cut = cut.rsplit(" ", 1)[0]      # never in the middle of a word
+    data["description"] = cut.rstrip(" ,;:-") + "..."
     return True
 
 

@@ -73,6 +73,13 @@ class RecordTests(unittest.TestCase):
         loaded = load_record(write_record(self.apps, record(description="a" * 197 + " " + "b" * 50)), report)
         self.assertIsNotNone(loaded)
         self.assertEqual(loaded.data["description"], "a" * 197 + "...")
+        # a word that straddles the limit is dropped whole, not cut in the middle
+        words = " ".join(["word"] * 60)
+        cut = record(description=words)
+        self.assertEqual(self.errors(cut), [])
+        long = Report()
+        loaded = load_record(write_record(self.apps, record(description="x" * 190 + " R1 tabs and more"), "PPSA01234.json"), long)
+        self.assertEqual(loaded.data["description"], "x" * 190 + " R1...")
         self.assertEqual([lvl for lvl, _, _ in report.items], ["warning"])
         self.assertEqual(self.errors(record(description="x" * 5000)), [])
 
