@@ -68,6 +68,14 @@ class RecordTests(unittest.TestCase):
         self.assertRejected(record(sha256="A" * 64), "sha256 must be")
         self.assertRejected(record(sha256="a" * 63), "sha256 must be")
 
+    def test_long_description_is_cut_to_200(self):
+        report = Report()
+        loaded = load_record(write_record(self.apps, record(description="a" * 197 + " " + "b" * 50)), report)
+        self.assertIsNotNone(loaded)
+        self.assertEqual(loaded.data["description"], "a" * 197 + "...")
+        self.assertEqual([lvl for lvl, _, _ in report.items], ["warning"])
+        self.assertEqual(self.errors(record(description="x" * 5000)), [])
+
     def test_text_rules(self):
         self.assertRejected(record(name="Evil‮ppa"), "U+202E")
         self.assertRejected(record(description="line\nbreak"), "U+000A")

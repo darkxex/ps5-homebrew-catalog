@@ -17,8 +17,8 @@ from .automerge import UPDATE_BRANCH
 from .github import GitHub, GitHubError
 from .policy import (THIRD_PARTY_WARNING, Change, check_changes, check_publisher, derivative_notes,
                      is_maintainer)
-from .records import (MAX_FILE_BYTES, RECORD_PATH, Record, icon_source, load_catalog, load_record, record_id,
-                      repo_parts)
+from .records import (MAX_FILE_BYTES, RECORD_PATH, Record, clamp_description, icon_source, load_catalog,
+                      load_record, record_id, repo_parts)
 from .report import Report
 from .verify import newer_release, verify_record
 
@@ -539,12 +539,58 @@ def cmd_automerge(args) -> int:
                               "check and the release scan passed.")
                              + " Merged automatically; it is published with the catalog's next publication.")
         bot.merge_pull(repository, number, sha, f"{pull['title']} (#{number})")
+        trim_long_descriptions(changes, number, repository, bot, report)
         report.notice(name, f"merged: @{author} " + (("reserved a title ID" if reserving else "added another app of their own") if adds
                                                       else "moved apps to their newest release" if by_bot
                                                       else "moved their own app to its newest release"))
     except GitHubError as error:
         report.warning(name, f"meets every rule, but could not be merged: {error}")
     return report.emit("Automatic merge", "Done.")
+
+
+TRIM_BRANCH = "catalog-update/trim-description"
+
+
+def trim_long_descriptions(changes: list, number: int, repository: str, bot: GitHub, report: Report) -> None:
+    """After a merge, cut to 200 characters (ending in "...") the description of a record the pull request left longer.
+
+    A merge cannot change the files it merges, so the bot follows it with a small pull request of
+    its own, merged the same way. Anything that goes wrong here leaves the long description on
+    main, where the loaders already read only its first 200 characters."""
+    from .updates import render
+    name = f"pull request #{number}"
+    try:
+        git("fetch", "--quiet", "origin", "main")
+        contents = {}
+        for change in changes:
+            if change.status not in ("M", "A") or not RECORD_PATH.fullmatch(change.path):
+                continue
+            try:
+                data = json.loads(git_bytes("show", f"origin/main:{change.path}").decode("utf-8"))
+            except (subprocess.CalledProcessError, ValueError):
+                continue
+            if isinstance(data, dict) and clamp_description(data):
+                contents[change.path] = render(data)
+        if not contents:
+            return
+        title = f"Trim the description to 200 characters (#{number})"
+        git("checkout", "--quiet", "-B", TRIM_BRANCH, "origin/main")
+        try:
+            for path, content in contents.items():
+                (ROOT / path).write_text(content, encoding="utf-8", newline="\n")
+                git("add", path)
+            git("commit", "--quiet", "-m", title)
+            git("push", "--quiet", "--force", "origin", f"{TRIM_BRANCH}:{TRIM_BRANCH}")
+            trim_sha = git("rev-parse", "HEAD").strip()
+        finally:
+            git("checkout", "--quiet", "--detach", "origin/main")
+        body = (f"The description in #{number} was longer than 200 characters; only the first 200 count. "
+                "Opened and merged by the catalog bot.")
+        trim = bot.create_pull(repository, TRIM_BRANCH, "main", title, body)
+        bot.merge_pull(repository, trim["number"], trim_sha, title)
+        report.notice(name, f"description cut to 200 characters in pull request #{trim['number']}")
+    except (GitHubError, subprocess.CalledProcessError) as error:
+        report.warning(name, f"merged, but its description could not be cut to 200 characters: {error}")
 
 
 # The pull request body records which release it proposes for each app.
