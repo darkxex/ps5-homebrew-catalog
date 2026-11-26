@@ -3,13 +3,13 @@
   "name": "Parasite Eve 2 PS5",
   "kind": "game",
   "category": "console-ports",
-  "description": "Parasite Eve 1&2 Port community: https://discord.gg/Yg88tHYXK. Early PS5 beta; own North American discs required. Saving, menus, fonts and audio remain under qualification.",
+  "description": "Community: https://discord.gg/Yg88tHYXK. PS5 beta based on upstream 0.3.9; owner boot confirmed. Requires own USA disc1.bin and disc2.bin in PPSA77023/parasite-eve-ii/discs. Install under /mnt/usb0/homebrew; writable USB required. Preserve saves/settings. Retains PS5 menu and graphics options; saving, audio and progression remain under testing.",
   "license": "CC0-1.0",
   "author": "GUMMIBRI",
-  "version": "0.1-beta",
+  "version": "0.3.9",
   "source_repo": "https://github.com/GUMMIBRI/parasite-eve-ii-pc",
-  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ii-pc/releases/download/v0.1-beta/Parasite-Eve-2-PS5-0.1-beta.zip",
-  "sha256": "2ef86f1a191857bdc3aad2b65156580c7c17ab393f688cf818f73fa497cceda1",
+  "artifact_url": "https://github.com/GUMMIBRI/parasite-eve-ii-pc/releases/download/v0.3.9-ps5-beta/Parasite-Eve-2-PS5-0.3.9-beta.zip",
+  "sha256": "f26eb01338a4ec98162785ebe46d0a5df4015f0fde2fbc9536e56a1966a7fc44",
   "icon_url": null,
   "icon_member": "PPSA77023/sce_sys/icon0.png"
 }
