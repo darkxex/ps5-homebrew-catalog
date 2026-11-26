@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99031",
+  "name": "ICO",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PS5 port of ICO, based on the ico-pc recompilation, in 4K with DualSense. Import your own PS2 disc image on the console.",
+  "license": "MIT AND GPL-3.0-or-later",
+  "author": "bystritskiy",
+  "version": "01.001.000",
+  "source_repo": "https://github.com/bystritskiy/ico-ps5",
+  "artifact_url": "https://github.com/bystritskiy/ico-ps5/releases/download/01.001.000/PPSA99031.zip",
+  "sha256": "2043edd76933b174de079b452f00cf4c203107d6c2e31018a76fc9e4d5fe9a42",
+  "icon_url": "https://raw.githubusercontent.com/bystritskiy/ico-ps5/01.001.000/port/ps5/sce_sys/icon0.png"
+}
