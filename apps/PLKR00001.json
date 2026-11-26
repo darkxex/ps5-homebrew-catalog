@@ -1,0 +1,14 @@
+{
+  "titleid": "PLKR00001",
+  "name": "PlayKaraoke",
+  "kind": "app",
+  "category": "music",
+  "description": "Offline karaoke player for jailbroken PS5: CDG (MP3+G) and 4K MP4 playback, real-time ±12 semitone pitch shifting, fair singer rotation, and song requests from phones via QR code.",
+  "license": "GPL-3.0-or-later",
+  "author": "PlayKaraoke",
+  "version": "0.3.0",
+  "source_repo": "https://github.com/PlayKaraoke/PS5-PlayKaraoke-Player",
+  "artifact_url": "https://github.com/PlayKaraoke/PS5-PlayKaraoke-Player/releases/download/v0.3.0/PLKR00001.zip",
+  "sha256": "2cb11756c973cc3b9c27270a31429368dd75958eb61611563b3da9c587ca6379",
+  "icon_url": "https://raw.githubusercontent.com/PlayKaraoke/PS5-PlayKaraoke-Player/v0.3.0/sce_sys/icon0.png"
+}
