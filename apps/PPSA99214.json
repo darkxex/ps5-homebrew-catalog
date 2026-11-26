@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99214",
+  "name": "Fable II",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Experimental PS5 port for Fable 2",
+  "license": "MIT",
+  "author": "Dragonscales",
+  "version": "ps5-public-build-beta2",
+  "source_repo": "https://github.com/dragonscales123/Fable-2-RecompPS5",
+  "artifact_url": "https://github.com/dragonscales123/Fable-2-RecompPS5/releases/download/ps5-public-build-beta2/Fable2-PS5-PPSA99214-ps5-public-build-beta2.zip",
+  "sha256": "3941411ebf8f348d3492f044ac46b5bd7ab68f61d4119e8c591d5e6a99c9d25c",
+  "icon_url": "https://raw.githubusercontent.com/dragonscales123/Fable-2-RecompPS5/d55c4b6a01c060fad4ab0b6870fd0a79024ddc97/ps5/sce_sys/icon0.png"
+}
