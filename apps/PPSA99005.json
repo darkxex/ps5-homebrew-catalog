@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99005",
+  "name": "PS5 OpenGL Showcase",
+  "kind": "app",
+  "category": "showcases",
+  "description": "Watch particles trace a glowing knot above a field of gems in this OpenGL 4.6 demo, with live frame-rate and resolution readouts.",
+  "license": "GPL-3.0-or-later",
+  "author": "BlackBearReloaded",
+  "version": "1.0.4",
+  "source_repo": "https://github.com/BlackBearRevived/ps5-opengl",
+  "artifact_url": "https://github.com/BlackBearRevived/ps5-opengl/releases/download/v1.0.4/ps5-opengl-showcase-1.0.4-PPSA99005.zip",
+  "sha256": "2b00e567901e88eebfec8f50dcd512621d7482cfcbb52ed6512a34a1575d889c",
+  "icon_url": "https://raw.githubusercontent.com/BlackBearRevived/ps5-opengl/v1.0.4/examples/core46-showcase/sce_sys/icon0.png"
+}
