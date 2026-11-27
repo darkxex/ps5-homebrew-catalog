@@ -3,7 +3,7 @@
   "name": "TrinityXSX",
   "kind": "app",
   "category": "emulators",
-  "description": "Standalone Xbox Series X|S (GDK) game library and compatibility runtime for PS5 combining XCL, vkd3d-proton, DXVK, PS5 Wine, Touchpad Quick Menu HUD, Web Companion, and MihawkGen Frame Generation.",
+  "description": "Standalone Xbox Series X|S (GDK) & DRM-free PC/GOG game library and runtime for PS5 with on-console GOG installer, Wine Mono, Touchpad HUD & Mouse+KB toggle, LAN PC input, Web Companion & FrameGen.",
   "license": "GPL-2.0",
   "author": "grzegorz2047",
   "version": "v0.2.10",
