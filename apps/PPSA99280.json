@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA99280",
+  "name": "PSGopher",
+  "kind": "app",
+  "category": "emulators",
+  "description": "An N64 emulator for PlayStation 5, powered by Gopher64.",
+  "license": "GPL-3.0",
+  "author": "Press5elect",
+  "version": "0.0.1",
+  "source_repo": "https://github.com/Press5elect/PSGopher",
+  "artifact_url": "https://github.com/Press5elect/PSGopher/releases/download/v0.0.1/PSGopher-v0.0.1.zip",
+  "sha256": "abab3db675fe6865e92bb7b0e920fb9d8f4f03007a613d41bf1cf62bb44c114d",
+  "icon_url": "https://raw.githubusercontent.com/Press5elect/PSGopher/90e57b816a480224fb86e22a224b64e1555ab07a/ps5/sce_sys/icon0.png"
+}
