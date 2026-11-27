@@ -1,0 +1,14 @@
+{
+  "titleid": "PPSA52210",
+  "name": "Codename Engine (PS5 port)",
+  "kind": "game",
+  "category": "homebrew-games",
+  "description": "unauthorized port of the codename engine for ps5 and maybe ps4 later on. based on haxelfixel. Very buggy",
+  "license": "GPL-3.0",
+  "author": "Richie133",
+  "version": "0.1.2-beta",
+  "source_repo": "https://github.com/Richie133/Friday-Night-Funkin-Codename-Ps5-port",
+  "artifact_url": "https://github.com/Richie133/Friday-Night-Funkin-Codename-Ps5-port/releases/download/v0.1.2-beta/PPSA52210.zip",
+  "sha256": "729d928e637237a003656b344268df97f3750df76d81e0375e0a7d0b48350c9d",
+  "icon_url": "https://raw.githubusercontent.com/Richie133/Friday-Night-Funkin-Codename-Ps5-port/ea20f771af678a6599b3b69254e2721b5218740e/sce_sys/icon0.png"
+}
