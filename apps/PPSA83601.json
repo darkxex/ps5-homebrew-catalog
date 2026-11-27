@@ -6,9 +6,9 @@
   "description": "Standalone Xbox Series X|S (GDK) & DRM-free PC/GOG game library and runtime for PS5 with on-console GOG installer, Wine Mono, Touchpad HUD & Mouse+KB toggle, LAN PC input, Web Companion & FrameGen.",
   "license": "GPL-2.0",
   "author": "grzegorz2047",
-  "version": "v0.2.12",
+  "version": "v0.2.17",
   "source_repo": "https://github.com/grzegorz2047/TrinityXSX",
-  "artifact_url": "https://github.com/grzegorz2047/TrinityXSX/releases/download/v0.2.12/PPSA83601.zip",
-  "sha256": "2db6ee9a052ee8eade1518c0b420b2bf7ced04da2d4600926c7ba19a141637c2",
-  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityXSX/v0.2.12/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/grzegorz2047/TrinityXSX/releases/download/v0.2.17/PPSA83601.zip",
+  "sha256": "ce0ebe5a903c435956b04a0a06a8479bd2a5e7ed9d2bec56c4fa0a3cb23f30f4",
+  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityXSX/v0.2.17/sce_sys/icon0.png"
 }
