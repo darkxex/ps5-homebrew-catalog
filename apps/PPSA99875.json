@@ -3,12 +3,12 @@
   "name": "RingOut",
   "kind": "game",
   "category": "console-ports",
-  "description": "Unofficial native PS5 port of the GameCube version of Soulcalibur II, in preparation for 0.8 Beta. Players supply their own game files.",
-  "license": null,
+  "description": "1.0 Beta of the unofficial PS5 port of Soulcalibur II for GameCube. Offline fights. Bring your own US GameCube disc image. The Windows Setup Kit prepares the game folder and separate module. Optional Xbox and PS2 donor discs can add Spawn and Heihachi.",
+  "license": "GPL-2.0",
   "author": "GUMMIBRI",
-  "version": "0.8.0-beta",
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "1.0.0-beta",
+  "source_repo": "https://github.com/GUMMIBRI/RingOut-PS5",
+  "artifact_url": "https://github.com/GUMMIBRI/RingOut-PS5/releases/download/v1.0.0-beta/RingOut-1.0-Beta-PS5-v1.zip",
+  "sha256": "6b56e0f8c874aa98aea86fa434ca3eef11546daa76d9140ef2e3c57fb9f3ef0e",
+  "icon_url": "https://raw.githubusercontent.com/GUMMIBRI/RingOut-PS5/v1.0.0-beta/ringout-icon.png"
 }
