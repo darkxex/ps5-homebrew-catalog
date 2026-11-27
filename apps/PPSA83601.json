@@ -6,9 +6,9 @@
   "description": "Standalone Xbox Series X|S (GDK) game library and compatibility runtime for PS5 combining XCL, vkd3d-proton, DXVK, PS5 Wine, Touchpad Quick Menu HUD, Web Companion, and MihawkGen Frame Generation.",
   "license": "GPL-2.0",
   "author": "grzegorz2047",
-  "version": "v0.2.7",
+  "version": "v0.2.10",
   "source_repo": "https://github.com/grzegorz2047/TrinityXSX",
-  "artifact_url": "https://github.com/grzegorz2047/TrinityXSX/releases/download/v0.2.7/PPSA83601.zip",
-  "sha256": "55a85bb5a0cca43ca6d1a012fe0b9ce41cda61c37ad5f58ec525789c4faa99f2",
-  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityXSX/v0.2.7/sce_sys/icon0.png"
+  "artifact_url": "https://github.com/grzegorz2047/TrinityXSX/releases/download/v0.2.10/PPSA83601.zip",
+  "sha256": "c64df66a5a98cb70daf54e1df65d51a28856fb9c31df7d79e23d6c2a97ac936b",
+  "icon_url": "https://raw.githubusercontent.com/grzegorz2047/TrinityXSX/v0.2.10/sce_sys/icon0.png"
 }
