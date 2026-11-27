@@ -1,0 +1,15 @@
+{
+  "titleid": "PPSA99961",
+  "name": "New Blitz 2027",
+  "kind": "game",
+  "category": "console-ports",
+  "description": "Native PS5 port of New Blitz 2027, a recompilation of NFL Blitz 2000 (N64). Needs your own USA v1.1 ROM; no game data included. 1.0.2 was tested on a PS5; newer builds aren't yet. Testers wanted!",
+  "license": "GPL-3.0",
+  "author": "Blitz Recomp",
+  "version": "v1.0.4",
+  "source_repo": "https://github.com/blitzrecomp/newblitz",
+  "artifact_url": "https://github.com/blitzrecomp/newblitz/releases/download/v1.0.4/PPSA99961.zip",
+  "sha256": "123648e57498bb2a55038aa08e72b1dcf57f0e03a97c6f86a47a5d397c6684c4",
+  "icon_url": null,
+  "icon_member": "PPSA99961/sce_sys/icon0.png"
+}
