@@ -3,7 +3,7 @@
   "name": "RingOut",
   "kind": "game",
   "category": "console-ports",
-  "description": "1.0 Beta of the unofficial PS5 port of Soulcalibur II for GameCube. Offline fights. Bring your own US GameCube disc image. The Windows Setup Kit prepares the game folder and separate module. Optional Xbox and PS2 donor discs can add Spawn and Heihachi.",
+  "description": "1.0 Beta of the unofficial PS5 port of Soulcalibur II for GameCube. Offline fights. Bring your own US GameCube disc image. The Windows Setup Kit prepares the game folder and separate module....",
   "license": "GPL-2.0",
   "author": "GUMMIBRI",
   "version": "1.0.0-beta",
