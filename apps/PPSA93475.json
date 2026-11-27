@@ -6,10 +6,10 @@
   "description": "Shows what is using your PS5's storage as an interactive sunburst and a sorted list, with game names and icons, and never changes anything.",
   "license": "GPL-3.0",
   "author": "leolobato",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "source_repo": "https://github.com/leolobato/prospero-disk",
-  "artifact_url": "https://github.com/leolobato/prospero-disk/releases/download/v1.0.2/prospero-disk-1.0.2-PPSA93475.zip",
-  "sha256": "9a6989fc2af4798d50f002e84e4dcc06de4f0990eed4dcd837b1be932f88e4cb",
-  "icon_url": "https://raw.githubusercontent.com/leolobato/prospero-disk/v1.0.2/sce_sys/icon0.png",
+  "artifact_url": "https://github.com/leolobato/prospero-disk/releases/download/v1.0.3/prospero-disk-1.0.3-PPSA93475.zip",
+  "sha256": "5fb2c89cff2b21985ccac53c727a87219fada2bcd3cbc62e5939e5e197227cc3",
+  "icon_url": "https://raw.githubusercontent.com/leolobato/prospero-disk/v1.0.3/sce_sys/icon0.png",
   "internalOnly": true
 }
