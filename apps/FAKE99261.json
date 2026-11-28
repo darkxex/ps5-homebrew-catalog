@@ -3,12 +3,14 @@
   "name": "PS5Upload Play",
   "kind": "app",
   "category": "streaming",
-  "description": "Play a friend's PS5 game on your own PS5 with your controller, and set up Remote Play and Play Together from the couch.",
+  "description": "Play a friend's PS5 game on your own PS5 with your controller. Open or join Play Rooms, chat and talk with the room, and set up Remote Play from the couch.",
   "license": "GPL-3.0-or-later",
   "author": "phantomptr",
-  "version": null,
-  "source_repo": null,
-  "artifact_url": null,
-  "sha256": null,
-  "icon_url": null
+  "version": "13.0.0",
+  "source_repo": "https://github.com/phantomptr/ps5upload",
+  "artifact_url": "https://github.com/phantomptr/ps5upload/releases/download/v13.0.0/PS5Upload-Play-FAKE99261-13.0.0.zip",
+  "sha256": "5419ae4bbcc7b61ed232da3506af6a672438c752a7ef42f2841fcf0dda7a47d3",
+  "icon_url": null,
+  "icon_member": "FAKE99261/sce_sys/icon0.png",
+  "internalOnly": true
 }
