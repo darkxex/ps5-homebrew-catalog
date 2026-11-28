@@ -1,0 +1,14 @@
+{
+  "titleid": "FAKE99261",
+  "name": "PS5Upload Play",
+  "kind": "app",
+  "category": "streaming",
+  "description": "Play a friend's PS5 game on your own PS5 with your controller, and set up Remote Play and Play Together from the couch.",
+  "license": "GPL-3.0-or-later",
+  "author": "phantomptr",
+  "version": null,
+  "source_repo": null,
+  "artifact_url": null,
+  "sha256": null,
+  "icon_url": null
+}
