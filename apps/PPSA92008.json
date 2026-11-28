@@ -6,9 +6,9 @@
   "description": "Pokémon Platinum decomp port for the PS5",
   "license": "MIT",
   "author": "cybervisi0n",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "source_repo": "https://github.com/cybervisi0n/pokeplatinum",
-  "artifact_url": "https://github.com/cybervisi0n/pokeplatinum/releases/download/v0.2.4/release_ps5.zip",
-  "sha256": "67d5e99a12bae64aa2de647e456c5a096d200e93bbf5ee16ec7781bba5dd217c",
+  "artifact_url": "https://github.com/cybervisi0n/pokeplatinum/releases/download/v0.2.5/release_ps5.zip",
+  "sha256": "0feabfac8cef37979ab458efdbbdf1444a72da76824b7c7b34c8b29436af4862",
   "icon_url": "https://raw.githubusercontent.com/cybervisi0n/pokeplatinum/f983c87a547023a79df2d04833e45804456ae454/prospero/sce_sys/icon0.png"
 }
